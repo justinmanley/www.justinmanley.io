@@ -1,0 +1,14 @@
+{
+	"source": "src",
+	"destination": "public",
+	"plugins": {
+		"metalsmith-markdown": true,
+		"metalsmith-templates": {
+			"engine": "handlebars",
+			"directory": "templates",
+			"partials": {
+				"twitterFeed": "twitterFeed"
+			}
+		}
+	}
+}
