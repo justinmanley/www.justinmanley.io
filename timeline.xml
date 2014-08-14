@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xml:lang="en-US">
+  <id>tag:github.com,2008:/manleyjster.actor</id>
+  <link type="text/html" rel="alternate" href="https://github.com/manleyjster"/>
+  <link type="application/atom+xml" rel="self" href="https://github.com/manleyjster.private.actor.atom?token=f6728524d3835a2cd3180dab9b758497"/>
+  <title>Private Activity Feed for manleyjster</title>
+  <updated>2014-08-14T01:04:18Z</updated>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2234507776</id>
+    <published>2014-08-14T01:04:18Z</published>
+    <updated>2014-08-14T01:04:18Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/mapbox/mapbox-gl-js"/>
+    <title type="html">manleyjster starred mapbox/mapbox-gl-js</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/mapbox/mapbox-gl-js&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;mapbox/mapbox-gl-js&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-14T01:04:18Z&quot; is=&quot;relative-time&quot;&gt;August 14, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2234391295</id>
+    <published>2014-08-13T23:22:37Z</published>
+    <updated>2014-08-13T23:22:37Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/meteor/meteor"/>
+    <title type="html">manleyjster starred meteor/meteor</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/meteor/meteor&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;meteor/meteor&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-13T23:22:37Z&quot; is=&quot;relative-time&quot;&gt;August 13, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2234385872</id>
+    <published>2014-08-13T23:18:23Z</published>
+    <updated>2014-08-13T23:18:23Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/e1d8abb98b...8527519e26"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-13T23:18:23Z&quot; is=&quot;relative-time&quot;&gt;August 13, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/8527519e26b8e646fe5582105053480b89fc0011&quot;&gt;8527519&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Enable tag deletion.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2234275150</id>
+    <published>2014-08-13T22:03:55Z</published>
+    <updated>2014-08-13T22:03:55Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/531b73dc4b...e1d8abb98b"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-13T22:03:55Z&quot; is=&quot;relative-time&quot;&gt;August 13, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/e1d8abb98b559567f7bfb23c7fc60bb7cc3d37ce&quot;&gt;e1d8abb&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Create a Rails 3-style asset pipeline using Sprockets.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2234007056</id>
+    <published>2014-08-13T19:46:52Z</published>
+    <updated>2014-08-13T19:46:52Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/sstephenson/rbenv"/>
+    <title type="html">manleyjster starred sstephenson/rbenv</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/sstephenson/rbenv&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;sstephenson/rbenv&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-13T19:46:52Z&quot; is=&quot;relative-time&quot;&gt;August 13, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2233924982</id>
+    <published>2014-08-13T19:04:58Z</published>
+    <updated>2014-08-13T19:04:58Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/ab9518a3d3...531b73dc4b"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-13T19:04:58Z&quot; is=&quot;relative-time&quot;&gt;August 13, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/531b73dc4bf72d9aca18922fcc1b046208d53db1&quot;&gt;531b73d&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Move styles in /public/css/style.css and add Markdown support for com…
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2232616179</id>
+    <published>2014-08-13T05:06:05Z</published>
+    <updated>2014-08-13T05:06:05Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/wearefractal/vinyl"/>
+    <title type="html">manleyjster starred wearefractal/vinyl</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/wearefractal/vinyl&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;wearefractal/vinyl&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-13T05:06:05Z&quot; is=&quot;relative-time&quot;&gt;August 13, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2232276871</id>
+    <published>2014-08-12T22:53:49Z</published>
+    <updated>2014-08-12T22:53:49Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/66e4fab33d...ab9518a3d3"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-12T22:53:49Z&quot; is=&quot;relative-time&quot;&gt;August 12, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/ab9518a3d3de64a84b0e46a95354a760faa82162&quot;&gt;ab9518a&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Add comments to map sidebar.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/d5d74b5f7269373ba9217354b2834576bf240f9c&quot;&gt;d5d74b5&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Enable users to add tags to maps.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/manleyjster/mapknitter/compare/66e4fab33d...ab9518a3d3&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2230523756</id>
+    <published>2014-08-12T05:20:39Z</published>
+    <updated>2014-08-12T05:20:39Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/21ea6c6cab...66e4fab33d"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-12T05:20:39Z&quot; is=&quot;relative-time&quot;&gt;August 12, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/66e4fab33d0cf1e489f5b8d3fdca340a622c2afc&quot;&gt;66e4fab&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Refactor map controllers and views to present a RESTful / resource-fu…
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2230442550</id>
+    <published>2014-08-12T03:33:33Z</published>
+    <updated>2014-08-12T03:33:33Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/ocaml/opam"/>
+    <title type="html">manleyjster starred ocaml/opam</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/ocaml/opam&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;ocaml/opam&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-12T03:33:33Z&quot; is=&quot;relative-time&quot;&gt;August 12, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2229781728</id>
+    <published>2014-08-11T19:25:14Z</published>
+    <updated>2014-08-11T19:25:14Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/e2052bfede...21ea6c6cab"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-11T19:25:14Z&quot; is=&quot;relative-time&quot;&gt;August 11, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/21ea6c6caba641e4b814adc82d8f808436ac9ff3&quot;&gt;21ea6c6&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Move new interface from map2 controller into map controller. Add migr…
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:ForkEvent/2229680470</id>
+    <published>2014-08-11T18:32:35Z</published>
+    <updated>2014-08-11T18:32:35Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/plots2"/>
+    <title type="html">manleyjster forked jywarren/plots2 to manleyjster/plots2</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- fork --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;forked&lt;/span&gt; &lt;a href=&quot;https://github.com/jywarren/plots2&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;jywarren/plots2&lt;/a&gt; to &lt;a href=&quot;https://github.com/manleyjster/plots2&quot; class=&quot;css-truncate css-truncate-target&quot; title=&quot;manleyjster/plots2&quot;&gt;manleyjster/plots2&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-11T18:32:35Z&quot; is=&quot;relative-time&quot;&gt;August 11, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2227194914</id>
+    <published>2014-08-09T04:44:23Z</published>
+    <updated>2014-08-09T04:44:23Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/playfair/compare/dd28915eed...898817c18a"/>
+    <title type="html">manleyjster pushed to master at manleyjster/playfair</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-09T04:44:23Z&quot; is=&quot;relative-time&quot;&gt;August 09, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/playfair/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/playfair&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/playfair&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/playfair/commit/898817c18ad9e9df781cdb7424909c06f90c4e4f&quot;&gt;898817c&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Add usage and installation documentation to README.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:IssueCommentEvent/2226393746</id>
+    <published>2014-08-08T16:44:00Z</published>
+    <updated>2014-08-08T16:44:00Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/publiclab/mapknitter/pull/20#issuecomment-51627513"/>
+    <title type="html">manleyjster commented on pull request publiclab/mapknitter#20</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- issue_comment --&gt;
+&lt;span class=&quot;mega-octicon octicon-comment-discussion&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-08T16:44:00Z&quot; is=&quot;relative-time&quot;&gt;August 08, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;commented&lt;/span&gt; on pull request &lt;a href=&quot;https://github.com/publiclab/mapknitter/pull/20#issuecomment-51627513&quot; title=&quot;Handle dependencies using bundler&quot;&gt;publiclab/mapknitter#20&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message markdown-body&quot;&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;Solution to &lt;a href=&quot;https://github.com/publiclab/mapknitter/issues/14&quot;&gt;issue #14&lt;/a&gt;&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PullRequestEvent/2226392518</id>
+    <published>2014-08-08T16:43:18Z</published>
+    <updated>2014-08-08T16:43:18Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/publiclab/mapknitter/pull/20"/>
+    <title type="html">manleyjster opened pull request publiclab/mapknitter#20</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- pull_request --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-pull-request&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-08T16:43:18Z&quot; is=&quot;relative-time&quot;&gt;August 08, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;opened&lt;/span&gt; pull request &lt;a href=&quot;https://github.com/publiclab/mapknitter/pull/20&quot;&gt;publiclab/mapknitter#20&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+  &lt;div class=&quot;message&quot;&gt;
+    &lt;blockquote&gt;Handle dependencies using bundler&lt;/blockquote&gt;
+      &lt;div class=&quot;pull-info&quot;&gt;
+        &lt;span class=&quot;octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+        &lt;em&gt;2&lt;/em&gt; commits with
+        &lt;em&gt;137&lt;/em&gt; additions and
+        &lt;em&gt;10&lt;/em&gt; deletions
+      &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2225413077</id>
+    <published>2014-08-08T05:10:42Z</published>
+    <updated>2014-08-08T05:10:42Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/playfair/compare/20573683dd...dd28915eed"/>
+    <title type="html">manleyjster pushed to master at manleyjster/playfair</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-08T05:10:42Z&quot; is=&quot;relative-time&quot;&gt;August 08, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/playfair/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/playfair&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/playfair&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/playfair/commit/dd28915eed47283cfb086abf938b531eec64c0f5&quot;&gt;dd28915&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Fix option handling, allow an id to be used as a document selector, a…
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2225378739</id>
+    <published>2014-08-08T04:22:19Z</published>
+    <updated>2014-08-08T04:22:19Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/segmentio/metalsmith"/>
+    <title type="html">manleyjster starred segmentio/metalsmith</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/segmentio/metalsmith&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;segmentio/metalsmith&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-08T04:22:19Z&quot; is=&quot;relative-time&quot;&gt;August 08, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2225085004</id>
+    <published>2014-08-07T23:10:31Z</published>
+    <updated>2014-08-07T23:10:31Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/b318d74633...e2052bfede"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-07T23:10:31Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/e2052bfedef6db5ace4f37ac66dd812969fe9db5&quot;&gt;e2052bf&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Add Edit History tab to sidebar and add research note button.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2224741471</id>
+    <published>2014-08-07T19:51:59Z</published>
+    <updated>2014-08-07T19:51:59Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/playfair/compare/0ad8e74f30...20573683dd"/>
+    <title type="html">manleyjster pushed to master at manleyjster/playfair</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-07T19:51:59Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/playfair/tree/master&quot;&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/playfair&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/playfair&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/playfair/commit/20573683dd8216fbab113c106ce4d29883fb55d1&quot;&gt;2057368&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Capture an SVG node from the browser and write its text representatio…
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/playfair/commit/3da9b3232aef6fcaf38952085dcafd77a4b76a66&quot;&gt;3da9b32&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Add phantomjs-node bridge so that phantom can be called directly from…
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;more&quot;&gt;&lt;a href=&quot;https://github.com/manleyjster/playfair/compare/0ad8e74f30...20573683dd&quot;&gt;View comparison for these 2 commits &amp;raquo;&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2224643988</id>
+    <published>2014-08-07T18:59:38Z</published>
+    <updated>2014-08-07T18:59:38Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/sindresorhus/pageres"/>
+    <title type="html">manleyjster starred sindresorhus/pageres</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/sindresorhus/pageres&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;sindresorhus/pageres&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-07T18:59:38Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/2224467315</id>
+    <published>2014-08-07T17:30:30Z</published>
+    <updated>2014-08-07T17:30:30Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/sunrooms"/>
+    <title type="html">manleyjster created repository manleyjster/sunrooms</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-repo&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; repository &lt;a href=&quot;/manleyjster/sunrooms&quot; class=&quot;css-truncate css-truncate-target&quot; title=&quot;manleyjster/sunrooms&quot;&gt;manleyjster/sunrooms&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-07T17:30:30Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/2223275134</id>
+    <published>2014-08-07T04:29:52Z</published>
+    <updated>2014-08-07T04:29:52Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/playfair/compare/master"/>
+    <title type="html">manleyjster created branch master at manleyjster/playfair</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; branch &lt;a href=&quot;/manleyjster/playfair/tree/master&quot; class=&quot;css-truncate css-truncate-target branch-link&quot; title=&quot;master&quot;&gt;&lt;span class=&quot;octicon octicon-git-branch&quot;&gt;&lt;/span&gt;master&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/playfair&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/playfair&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-07T04:29:52Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2223273106</id>
+    <published>2014-08-07T04:26:59Z</published>
+    <updated>2014-08-07T04:26:59Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/sgentle/phantomjs-node"/>
+    <title type="html">manleyjster starred sgentle/phantomjs-node</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/sgentle/phantomjs-node&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;sgentle/phantomjs-node&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-07T04:26:59Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2223265581</id>
+    <published>2014-08-07T04:16:57Z</published>
+    <updated>2014-08-07T04:16:57Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/superbrothers/capturejs"/>
+    <title type="html">manleyjster starred superbrothers/capturejs</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/superbrothers/capturejs&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;superbrothers/capturejs&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-07T04:16:57Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2223246396</id>
+    <published>2014-08-07T03:52:11Z</published>
+    <updated>2014-08-07T03:52:11Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/Huddle/PhantomCSS"/>
+    <title type="html">manleyjster starred Huddle/PhantomCSS</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/Huddle/PhantomCSS&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;Huddle/PhantomCSS&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-07T03:52:11Z&quot; is=&quot;relative-time&quot;&gt;August 07, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:WatchEvent/2222841207</id>
+    <published>2014-08-06T21:52:51Z</published>
+    <updated>2014-08-06T21:52:51Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/mbostock/d3"/>
+    <title type="html">manleyjster starred mbostock/d3</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- watch --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-star&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;starred&lt;/span&gt; &lt;a href=&quot;https://github.com/mbostock/d3&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;mbostock/d3&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-06T21:52:51Z&quot; is=&quot;relative-time&quot;&gt;August 06, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/2222808482</id>
+    <published>2014-08-06T21:34:40Z</published>
+    <updated>2014-08-06T21:34:40Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/playfair"/>
+    <title type="html">manleyjster created repository manleyjster/playfair</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-repo&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; repository &lt;a href=&quot;/manleyjster/playfair&quot; class=&quot;css-truncate css-truncate-target&quot; title=&quot;manleyjster/playfair&quot;&gt;manleyjster/playfair&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-06T21:34:40Z&quot; is=&quot;relative-time&quot;&gt;August 06, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2222773830</id>
+    <published>2014-08-06T21:16:05Z</published>
+    <updated>2014-08-06T21:16:05Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/094ba013f9...b318d74633"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-06T21:16:05Z&quot; is=&quot;relative-time&quot;&gt;August 06, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/b318d7463300dce606f5f6b84bfaee3b7f74284e&quot;&gt;b318d74&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Split sidebar into details and uploads tab.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:CreateEvent/2222648578</id>
+    <published>2014-08-06T20:11:11Z</published>
+    <updated>2014-08-06T20:11:11Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/Leaflet-MapKnitter"/>
+    <title type="html">manleyjster created repository manleyjster/Leaflet-MapKnitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- create --&gt;
+&lt;div class=&quot;simple&quot;&gt;
+  &lt;span class=&quot;octicon octicon-repo&quot;&gt;&lt;/span&gt;
+
+  &lt;div class=&quot;title&quot;&gt;
+    &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;created&lt;/span&gt; repository &lt;a href=&quot;/manleyjster/Leaflet-MapKnitter&quot; class=&quot;css-truncate css-truncate-target&quot; title=&quot;manleyjster/Leaflet-MapKnitter&quot;&gt;manleyjster/Leaflet-MapKnitter&lt;/a&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;time&quot;&gt;
+    &lt;time datetime=&quot;2014-08-06T20:11:11Z&quot; is=&quot;relative-time&quot;&gt;August 06, 2014&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+  <entry>
+    <id>tag:github.com,2008:PushEvent/2222620912</id>
+    <published>2014-08-06T19:56:44Z</published>
+    <updated>2014-08-06T19:56:44Z</updated>
+    <link type="text/html" rel="alternate" href="https://github.com/manleyjster/mapknitter/compare/8ca594ba63...094ba013f9"/>
+    <title type="html">manleyjster pushed to annotation-interface at manleyjster/mapknitter</title>
+    <author>
+      <name>manleyjster</name>
+      <email></email>
+      <uri>https://github.com/manleyjster</uri>
+    </author>
+    <media:thumbnail height="30" width="30" url="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;s=30"/>
+    <content type="html">&lt;!-- push --&gt;
+&lt;span class=&quot;mega-octicon octicon-git-commit&quot;&gt;&lt;/span&gt;
+
+&lt;div class=&quot;time&quot;&gt;
+  &lt;time datetime=&quot;2014-08-06T19:56:44Z&quot; is=&quot;relative-time&quot;&gt;August 06, 2014&lt;/time&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;manleyjster&lt;/a&gt; &lt;span&gt;pushed&lt;/span&gt; to &lt;a href=&quot;/manleyjster/mapknitter/tree/annotation-interface&quot;&gt;annotation-interface&lt;/a&gt; at &lt;a href=&quot;https://github.com/manleyjster/mapknitter&quot; class=&quot;css-truncate css-truncate-target&quot;&gt;manleyjster/mapknitter&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;details&quot;&gt;
+  &lt;a href=&quot;https://github.com/manleyjster&quot;&gt;&lt;img alt=&quot;Justin Manley&quot; class=&quot;gravatar&quot; data-user=&quot;1668487&quot; height=&quot;30&quot; src=&quot;https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60&quot; width=&quot;30&quot; /&gt;&lt;/a&gt;
+
+    &lt;div class=&quot;commits pusher-is-only-committer&quot;&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          &lt;span title=&quot;manleyjster&quot;&gt;
+            &lt;img alt=&quot;Justin Manley&quot; data-user=&quot;1668487&quot; height=&quot;16&quot; src=&quot;https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32&quot; width=&quot;16&quot; /&gt;
+          &lt;/span&gt;
+          &lt;code&gt;&lt;a href=&quot;/manleyjster/mapknitter/commit/094ba013f9d6df3b8a3b1c8768d3e909b1a813c3&quot;&gt;094ba01&lt;/a&gt;&lt;/code&gt;
+          &lt;div class=&quot;message&quot;&gt;
+            &lt;blockquote&gt;
+              Preliminary mapknitter interface with Bootstrap.
+            &lt;/blockquote&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

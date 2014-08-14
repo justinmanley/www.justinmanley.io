@@ -13,11 +13,27 @@ module.exports = function(grunt) {
     		source: {
     			files: [
     				'Gruntfile.js',
-    				'src/*'
+    				'src/*',
+                    'src/*/*',
+                    'templates/*'
     			],
-    			tasks: [ 'build' ]
+    			tasks: [ 'build', 'less', 'clean' ]
     		}
-    	}
+    	},
+        less: {
+            site: {
+                files: {
+                    "public/css/style.css": "src/less/style.less"
+                }
+            }
+        },
+        clean: {
+            less: ["public/less"]
+        },
+        copy: {
+            src: 'src/images',
+            dest: 'public/images'
+        }
     });
 
     grunt.registerTask('build', function() {
@@ -30,15 +46,16 @@ module.exports = function(grunt) {
 				}
 			},
 			site = new Metalsmith(__dirname)
+                .source('src')
+                .destination('public')
 				.use(markdown())
-	    		.use(templates(templateOptions))
-	    		.source('src')
-	    		.destination('public');
-
+	    		.use(templates(templateOptions));
 	  	site.build(function(err) {
 	  		if (err) throw err;
 	  		done();
 	  	});
+
+        grunt.task.run('less');
     });
 
     grunt.registerTask('default', 'watch');

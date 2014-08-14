@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xsltproc ./xslt/github.xslt $1 | sed 's/&lt;/</g' | sed 's/&gt;/>/g'

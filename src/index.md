@@ -1,8 +1,7 @@
 ---
-title: Justin Manley
 template: page.hbs
 ---
 
-Coder, mapmaker, aspiring architecture critic. Reader of many books. Currently student @UChicago. I write about cities at http://outoftheyards.com.
+## Justin Manley ##
 
-Whatup
+Coder, mapmaker, aspiring architecture critic, currently a student at the University of Chicago. I write about cities at http://outoftheyards.com.
