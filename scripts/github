@@ -1,3 +1,9 @@
 #!/bin/sh
 
-xsltproc ./xslt/github.xslt $1 | sed 's/&lt;/</g' | sed 's/&gt;/>/g'
+# Usage: 
+# ./github <feed.xml> <number of updates>
+
+# Example:
+# ./github timeline.xml 5
+
+xsltproc --stringparam num $2 ./scripts/xslt/github.xslt $1 | sed 's/&lt;/</g' | sed 's/&gt;/>/g' > feeds/github.hbs

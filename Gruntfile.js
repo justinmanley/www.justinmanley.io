@@ -40,16 +40,17 @@ module.exports = function(grunt) {
     	var done = this.async(),
     		templateOptions = {
 				"engine": "handlebars",
-				"directory": "templates",
-				"partials": {
-					"twitterFeed": "twitterFeed"
-				}
+				"directory": ".",
+                "partials": {
+                    "github": "../feeds/github"
+                }
 			},
 			site = new Metalsmith(__dirname)
                 .source('src')
                 .destination('public')
 				.use(markdown())
 	    		.use(templates(templateOptions));
+
 	  	site.build(function(err) {
 	  		if (err) throw err;
 	  		done();
