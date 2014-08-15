@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Linden Hill;
+  src: url(../fonts/linden-hill/webfonts/LindenHill-webfont.ttf);
+}
+@font-face {
+  font-family: Chunk;
+  src: url('../fonts/chunk/Chunk Five Print.otf');
+}
+html,
+body {
+  margin: 0;
+}
+h2 {
+  font-family: "Chunk";
+  font-weight: normal;
+  font-size: 2.5em;
+  text-align: center;
+  letter-spacing: 1px;
+}
+#header {
+  font-family: "Linden Hill";
+  text-align: center;
+  font-size: 1.5em;
+  width: 600px;
+  margin: 0 auto;
+}

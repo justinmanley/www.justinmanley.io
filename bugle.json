@@ -1,0 +1,12 @@
+{
+	"options": {
+		"assets": "assets",
+		"engine": "handlebars",
+		"partials": [ "templates", "feeds" ]	
+	},
+	"site": {
+		"files": [
+			{ "src": "src", "dest": "site" }
+		]
+	}
+}

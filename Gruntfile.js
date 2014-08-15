@@ -3,9 +3,12 @@ module.exports = function(grunt) {
 		markdown = require('metalsmith-markdown'),
 		templates = require('metalsmith-templates');
 
+    var assembleOptions = require('./bugle.json');
+
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     grunt.initConfig({
+        assemble: assembleOptions,
     	watch: {
     		options: {
     			liveReload: 7777
@@ -17,46 +20,16 @@ module.exports = function(grunt) {
                     'src/*/*',
                     'templates/*'
     			],
-    			tasks: [ 'build', 'less', 'clean' ]
+    			tasks: [ 'newer:assemble', 'newer:less' ]
     		}
     	},
         less: {
             site: {
                 files: {
-                    "public/css/style.css": "src/less/style.less"
+                    "site/css/style.css": "assets/less/style.less"
                 }
             }
-        },
-        clean: {
-            less: ["public/less"]
-        },
-        copy: {
-            src: 'src/images',
-            dest: 'public/images'
         }
-    });
-
-    grunt.registerTask('build', function() {
-    	var done = this.async(),
-    		templateOptions = {
-				"engine": "handlebars",
-				"directory": ".",
-                "partials": {
-                    "github": "../feeds/github"
-                }
-			},
-			site = new Metalsmith(__dirname)
-                .source('src')
-                .destination('public')
-				.use(markdown())
-	    		.use(templates(templateOptions));
-
-	  	site.build(function(err) {
-	  		if (err) throw err;
-	  		done();
-	  	});
-
-        grunt.task.run('less');
     });
 
     grunt.registerTask('default', 'watch');
