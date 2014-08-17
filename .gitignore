@@ -1,2 +1,8 @@
 node_modules
 assets/fonts/*/source
+assets/bower_components
+assets/octicons
+
+site/assets/bower_components
+site/assets/octicons
+site/assets/fonts/*/source

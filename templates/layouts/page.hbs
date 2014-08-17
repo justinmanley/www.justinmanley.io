@@ -1,0 +1,36 @@
+---
+bootstrap: 	"bower_components/bootstrap/dist"
+jquery: 	"bower_components/jquery/dist"
+---
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- GitHub icons and styles -->
+		<link rel="stylesheet" href="{{assets}}/octicons/octicons.css"/>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="{{assets}}/{{bootstrap}}/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="{{assets}}/{{bootstrap}}/css/bootstrap-theme.css"/>
+		<script src="{{assets}}/{{jquery}}/jquery.min.js"></script>
+		<script src="{{assets}}/{{bootstrap}}/js/bootstrap.min.js"></script>
+
+		<!-- Site styles -->
+		<link rel="stylesheet" href="{{assets}}/css/style.css"/>
+	</head>
+	<body>
+		
+	</body>
+	<div id="header">
+		{{#markdown}} {{> body }} {{/markdown}}
+	</div>
+	<div class="container-fluid" id="feeds">
+		<div class="row">
+			{{#compose src="<%= feeds %>"}}
+				<div class="col-md-4">
+					<h4 class="feed-header">{{@title}}</h4>
+					{{{@content}}}
+				</div>
+			{{/compose}}					
+		</div>
+	</div><!-- #feeds -->
+</html>

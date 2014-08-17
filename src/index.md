@@ -1,5 +1,5 @@
 ---
-template: templates/page.hbs
+template: page.hbs
 ---
 
 ## Justin Manley ##

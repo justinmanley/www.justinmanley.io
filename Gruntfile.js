@@ -1,34 +1,42 @@
 module.exports = function(grunt) {
-	var Metalsmith = require('metalsmith'),
-		markdown = require('metalsmith-markdown'),
-		templates = require('metalsmith-templates');
+    var pkg =   grunt.file.readJSON('package.json')
+        site =  grunt.file.readJSON('bugle.json');
 
-    var assembleOptions = require('./bugle.json');
-
-    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+    require('matchdep').filterDev(['grunt-*', 'assemble']).forEach(grunt.loadNpmTasks);
 
     grunt.initConfig({
-        assemble: assembleOptions,
+        assemble: site,
     	watch: {
-    		options: {
-    			liveReload: 7777
-    		},
     		source: {
     			files: [
     				'Gruntfile.js',
-    				'src/*',
-                    'src/*/*',
-                    'templates/*'
+    				'src/**',
+                    'templates/**',
+                    'assets/**'
     			],
-    			tasks: [ 'newer:assemble', 'newer:less' ]
+    			tasks: [ 'newer:assemble', 'newer:copy:assets', 'newer:less' ]
     		}
     	},
+        copy: {
+            assets: {
+                files: [
+                    { 
+                        src: ['assets/**', '!{assets/less,assets/less/*}'], 
+                        dest: 'site', 
+                        expand: true 
+                    }
+                ]
+            }
+        },
         less: {
             site: {
                 files: {
-                    "site/css/style.css": "assets/less/style.less"
+                    'site/assets/css/style.css': 'assets/less/style.less'
                 }
             }
+        },
+        clean: {
+            site: ["site/*.html"]
         }
     });
 

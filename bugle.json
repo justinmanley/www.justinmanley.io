@@ -1,12 +1,19 @@
 {
 	"options": {
-		"assets": "assets",
+		"assets": "site/assets",
 		"engine": "handlebars",
-		"partials": [ "templates", "feeds" ]	
+		"layoutdir": "templates/layouts",
+		"helpers": "handlebars-helper-compose"
 	},
-	"site": {
-		"files": [
-			{ "src": "src", "dest": "site" }
-		]
+	"markdown": {
+		"options": {
+			"ext": ".html",
+			"layout": "page.hbs",
+			"flatten": true,
+			"feeds": "data/feeds/*"
+		},
+		"files": {
+			"site/": ["src/*.md"]
+		}
 	}
 }
