@@ -1,10 +1,10 @@
 @font-face {
   font-family: Linden Hill;
-  src: url(../fonts/linden-hill/webfonts/LindenHill-webfont.ttf);
+  src: url('../bower_components/font-linden-hill/webfonts/LindenHill-webfont.ttf');
 }
 @font-face {
   font-family: Chunk;
-  src: url('../fonts/chunk/Chunk Five Print.otf');
+  src: url('../bower_components/font-chunk/Chunk Five Print.otf');
 }
 html,
 body {

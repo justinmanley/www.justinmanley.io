@@ -1,9 +1,11 @@
 {
 	"options": {
 		"assets": "site/assets",
+		"bower": "assets/bower_components",
 		"engine": "handlebars",
+		"data": "assets/*.yml",
 		"layoutdir": "templates/layouts",
-		"helpers": "handlebars-helper-compose"
+		"helpers": ["handlebars-helper-compose", "~/prog/handlebars-helpers"]
 	},
 	"markdown": {
 		"options": {

@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
-    var pkg =   grunt.file.readJSON('package.json')
+    var nap = require('nap'),
+        fs = require('fs'),
+        pkg =   grunt.file.readJSON('package.json'),
         site =  grunt.file.readJSON('bugle.json');
 
     require('matchdep').filterDev(['grunt-*', 'assemble']).forEach(grunt.loadNpmTasks);
@@ -12,16 +14,20 @@ module.exports = function(grunt) {
     				'Gruntfile.js',
     				'src/**',
                     'templates/**',
-                    'assets/**'
+                    'assets/less/*.less',
     			],
-    			tasks: [ 'newer:assemble', 'newer:copy:assets', 'newer:less' ]
+    			tasks: [ 
+                    'newer:copy',
+                    'newer:less',
+                    'newer:assemble'
+                ]
     		}
     	},
         copy: {
             assets: {
                 files: [
                     { 
-                        src: ['assets/**', '!{assets/less,assets/less/*}'], 
+                        src: ['assets/**', '!{assets/less,assets/less/*}', '!assets/assetPaths.yml'], 
                         dest: 'site', 
                         expand: true 
                     }
