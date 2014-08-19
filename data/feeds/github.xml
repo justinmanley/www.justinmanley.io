@@ -1,4 +1,4 @@
-<!-- issues -->
+<div class="event github-event"><!-- issues -->
 <span class="mega-octicon octicon-issue-opened"></span>
 
 <div class="time">
@@ -17,7 +17,8 @@
     </blockquote>
   </div>
 </div>
-<!-- push -->
+</div><!-- .event.github-event -->
+<div class="event github-event"><!-- push -->
 <span class="mega-octicon octicon-git-commit"></span>
 
 <div class="time">
@@ -47,7 +48,8 @@
       </ul>
     </div>
 </div>
-<!-- push -->
+</div><!-- .event.github-event -->
+<div class="event github-event"><!-- push -->
 <span class="mega-octicon octicon-git-commit"></span>
 
 <div class="time">
@@ -77,7 +79,8 @@
       </ul>
     </div>
 </div>
-<!-- push -->
+</div><!-- .event.github-event -->
+<div class="event github-event"><!-- push -->
 <span class="mega-octicon octicon-git-commit"></span>
 
 <div class="time">
@@ -107,7 +110,8 @@
       </ul>
     </div>
 </div>
-<!-- push -->
+</div><!-- .event.github-event -->
+<div class="event github-event"><!-- push -->
 <span class="mega-octicon octicon-git-commit"></span>
 
 <div class="time">
@@ -137,4 +141,4 @@
       </ul>
     </div>
 </div>
-
+</div><!-- .event.github-event -->

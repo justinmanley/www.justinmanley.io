@@ -10,7 +10,9 @@
 
 	<xsl:template match="/atom:feed">
 		<xsl:for-each select="atom:entry[position() &lt;= $num]">
-			<xsl:value-of select="./atom:content"/>
+			<div class="event github-event">
+				<xsl:value-of select="./atom:content"/>
+			</div><xsl:comment> .event.github-event </xsl:comment>
 		</xsl:for-each>
 	</xsl:template>
 

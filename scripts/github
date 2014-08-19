@@ -6,8 +6,10 @@
 # Example:
 # ./github 5
 
-xsltproc --stringparam predicate $1 scripts/xslt/github-prune.xslt data/raw/github.xml \
-	| xsltproc --stringparam num $2 scripts/xslt/github-limit.xslt - \
+events="Issues|Push|CommitComment|Create|Gist|IssueComment|PullRequest|ReleaseEvent"
+
+xsltproc --stringparam predicate $events scripts/xslt/github-prune.xslt data/raw/github.xml \
+	| xsltproc --stringparam num $1 scripts/xslt/github-limit.xslt - \
 	| sed 's/&lt;/</g' \
 	| sed 's/&gt;/>/g' \
 	> data/feeds/github.xml
