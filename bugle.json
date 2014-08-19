@@ -12,7 +12,7 @@
 			"ext": ".html",
 			"layout": "page.hbs",
 			"flatten": true,
-			"feeds": "data/feeds/*"
+			"feeds": "data/feeds/*.xml"
 		},
 		"files": {
 			"site/": ["src/*.md"]

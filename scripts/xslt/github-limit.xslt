@@ -8,12 +8,10 @@
 
 	<xsl:param name="num" select="num"/>
 
-	<xsl:template match="/atom:feed">		
-
+	<xsl:template match="/atom:feed">
 		<xsl:for-each select="atom:entry[position() &lt;= $num]">
 			<xsl:value-of select="./atom:content"/>
 		</xsl:for-each>
-
 	</xsl:template>
 
 </xsl:stylesheet>

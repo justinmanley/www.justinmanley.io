@@ -1,9 +1,13 @@
 #!/bin/sh
 
 # Usage: 
-# ./github <feed.xml> <number of updates>
+# ./github <number of updates>
 
 # Example:
-# ./github timeline.xml 5
+# ./github 5
 
-xsltproc --stringparam num $2 ./scripts/xslt/github.xslt $1 | sed 's/&lt;/</g' | sed 's/&gt;/>/g' > feeds/github.hbs
+xsltproc --stringparam predicate $1 scripts/xslt/github-prune.xslt data/raw/github.xml \
+	| xsltproc --stringparam num $2 scripts/xslt/github-limit.xslt - \
+	| sed 's/&lt;/</g' \
+	| sed 's/&gt;/>/g' \
+	> data/feeds/github.xml
