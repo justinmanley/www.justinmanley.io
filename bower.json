@@ -7,6 +7,8 @@
 		"jquery": "2.1.1",
 		"octicons": "2.1.1",
 		"font-chunk": "theleagueof/chunk",
-		"font-linden-hill": "theleagueof/linden-hill"
+		"font-linden-hill": "theleagueof/linden-hill",
+		"socket-io": "Automattic/socket.io#1.0.6",
+		"socket-io-client": "Automattic/socket.io-client#1.0.6"
 	}
 }

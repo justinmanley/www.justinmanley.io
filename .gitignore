@@ -4,4 +4,6 @@ bundler_gems
 assets/bower_components
 site/assets/bower_components
 
+data/config/pass/
+
 

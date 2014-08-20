@@ -3,7 +3,7 @@
 		"assets": "site/assets",
 		"bower": "assets/bower_components",
 		"engine": "handlebars",
-		"data": "assets/*.yml",
+		"data": "data/config/*.yml",
 		"layoutdir": "templates/layouts",
 		"helpers": ["handlebars-helper-compose", "~/prog/handlebars-helpers"]
 	},
@@ -15,7 +15,7 @@
 			"feeds": "data/feeds/*.xml"
 		},
 		"files": {
-			"site/": ["src/*.md"]
+			"site/": ["src/**.md"]
 		}
 	}
 }

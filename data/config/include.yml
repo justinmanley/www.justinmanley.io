@@ -6,3 +6,4 @@ css:
 js: 
     jquery:             <%= bower %>/jquery/dist/jquery.min.js
     bootstrap:          <%= bower %>/bootstrap/dist/js/bootstrap.min.js
+    socket: 			<%= bower %>/socket-io-client/socket.io.js

@@ -1,144 +1,131 @@
+<div class="event github-event"><!-- push -->
+<span class="mega-octicon octicon-git-commit"></span>
+
+<div class="time">
+  <time datetime="2014-08-19T22:12:55Z" is="relative-time">August 19, 2014</time>
+</div>
+
+<div class="title">
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/mapknitter/tree/annotation-interface">annotation-interface</a> at <a href="https://github.com/manleyjster/mapknitter" class="css-truncate css-truncate-target">manleyjster/mapknitter</a>
+</div>
+
+<div class="details">
+  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60" width="30" /></a>
+
+    <div class="commits pusher-is-only-committer">
+      <ul>
+        <li>
+          <span title="manleyjster">
+            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/mapknitter/commit/ed199ec7e31fa91bb952936053a6b5bc5705cba4">ed199ec</a></code>
+          <div class="message">
+            <blockquote>
+              Clean up indenting in app/assets/javascripts/uploads.js.
+            </blockquote>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>
+</div><!-- .event.github-event -->
+<div class="event github-event"><!-- push -->
+<span class="mega-octicon octicon-git-commit"></span>
+
+<div class="time">
+  <time datetime="2014-08-19T21:08:47Z" is="relative-time">August 19, 2014</time>
+</div>
+
+<div class="title">
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/mapknitter/tree/annotation-interface">annotation-interface</a> at <a href="https://github.com/manleyjster/mapknitter" class="css-truncate css-truncate-target">manleyjster/mapknitter</a>
+</div>
+
+<div class="details">
+  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60" width="30" /></a>
+
+    <div class="commits ">
+      <ul>
+        <li>
+          <span title="xvidun">
+            <img alt="vidun" data-user="6093280" height="16" src="https://avatars1.githubusercontent.com/u/6093280?v=2&amp;amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/mapknitter/commit/8fdcacee8e68ae87f806774e4f69143a0a5ece00">8fdcace</a></code>
+          <div class="message">
+            <blockquote>
+              Completed callback after upload
+            </blockquote>
+          </div>
+        </li>
+        <li>
+          <span title="xvidun">
+            <img alt="vidun" data-user="6093280" height="16" src="https://avatars1.githubusercontent.com/u/6093280?v=2&amp;amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/mapknitter/commit/137caf0c14452a9450dca7bf683f75e73a697d1c">137caf0</a></code>
+          <div class="message">
+            <blockquote>
+              Implementing callback to warper
+            </blockquote>
+          </div>
+        </li>
+        <li class="more"><a href="https://github.com/manleyjster/mapknitter/compare/19bd02ac4f...3dfbc3aaaa">64 more commits &amp;raquo;</a></li>
+      </ul>
+    </div>
+</div>
+</div><!-- .event.github-event -->
 <div class="event github-event"><!-- issues -->
 <span class="mega-octicon octicon-issue-opened"></span>
 
 <div class="time">
-  <time datetime="2014-08-18T03:20:56Z" is="relative-time">August 18, 2014</time>
+  <time datetime="2014-08-19T03:14:20Z" is="relative-time">August 19, 2014</time>
 </div>
 
 <div class="title">
-  <a href="https://github.com/manleyjster">manleyjster</a> <span>opened</span> issue <a href="https://github.com/craigspaeth/nap/issues/80" title="no output is written when using nap with grunt">craigspaeth/nap#80</a>
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>opened</span> issue <a href="https://github.com/assemble/assemble/issues/561" title="Documentation should note that data filenames cannot be option names.">assemble/assemble#561</a>
 </div>
 
 <div class="details">
   <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60" width="30" /></a>
   <div class="message">
     <blockquote>
-      no output is written when using nap with grunt
+      Documentation should note that data filenames cannot be option names.
     </blockquote>
   </div>
 </div>
 </div><!-- .event.github-event -->
-<div class="event github-event"><!-- push -->
-<span class="mega-octicon octicon-git-commit"></span>
+<div class="event github-event"><!-- pull_request -->
+<span class="mega-octicon octicon-git-pull-request"></span>
 
 <div class="time">
-  <time datetime="2014-08-15T21:52:21Z" is="relative-time">August 15, 2014</time>
+  <time datetime="2014-08-18T23:07:19Z" is="relative-time">August 18, 2014</time>
 </div>
 
 <div class="title">
-  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/mapknitter/tree/annotation-interface">annotation-interface</a> at <a href="https://github.com/manleyjster/mapknitter" class="css-truncate css-truncate-target">manleyjster/mapknitter</a>
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>opened</span> pull request <a href="https://github.com/craigspaeth/nap/pull/81">craigspaeth/nap#81</a>
 </div>
 
 <div class="details">
   <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60" width="30" /></a>
-
-    <div class="commits pusher-is-only-committer">
-      <ul>
-        <li>
-          <span title="manleyjster">
-            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32" width="16" />
-          </span>
-          <code><a href="/manleyjster/mapknitter/commit/19bd02ac4ff1a5c004bb3add419696c65a5c7119">19bd02a</a></code>
-          <div class="message">
-            <blockquote>
-              Add dynamic behavior to comment deletion button so that the comment i…
-            </blockquote>
-          </div>
-        </li>
-      </ul>
-    </div>
+  <div class="message">
+    <blockquote>Fix issue #80 by adding a callback which is invoked at the end of writeFile.</blockquote>
+      <div class="pull-info">
+        <span class="octicon octicon-git-commit"></span>
+        <em>1</em> commit with
+        <em>11</em> additions and
+        <em>10</em> deletions
+      </div>
+  </div>
 </div>
 </div><!-- .event.github-event -->
-<div class="event github-event"><!-- push -->
-<span class="mega-octicon octicon-git-commit"></span>
+<div class="event github-event"><!-- create -->
+<div class="simple">
+  <span class="octicon octicon-git-branch"></span>
 
-<div class="time">
-  <time datetime="2014-08-15T20:22:49Z" is="relative-time">August 15, 2014</time>
-</div>
+  <div class="title">
+    <a href="https://github.com/manleyjster">manleyjster</a> <span>created</span> branch <a href="/manleyjster/nap/tree/issue%2380" class="css-truncate css-truncate-target branch-link" title="issue#80"><span class="octicon octicon-git-branch"></span>issue#80</a> at <a href="https://github.com/manleyjster/nap" class="css-truncate css-truncate-target">manleyjster/nap</a>
+  </div>
 
-<div class="title">
-  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/mapknitter/tree/annotation-interface">annotation-interface</a> at <a href="https://github.com/manleyjster/mapknitter" class="css-truncate css-truncate-target">manleyjster/mapknitter</a>
-</div>
-
-<div class="details">
-  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60" width="30" /></a>
-
-    <div class="commits pusher-is-only-committer">
-      <ul>
-        <li>
-          <span title="manleyjster">
-            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32" width="16" />
-          </span>
-          <code><a href="/manleyjster/mapknitter/commit/0e991710fa97bf23bc69b5e75e5b59e26693c722">0e99171</a></code>
-          <div class="message">
-            <blockquote>
-              Add dynamic behavior to comment deletion button so that the comment i…
-            </blockquote>
-          </div>
-        </li>
-      </ul>
-    </div>
-</div>
-</div><!-- .event.github-event -->
-<div class="event github-event"><!-- push -->
-<span class="mega-octicon octicon-git-commit"></span>
-
-<div class="time">
-  <time datetime="2014-08-15T19:29:06Z" is="relative-time">August 15, 2014</time>
-</div>
-
-<div class="title">
-  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/mapknitter/tree/annotation-interface">annotation-interface</a> at <a href="https://github.com/manleyjster/mapknitter" class="css-truncate css-truncate-target">manleyjster/mapknitter</a>
-</div>
-
-<div class="details">
-  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60" width="30" /></a>
-
-    <div class="commits pusher-is-only-committer">
-      <ul>
-        <li>
-          <span title="manleyjster">
-            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32" width="16" />
-          </span>
-          <code><a href="/manleyjster/mapknitter/commit/d9fe3076ffb5348bce17ff0965b1bcb567fb8576">d9fe307</a></code>
-          <div class="message">
-            <blockquote>
-              Add bower_packages asset path to Sprockets. Handle javascript and css…
-            </blockquote>
-          </div>
-        </li>
-      </ul>
-    </div>
-</div>
-</div><!-- .event.github-event -->
-<div class="event github-event"><!-- push -->
-<span class="mega-octicon octicon-git-commit"></span>
-
-<div class="time">
-  <time datetime="2014-08-15T18:17:46Z" is="relative-time">August 15, 2014</time>
-</div>
-
-<div class="title">
-  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/mapknitter/tree/annotation-interface">annotation-interface</a> at <a href="https://github.com/manleyjster/mapknitter" class="css-truncate css-truncate-target">manleyjster/mapknitter</a>
-</div>
-
-<div class="details">
-  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars3.githubusercontent.com/u/1668487?v=2&amp;amp;s=60" width="30" /></a>
-
-    <div class="commits pusher-is-only-committer">
-      <ul>
-        <li>
-          <span title="manleyjster">
-            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars2.githubusercontent.com/u/1668487?v=2&amp;amp;s=32" width="16" />
-          </span>
-          <code><a href="/manleyjster/mapknitter/commit/62471c48571f5b4ecaf437147e092cadb292ca51">62471c4</a></code>
-          <div class="message">
-            <blockquote>
-              Enable comment editing.
-            </blockquote>
-          </div>
-        </li>
-      </ul>
-    </div>
+  <div class="time">
+    <time datetime="2014-08-18T23:00:02Z" is="relative-time">August 18, 2014</time>
+  </div>
 </div>
 </div><!-- .event.github-event -->

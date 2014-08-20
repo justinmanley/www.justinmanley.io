@@ -27,7 +27,7 @@ module.exports = function(grunt) {
             assets: {
                 files: [
                     { 
-                        src: ['assets/**', '!{assets/less,assets/less/*}', '!assets/assetPaths.yml'], 
+                        src: ['assets/**', '!{assets/less,assets/less/*}'], 
                         dest: 'site', 
                         expand: true 
                     }
