@@ -1,10 +1,7 @@
 #!/bin/sh
 
 # Usage: 
-# ./github <number of updates>
-
-# Example:
-# ./github 5
+# scripts/github
 
 limit=5
 events="Issues|Push|CommitComment|Create|Gist|IssueComment|PullRequest|ReleaseEvent"
@@ -15,4 +12,4 @@ curl -u "manleyjster:$GITHUB_PASS" -K data/config/pass/github.txt $githubUrl \
 	| xsltproc --stringparam num $limit scripts/xslt/github-limit.xslt - \
 	| sed 's/&lt;/</g' \
 	| sed 's/&gt;/>/g' \
-	> data/feeds/github.xml
+	> data/feeds/github.html

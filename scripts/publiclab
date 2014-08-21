@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Usage: 
+# scripts/publiclab
+
+data=`curl http://publiclab.org/feed/justinmanley.rss`
+
+echo $data \
+	| xsltproc scripts/xslt/publiclab.xslt - \
+	| sed 's/&lt;/</g' \
+	| sed 's/&gt;/>/g' \
+	| node_modules/.bin/marked \
+	> data/feeds/publiclab.html

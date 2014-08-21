@@ -4,7 +4,7 @@
 		"bower": "assets/bower_components",
 		"engine": "handlebars",
 		"data": "data/config/*.yml",
-		"layoutdir": "templates/layouts",
+		"layoutdir": "src/templates/layouts",
 		"helpers": ["handlebars-helper-compose", "~/prog/handlebars-helpers"]
 	},
 	"markdown": {
@@ -12,7 +12,7 @@
 			"ext": ".html",
 			"layout": "page.hbs",
 			"flatten": true,
-			"feeds": "data/feeds/*.xml"
+			"feeds": "data/feeds/*.html"
 		},
 		"files": {
 			"site/": ["src/**.md"]

@@ -1,0 +1,699 @@
+ <div class="event publiclab-event"><div class="time">Tue, 19 Aug 2014 18:56:49 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/08-19-2014/mapknitter-annotations-riffle-data-as-map-annotations">MapKnitter Annotations: Riffle Data as Map Annotations</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/006/340/medium/IMAG0382.jpg'/><br /> ### What I want to do
+ 
+ I want to have a discussion about how we might embed Riffle data in MapKnitter as map annotations.
+ 
+ @mathew suggested in [this comment](http://publiclab.org/notes/donblair/08-11-2014/research-note-workflows#c9933) that it might be possible to embed Riffle data in MapKnitter maps - which I thought was an awesome idea!
+ 
+ I think that the *goal* here is to enable users to upload data directly from Riffle sensors and have that data displayed on or beside the map in a way that will substantively augment the information payload of the map.
+ 
+ ### What I've done
+ 
+ I looked around the Public Lab website and found some research notes that discuss or use Riffle data. In particular: 
+ 
+ [Wiki: Open Water](http://publiclab.org/wiki/open-water)
+ [Wiki: RIFFLE](http://publiclab.org/wiki/riffle)
+ [Kayak Deployment on 8-7-2014](http://publiclab.org/notes/walkerjeffd/08-11-2014/kayak-deployment-on-8-7-2014)
+ 
+ [Visualization by @WalkerJeffD](http://phd.walkerjeff.com/d3/hubbard/)
+ [Baseflow separation visualization](http://phd.walkerjeff.com/talks/20131105/baseflow.html)
+ 
+ I also found a [sample data set](http://i.publiclab.org/system/images/photos/000/002/567/original/ALB006.txt) from a Riffle: 
+ 
+ <style>table, th, td { border: 1px solid #eee; padding: 5px; }</style>
+ 
+ | Field | Record 1 | Record 2 | Record 3 | etc | 
+ |----------------------|---------------------|------------------------|----------------------------------|-----| 
+ | `DateHour` | 2000-07-12 06:00:00 | 2000-07-12 06:00:00 | 2000-07-12 06:00:00 | ... | 
+ | `LocationTypeID` | 22 | 22 | 22 | ... | 
+ | `LocationID` | "ALB006" | "ALB006" | "ALB006" | ... | 
+ | `VisitID` | 359 | 359 | 359 | ... | 
+ | `CharacteristicID` | "FCOLI" | "SPCOND" | "DO_SAT" | ... | 
+ | `ResultValue` | 650 | 755.31914893617 | 97.5319241969295 | ... | 
+ | `Units` | "CFU/100ml" | "uS/cm" | "%" | ... | 
+ | `Qualifier` | NA | NA | NA | ... | 
+ | `FlagID` | NA | NA | NA | ... |
+ | `SampleTypeID` | "S" | "S" | "S" | ... | 
+ | `CharacteristicName` | "Fecal Coliform" | "Specific conductance" | "Dissolved Oxygen, % saturation" | ... | 
+ | `SampleType` | "S" | "S" | "S" | ... | 
+ | `Datetime` | 2000-07-12 06:25:00 | 2000-07-12 06:25:00 | 2000-07-12 06:25:00 | ... | 
+ | `ProjectID` | "BASE" | "BASE" | "BASE" | ... | 
+ | `SampleDepthType` | NA | NA | NA | ... | 
+ | `Comment` | NA | NA | NA | ... | 
+ | `MunicipalityID` | "Somerville" | "Somerville" | "Somerville" | ... | 
+ | `WaterBodyID` | "Alewife Brook" | "Alewife Brook" | "Alewife Brook" | ... | 
+ | `Latitude` | 42.407133 | 42.407133 | 42.407133 | ... | 
+ | `Longitude` | -71.133767 | -71.133767 | -71.133767 | ... | 
+ | `WaterType` | "Fresh" | "Fresh" | "Fresh" | ... | 
+ | `LocationTypeName` | "River/Stream" | "River/Stream" | "River/Stream" | ... | 
+ | `Precip.48` | 0 | 0 | 0 | ... | 
+ | `Weather` | "Dry" | "Dry" | "Dry" | ... | 
+ 
+ 
+ There's a *lot* of data here. I don't think it's feasible or even desirable to want to present the data set to the users in raw form, or even to try to visualize *all* of the data. I think it *would* be nice if we could create templates that automatically visualized one or two key parameters from the data.
+ 
+ The workflow / processsing pipeline that I envision is:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates User uploads Riffle data set (the data set above is in `.tsv.` format
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Built-in templates display Riffle directly on the map - no "embedded" charts or graphs - using d3 and Leaflet.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates A link to the data set is added to the sidebar so that viewers can click through and see the full, raw dataset.
+ 
+ [![IMAG0381.jpg](http://i.publiclab.org/system/images/photos/000/006/341/medium/IMAG0381.jpg)](http://i.publiclab.org/system/images/photos/000/006/341/original/IMAG0381.jpg)
+ 
+ ### Next Steps / Additional Questions
+ 
+ The key question is: What default templates should we provide for visualizing the Riffle data? @mathew? @WalkerJeffD? @donblair? @warren? Let's start with a single data visualization. What is the data that will be most helpful to the most number of people? (I'm thinking maybe temperature plotted against location, as @WalkerJeffD has done [here](http://walkerjeffd.github.io/riffle-ito-apps/analyses/20140807_kayak/index.html#temperature-map)).
+ 
+ How flexible / extensible should this system be? Is it desirable to allow users to create their own custom visualizations using their own d3 and Leaflet code, or should we assume that users who are savvy enough to use d3 and Leaflet are savvy enough to do that kind of analysis on their own and publish it to GitHub, etc.
+ 
+ How much should users be able to customize the way that the data is displayed?
+ </div></div></div><div class="event publiclab-event"><div class="time">Tue, 19 Aug 2014 00:03:58 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/08-19-2014/mapknitter-annotations-interface-refactoring-underway">MapKnitter Annotations: Interface Refactoring Underway</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/006/328/medium/Screenshot_from_2014-08-18_18_53_28.png'/><br /> ### Background ###
+ 
+ I am working to add rich annotation functionality to MapKnitter as part of Google Summer of Code (read about my project here: http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal). This is my ninth week of coding.
+ 
+ The goal of this research note is to provide an update to the community on my progress with refactoring the MapKnitter interface.
+ 
+ If you're interested in reading about `Leaflet.Illustrate`, the Leaflet plugin that I wrote over the past few weeks to power MapKnitter's annotations, you can check out my [last research note](http://publiclab.org/notes/justinmanley/07-29-2014/mapknitter-annotations-version-0-0-2-released-with-l-illustrate-textbox-and-l-illustrate-pointer).
+ 
+ You can check out our previous discussion of this interface refactorinng in my previous research note:
+ 
+ [August 6, 2014 - MapKnitter Annotations: Interface Refactoring](http://publiclab.org/notes/justinmanley/08-06-2014/mapknitter-annotations-interface-refactoring) 
+ 
+ ### Progress ###
+ 
+ Screenshot with Vidun's upload modal!
+ 
+ [![Screenshot_from_2014-08-18_19_00_27.png](http://i.publiclab.org/system/images/photos/000/006/329/medium/Screenshot_from_2014-08-18_19_00_27.png)](http://i.publiclab.org/system/images/photos/000/006/329/original/Screenshot_from_2014-08-18_19_00_27.png)
+ 
+ #### Overview ####
+ 
+ So far, I have:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Added commenting and tagging to MapKnitter maps
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Begun integrating @vidun's work on the upload interface
+ 
+ Under the hood, I've done a lot of work to make it easier for future developers to improve MapKnitter. I've: 
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Set up [Bundler](http://bundler.io/) to handle MapKnitter's' dependencies
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Set up [Sprockets](https://github.com/sstephenson/sprockets) and [bower](bower.io) for handling all of MapKnitter's static assets.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Given MapKnitter a RESTful API using Rails' resourceful routes.
+ 
+ #### Commenting and Tagging ####
+ 
+ I borrowed a *lot* of the commenting and tagging functionality from the Public Lab website. That means that commenting and tagging works pretty much the same in MapKnitter as it does on Public Lab. Among other things, users can write comments *and* the descriptions of their maps in Markdown.
+ 
+ #### Sprockets &amp; bower ####
+ 
+ MapKnitter's static assets were a *mess* before this. 
+ 
+ MapKnitter uses quite a few third-party libraries: Bootstrap, JQuery-Fileupload, Leaflet, Leaflet.Draw, etc. Using bower will make it clearer which javascript and css files are maintained by third parties and easier to upgrade to newer versions.
+ 
+ Using Sprockets enables MapKnitter to handle static assets in a much more elegant and maintanable way. Because this method of asset pipelining is the default in Rails 3.1+, this will also make it much easier should Public Lab ever upgrade MapKnitter to a more modern version of Ruby or Rails.
+ 
+ I found these articles helpful for integrating MapKnitter with Sprockets:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates [Giving Rails 2 the Asset Pipeline](http://pivotallabs.com/giving-rails-2-the-asset-pipeline-/)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates [Sprockets 2 With Rails 2.3](http://jaredonline.github.io/blog/2012/05/16/sprockets-2-with-rails-2-dot-3/)
+ (most of the code hooking Sprockets in MapKnitter is copied directly from here).
+ 
+ #### RESTful API ####
+ 
+ MapKnitter was previously *not* RESTful. Most significantly, resources were created, modified, and deleted using HTTP POST requests (as opposed to POST, PUT, and DELETE requests, respectively). Providing a RESTful API for MapKnitter will enable folks to use MapKnitter from the command line with `curl`. More importantly, it makes the code clearer, more logical, and more maintainable. For example, the [routes](https://github.com/manleyjster/mapknitter/blob/annotation-interface/config/routes.rb) can now be declared as: 
+ 
+ app.resources :maps do |maps|
+ maps.resources :tags
+ maps.resources :comments
+ maps.resources :uploads
+ end
+ 
+ ### TODO ###
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Integrate Vidun's work on the MapKnitter upload interface. I've already merged Vidun's work into my MapKnitter branch, so now it's a matter of making sure everything works with the new routes, etc.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Merge Anish's LeafletImageDistort plugin.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Push MapKnitter site to beta server that @dogi set up for beta testing by MapKnitter community. (It will be ready for 
+ 
+ beta-testing as soon as I merge Vidun and Anish's work).
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Integrate the annotation features that I have developed in `Leaflet.Illustrate`. This will mean adding methods to `Leaflet.Illustrate` to serialize annotations to GeoJSON, adding routes, models, and controllers for annotations, and designing an annotation toolbar that will allow folks to change the colors and styles of polyline, polygon, and text annotations.
+ 
+ I am also interested in enable users to add Riffle data to the map as annotations, so I'd like to talk to @mathew and others to figure out how to best implement this.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Create a workflow for generating Public Lab research notes from MapKnitter maps. This means generating an HTML POST query from MapKnitter map data that will be submitted to the Public Lab website to create a research note.</div></div></div><div class="event publiclab-event"><div class="time">Wed, 06 Aug 2014 20:03:19 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/08-06-2014/mapknitter-annotations-interface-refactoring">MapKnitter Annotations: Interface Refactoring</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/006/101/medium/note1.png'/><br /> ### Background ###
+ 
+ I am working to add rich annotation functionality to MapKnitter as part of Google Summer of Code (read about my project here: http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal). This is my seventh week of coding.
+ 
+ If you're interested in reading about `Leaflet.Illustrate`, the Leaflet plugin that I wrote over the past few weeks to power MapKnitter's annotations, you can check out my [last research note](http://publiclab.org/notes/justinmanley/07-29-2014/mapknitter-annotations-version-0-0-2-released-with-l-illustrate-textbox-and-l-illustrate-pointer).
+ 
+ The goal of this research note is to post some of my ideas for refactoring the MapKnitter interface to expose annotation functionality and solicit feedback from the community.
+ 
+ ### Areas for Improvement ###
+ 
+ The MapKnitter interface currently looks like this:
+ 
+ [![interface-combined.png](http://i.publiclab.org/system/images/photos/000/006/091/medium/interface-combined.png)](http://i.publiclab.org/system/images/photos/000/006/091/original/interface-combined.png)
+ 
+ I think that there are several areas for improvement with this interface:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates I love the way that the MapKnitter homepage presents a selection of recent maps. I think this is an awesome way to hook people in and communicate what MapKnitter is about. However, once a user clicks on a map, they are taken to an overview page for the map, not the map itself. Often, this overview **doesn't even show the map itself**.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates It is clear to me from looking through the archives that users seldom use the "description" field when creating a map. Furthermore, right now, the "description" field is *worse* than useless because most are populated by spam text.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Export functionality is scattered all over: right now, there are no fewer than **three** places on the overview page to export the map.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates The overview page doesn't make it easy to view or edit the map metadata (such as the base satellite layer), description, place, or image metadata.
+ 
+ [![interface-commentary.png](http://i.publiclab.org/system/images/photos/000/006/096/medium/interface-commentary.png)](http://i.publiclab.org/system/images/photos/000/006/096/original/interface-commentary.png)
+ 
+ ### Ideas for Improvements ###
+ 
+ It may not be possible to eliminate the overview page entirely, but I would like to move as much functionality as possible into the map editing interface so that the full-screen, full-functionality view of the map is the main destination for all users. This full-screen view of the map should be a self-explaining, self-documenting view of the map.
+ 
+ Some sketches: 
+ 
+ [![note1.png](http://i.publiclab.org/system/images/photos/000/006/097/medium/note1.png)](http://i.publiclab.org/system/images/photos/000/006/097/original/note1.png)
+ 
+ [![note2.png](http://i.publiclab.org/system/images/photos/000/006/098/medium/note2.png)](http://i.publiclab.org/system/images/photos/000/006/098/original/note2.png)
+ 
+ [![mapknitter-interface-sketch.png](http://i.publiclab.org/system/images/photos/000/006/099/medium/mapknitter-interface-sketch.png)](http://i.publiclab.org/system/images/photos/000/006/099/original/mapknitter-interface-sketch.png)
+ 
+ ### Mockup ###
+ 
+ I built a preliminary implementation of the interface I sketched above. It's in the [`annotations-interface` branch](https://github.com/manleyjster/mapknitter/tree/annotation-interface) of my fork of mapknitter - controllers and views are called `map2`.
+ 
+ [![mapknitter_interface.png](http://i.publiclab.org/system/images/photos/000/006/100/medium/mapknitter_interface.png)](http://i.publiclab.org/system/images/photos/000/006/100/original/mapknitter_interface.png)
+ 
+ ### Feedback ###
+ 
+ Let me know what you think about taking the MapKnitter interface in this direction. Obviously there's a *lot* more that needs to be built in to provide full-featured annotation functionality - but what do you think of combining the overview and editing pages and the split-screen editing page?
+ </div></div></div><div class="event publiclab-event"><div class="time">Tue, 29 Jul 2014 07:02:01 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/07-29-2014/mapknitter-annotations-version-0-0-2-released-with-l-illustrate-textbox-and-l-illustrate-pointer">MapKnitter Annotations: Version 0.0.2 released with L.Illustrate.Textbox and L.Illustrate.Pointer</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/005/650/medium/header.png'/><br /> ### Background ###
+ 
+ I am working to add rich annotation functionality to MapKnitter as part of Google Summer of Code (read about my project here: http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal). This is my sixth week of coding. The purpose of this research note is to provide an update on my progress with implementing text annotation for Leaflet.
+ 
+ To trace the discussions that have led me up to this point, you can look back through the following research notes, listed in chronological order.
+ 
+ March 18, 2014 - [MapKnitter Annotations Using Fabric.js (GSoC 2014 Proposal)](http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal)
+ 
+ June 17, 2014 - [MapKnitter Annotations Plugin: Preliminary Specification](http://publiclab.org/notes/justinmanley/06-17-2014/mapknitter-annotations-plugin-preliminary-specification)
+ 
+ June 25, 2014 - [MapKnitter Annotations Update: L.Illustrate.Textbox](http://publiclab.org/notes/justinmanley/06-25-2014/mapknitter-annotations-update-l-illustrate-textbox)
+ 
+ July 2, 2014 - [MapKnitter Annotations: Textbox Rotation using CSS Transforms](http://publiclab.org/notes/justinmanley/07-02-2014/mapknitter-annotations-textbox-rotation-using-css-transforms)
+ 
+ July 14, 2014 - [MapKnitter Annotations: Leaflet.Illustrate.EditHandle and Leaflet.Illustrate.Pointer](http://publiclab.org/notes/justinmanley/07-14-2014/mapknitter-annotations-leaflet-illustrate-edithandle-and-leaflet-illustrate-pointer)
+ 
+ You can view the [code for Leaflet.Illustrate on GitHub](https://github.com/manleyjster/Leaflet.Illustrate) and you can view a demo using the version of Leaflet.Illustrate (0.0.2) released along with this research note on GitHub at [http://manleyjster.github.io/Leaflet.Illustrate/examples/0.0.2/simple/](http://manleyjster.github.io/Leaflet.Illustrate/examples/0.0.2/simple/):
+ 
+ ### Progress ###
+ 
+ `Leaflet.Illustrate` is done! 
+ 
+ Well, maybe not done. `Leaflet.Illustrate` has reached the point where it can provide basic text annotation capability to the MapKnitter community, so I figure it's a good time to start integrating it with MapKnitter. There's still much that can be done to improve `Leaflet.Illustrate` to ensure that it is a fast, robust, and dependable library for Leaflet text annotation. Specifically:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Tooltip text should be added to `Leaflet.Illustrate.tooltipText` to guide users through the annotation process
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates `Leaflet.Illustrate.PointerHandle` should be refactored into two subclasses: `Leaflet.Illustrate.PointerVertexHandle` and `Leaflet.Illustrate.PointerMidpointHandle`
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates All `Leaflet.Illustrate` code should be reviewed for instances of `L.Point` arithmetic, and, where possible, arithmetic methods should be replaced by their underscore-prefixed cousins (i.e. `L.Point._add` should be used instead of `L.Point.add`). This is purely for efficiency.
+ 
+ Here's what I've been up to since I last posted:
+ 
+ #### Leaflet.Illustrate.Textbox ####
+ 
+ I fixed the [annoying flickering](http://publiclab.org/notes/justinmanley/07-14-2014/mapknitter-annotations-leaflet-illustrate-edithandle-and-leaflet-illustrate-pointer#Current+Challenges+and+TODO) with the pointer connecting the rotate handle to the textbox in editing mode by making the pointer an instance of `L.Illustrate.Pointer`. Of course, this required implementing `L.Illustrate.Pointer` from scratch - more on this below.
+ 
+ I was also able to fix text selection and cursor placement in textboxes by calling `L.DomEvent.stopPropagation` on `mousedown`, `mousemove`, and `mouseup` events from the `<textarea>`, thanks to a helpful suggestion from [@danzel](https://github.com/danzel) on the GitHub issue I posted: [How do I get text selection working for a textarea on top of the map?](https://github.com/Leaflet/Leaflet/issues/2813). 
+ 
+ I encapsulated this functionality as [`L.Illustrate.Selectable`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/core/L.Illustrate.Textbox.js#L148). However, I still feel (as I wrote in the GitHub issue thread) that `L.Illustrate.Selectable` should be unecessary, as this should be taken care of by [`map.dragging.disable()`](https://github.com/Leaflet/Leaflet/blob/stable/src/dom/Draggable.js#L39) or by calling [`L.DomUtil.enableTextSelection`](https://github.com/Leaflet/Leaflet/blob/stable/src/dom/DomUtil.js#L254) directly.
+ 
+ #### Leaflet.Illustrate.Pointer ####
+ 
+ I spent a lot of my time over the past two weeks implementing `L.Illustrate.Pointer`. A pointer is a line with only a single geographically-fixed point (the "anchor" point). The coordinates of the line are given in pixels with respect to the anchor point. The line thus maintains constant size through zoom events (it does not scale with the map):
+ 
+ ```
+ new L.Illustrate.Pointer(
+ <LatLng> anchor, 
+ <Point[]> coordinates, 
+ <Polyline options> options?
+ ) 
+ ```
+ 
+ The immediate purpose for the `L.Illustrate.Pointer` class was to provide a robust pointer for `L.Illustrate.Textbox` (see above), but `L.Illustrate.Pointer` can serve as a general-purpose pointer linking any large annotation to a single point on the map.
+ 
+ A few notes on the design of `L.Illustrate.Pointer`:
+ 
+ Each instance of `L.Illustrate.Pointer` has [its own containing `<svg>` element](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/core/L.Illustrate.Pointer.SVG.js#L23). This was done so that pointers would zoom smoothly using CSS3 transitions (CSS properties can only be applied to `<svg>` elements, and not their `<g>` or `<path>` children), since pointers with different anchor points would require different `css-transform` translations. It is possible that this will raise performance issues if there are *lots* of pointers on the map, but I think that for most of our use cases it will present no issues.
+ 
+ In other respects, much of the code for `L.Illustrate.Pointer` is borrowed directly from [`L.Path`](https://github.com/Leaflet/Leaflet/blob/stable/src/layer/vector/Path.js), [`L.Path.SVG`](https://github.com/Leaflet/Leaflet/blob/stable/src/layer/vector/Path.SVG.js), and [`L.Polyline`](https://github.com/Leaflet/Leaflet/blob/stable/src/layer/vector/Polyline.js) when it was not possible for it to inherit from them explicitly.
+ 
+ As it turns out, the editing handles for `L.Illustrate.Pointer` were *much* more difficult to design than those for `L.Illustrate.Textbox`. This is because the position of an editing handle for `L.Illustrate.Textbox` is fixed: a handle which starts out at the upper left corner will always be at the upper left corner (disregarding rotations). Editing handles for polylines, by contrast, can change position as vertices are added and deleted - and throughout, they must be in exact correspondence with the coordinates of the polyline so that dragging a handle updates the correct vertex.
+ 
+ My approach, similar to the approach I used for [`L.Illustrate.RotateHandle`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/edit/handles/L.Illustrate.RotateHandle.js), etc. - but different from [@jacobtoye](https://github.com/jacobtoye)'s approach in [Leaflet.draw](https://github.com/Leaflet/Leaflet.draw), was to delegate as much as possible of the UI logic to the handles themselves.
+ 
+ The way I ended up implementing this was that `drag` or `click` events on a handle call the [`_addVertex`](https://github.com/manleyjster/Leaflet.Illustrate/blob/v0.0.2/src/edit/L.Illustrate.Edit.Pointer.js#L75), [`_removeVertex`](https://github.com/manleyjster/Leaflet.Illustrate/blob/v0.0.2/src/edit/L.Illustrate.Edit.Pointer.js#L48), or [`_updateVertex`](https://github.com/manleyjster/Leaflet.Illustrate/blob/v0.0.2/src/edit/L.Illustrate.Edit.Pointer.js#L95) methods of `L.Illustrate.Edit.Pointer`. These methods of `L.Illustrate.Edit.Pointer` handle the creation and destruction of instances of `L.Illustrate.PointerHandle` as necessary to add and remove vertices from the pointer. Once this is complete, the method fires an `edit:add-vertex`, `edit:remove-vertex`, or `edit:update-vertex` event. Instances of `L.Illustrate.PointerHandle` listen for these events and each is responsible for updating its own `_id` property (the `_id` property indicates which vertex the handle controls).
+ 
+ My hope was that implementing editing handles in this way would enable the editing handles to be highly decoupled from `L.Illustrate.Pointer` and `L.Illustrate.Edit.Pointer`. I think that the implementation was relatively successful from that perspective - but it is excessively complicated by the need for each handle to maintain an accurate internal `_id` property linking it to the correct coordinate. This might be simplified by splitting `L.Illustrate.PointerHandle` into two separate classes and giving each vertex handle responsibility for the midpoint handles to either side.
+ 
+ #### Miscellaneous Updates ####
+ 
+ Since my last research note, I completed a number of housekeeping tasks:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Connected `Leaflet.Illustrate` repo to [Travis CI](https://travis-ci.org/manleyjster/Leaflet.Illustrate)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Connected `Leaflet.Illustrate` repo to [Coveralls](https://coveralls.io/r/manleyjster/Leaflet.Illustrate)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Published `Leaflet.Illustrate` to `npm` as [`leaflet-illustrate`](https://www.npmjs.org/package/leaflet-illustrate)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Added release tags for v0.0.1 and v0.0.2 in git
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Added build, coverage, and version badges to the [`README`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/README.md).
+ 
+ It is my hope that these additions will give others confidence in the quality of this Leaflet plugin and encourage them to contribute or to use it for their own projects.
+ 
+ ### Next Steps &amp; Future Improvements ###
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Fork MapKnitter repo and begin working on integrating `Leaflet.Illustrate` into MapKnitter.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Refactor `L.Illustrate.PointerHandle`
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Extend `L.Illustrate.Toolbar` to provide an intuitive interface for users to change the color, font, font-size, and other styles on the textbox and other features.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Implement `toGeoJSON` methods for `L.Illustrate.Pointer` and `L.Illustrate.Textbox` (will probably use `toGeoJSON` to serialize these objects for storage in the MapKnitter database)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Allow textboxes to be fixed at points other than their center points
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Fix feature deletion button in toolbar
+ </div></div></div><div class="event publiclab-event"><div class="time">Mon, 14 Jul 2014 07:23:26 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/07-14-2014/mapknitter-annotations-leaflet-illustrate-edithandle-and-leaflet-illustrate-pointer">MapKnitter Annotations: Leaflet.Illustrate.EditHandle and Leaflet.Illustrate.Pointer</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/005/260/medium/chicagooooo.png'/><br /> ### Background ###
+ 
+ I am working to add rich annotation functionality to MapKnitter as part of Google Summer of Code (read about my project here: http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal). This is my fourth week of coding. The purpose of this research note is to provide an update on my progress with implementing text annotation for Leaflet.
+ 
+ To trace the discussions that have led me up to this point, you can look back through the following research notes, listed in chronological order.
+ 
+ March 18, 2014 - [MapKnitter Annotations Using Fabric.js (GSoC 2014 Proposal)](http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal)
+ 
+ June 17, 2014 - [MapKnitter Annotations Plugin: Preliminary Specification](http://publiclab.org/notes/justinmanley/06-17-2014/mapknitter-annotations-plugin-preliminary-specification)
+ 
+ June 25, 2014 - [MapKnitter Annotations Update: L.Illustrate.Textbox](http://publiclab.org/notes/justinmanley/06-25-2014/mapknitter-annotations-update-l-illustrate-textbox)
+ 
+ July 2, 2014 - [MapKnitter Annotations: Textbox Rotation using CSS Transforms](http://publiclab.org/notes/justinmanley/07-02-2014/mapknitter-annotations-textbox-rotation-using-css-transforms)
+ 
+ You can view the [code for Leaflet.Illustrate on GitHub](https://github.com/manleyjster/Leaflet.Illustrate) and you can view a demo using the version of Leaflet.Illustrate (0.0.1) released along with this research note on GitHub at [http://manleyjster.github.io/Leaflet.Illustrate/examples/0.0.1/simple/](http://manleyjster.github.io/Leaflet.Illustrate/examples/0.0.1/simple/):
+ 
+ ### Progress ###
+ 
+ Since I last posted a research note, I have successfully implemented rotatable textboxes (using CSS transforms as I [proposed in a previous research note](http://publiclab.org/notes/justinmanley/07-02-2014/mapknitter-annotations-textbox-rotation-using-css-transforms)) which behave correctly and consistently during map zoom and handles for rotating, resizing, and moving textboxes.
+ 
+ In order to implement these features, I have implemented the following classes, many of which are general-purpose extensions of Leaflet core functionality.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates [`L.RotatableMarker`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/extends-core/L.RotatableMarker.js#L1) (extends [`L.Marker`](https://github.com/Leaflet/Leaflet/blob/master/src/layer/marker/Marker.js))
+ 
+ Since textboxes ([`L.Illustrate.Texbox`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/L.Illustrate.Textbox.js)) are created as instances of `L.Marker` with HTML icons supplied by [`L.DivIcon`](https://github.com/Leaflet/Leaflet/blob/master/src/layer/marker/DivIcon.js#L6), this is the class which makes textboxes rotatable. The editing handles rotate along with their companion textbox, and so also derive from L.RotatableMarker.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates [`Leaflet.Illustrate.EditHandle`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/edit/L.Illustrate.EditHandle.js) (extends [`L.RotatableMarker`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/extends-core/L.RotatableMarker.js#L1))
+ 
+ A handle is a marker attached to a companion shape. A handle:
+ 
+ 1. Is positioned with respect to its companion shape. The position of the handle is given as an offset in pixel coordinates from the center of its companion shape. The offset is given as an `L.Point` object, and its geographic position (latlng) is managed internally. Note that the geographic position (latlng) of the handle usually changes during zooming, since the textbox maintains constant pixel size during zoom.
+ 2. Responds to drag events to alter the state of the textbox (classes which extend `Leaflet.Illustrate.EditHandle` must implement `_onHandleDrag` (for example, in [`Leaflet.Illustrate.ResizeHandle`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/edit/L.Illustrate.ResizeHandle.js#L11)).
+ 
+ The key purpose of the `Leaflet.Illustrate.EditHandle` class is to allow applications to create markers which must maintain a fixed pixel position with respect to a given `latlng`.
+ 
+ Child classes [`Leaflet.Illustrate.RotateHandle`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/edit/L.Illustrate.RotateHandle.js), [`Leaflet.Illustrate.ResizeHandle`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/edit/L.Illustrate.ResizeHandle.js#L1), and [`Leaflet.Illustrate.MoveHandle`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/edit/L.Illustrate.MoveHandle.js) all inherit from `Leaflet.Illustrate.EditHandle`.
+ 
+ I've also implemented several utility methods extending Leaflet core which are worth noting:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates [`L.DomUtil.getRotateString(angle, units)`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/extends-core/L.DomUtil.getRotateString.js)
+ 
+ Returns a CSS transform string corresponding to the given angle. The units ([radians, degrees, turns, or gradians](http://www.impressivewebs.com/alternative-units-css3-rotate-transforms/)) must be given explicitly. This complements the method `L.DomUtil.getTranslateString` already defined in `L.DomUtil`.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates [`L.DomUtil.setTransform(el, point, angle, disable3D)`](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/extends-core/L.DomUtil.setTransform.js)
+ 
+ Sets the `transform` property on the given HTML element `el` for the given offset (`point`), and rotation (`angle`). If disable3D is set, then there is no rotation (rotation only works in browsers which support CSS transforms).
+ 
+ Leaflet core provides only the method [`L.DomUtil.setPosition`](https://github.com/Leaflet/Leaflet/blob/master/src/dom/DomUtil.js#L146), which sets the absolute position of the given element using either the css-transform `translate` function or, if `disable3D` is false, setting the `top` and `left` properties on the element. When `disable3D` is set, `L.DomUtil.setPosition` just sets the css-transform property to the newly calculated translate string, and, in the process, overwrites any rotation also set using the css-transform property. This new method `L.DomUtil.setTransform` solves this by setting *both* the translate and rotate property as appropriate.
+ 
+ There are undoubtedly ways to optimize this. Ultimately, we think about translation and rotation as separate operations, and so it would be nice if the abstraction provided by Leaflet supported this. This could be done by implementing `L.DomUtil.setTranslation` and `L.DomUtil.setRotation`, each of which would parse the css-transform string and reset *only* the parameters of the appropriate translate function. Further (relatively simple) optimizations would be to delete the transform functions when unnecessary (i.e. `rotate(0,0,0,0)` could be deleted).
+ 
+ ### Current Challenges and TODO ###
+ 
+ I've completed the bulk of the work that has to be done to implement textboxes. There are quite a number of small, but crucial tasks that remain before these textboxes are truly usable.
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Add remove hooks for edit handles (implement `onRemove` or `removeHooks`)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Coordinate textbox focus, dragging, and text selection (it is not currently possible to select text in the textbox because of how Leaflet overrides default drag behavior within the map container)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Fix irritating flicker-on-zoom of the pointer indicating the position of the rotate handle
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Add tooltip text (`L.Illustrate.tooltipText` - the analogue of [`L.drawLocal`](https://github.com/Leaflet/Leaflet.draw/blob/master/src/Leaflet.draw.js#L7) in `Leaflet.draw`)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Allow `L.Illustrate.Textbox` to be modified via styles given in the `options` object, *including* default text
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Finish implementing `L.Illustrate.Toolbar`. This may involve refactoring parts of [`L.Toolbar`](https://github.com/Leaflet/Leaflet.draw/blob/master/src/Toolbar.js).
+ 
+ I've been working for the past few days on eliminating the annoying flickering of the rotate handle pointer on zoom. It's turning out to be quite a thorny problem. Markers (`L.Marker`) and polylines (`L.Path`) are implemented very differently. The main difficulty is that each marker has an `_animateZoom` method which is called when the `zoomanim` event is fired. In writing `L.Illustrate.EditHandle`, I simply overrode the default `_animateZoom` method and reset the position of the handle during zoom in order to maintain constant pixel position with respect to the companion shape of the handle.
+ 
+ 
+ [![aar84.gif](http://i.publiclab.org/system/images/photos/000/005/261/medium/aar84.gif)](http://i.publiclab.org/system/images/photos/000/005/261/original/aar84.gif)
+ 
+ *Notice how the pointer for the rotate handle (perpendicular blue line on top) flickers on zoom.*
+ 
+ Whether the polylines are drawn using Canvas, SVG, or VML (backwards-compatibility with IE), they are scaled during animation using `_animatePathZoom`, which is a method of the `L.Map` object, *not* a method of the polyline. The `_animatePathZoom` method resets the css-transform of the root `<svg>` element, translating and scaling *all* vector objects on the map by the same amount.
+ 
+ This is not what we want for a pointer.
+ 
+ Pointers should extend paths in the same way that handles extend markers. That is, a pointer is a path whose vertices are defined in *pixel* coordinates, given with respect to an origin which has a fixed geographic position.
+ 
+ After spending a fair amount of time on this, I think that the best way to approach the rotate handle pointer is to define a new class (`L.Illustrate.Pointer`) to encapsulate this functionality. Since each pointer will be scaled and translated differently during map zooming, each will need to be given its own `<svg>` root element.
+ 
+ I like this approach because it animates the paths during map zoom in the same way as Leaflet core (no need for `SMIL` or javascript animations). I'm a bit concerned that adding many `<svg>` (one for each pointer) to the page will negatively impact performance, although this thread ([How many SVGs before performance issues?](https://groups.google.com/forum/#!topic/d3-js/ZJ6pznVU5LQ)) suggests that, as long as there are tens to hundreds of pointers, that shouldn't be a big issue.
+ 
+ Implementing rotate handle pointers in this way will mean that `L.Illustrate.Pointer` can also be used for *any* kind of pointer meant to call out a single location or identify an annotation (like a textbox) with a single point on the map.
+ 
+ ### Next Steps ###
+ 
+ Once the Leaflet.Illustrate plugin is usable, I can begin integrating it into MapKnitter. This will involve designing a toolbar (extending either `L.Draw.Toolbar` or `L.Toolbar`) to expose the annotation functionality of `Leaflet.draw` and `Leaflet.Illustrate` to users and then integrating this toolbar into MapKnitter, among other things.</div></div></div><div class="event publiclab-event"><div class="time">Wed, 02 Jul 2014 01:16:59 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/07-02-2014/mapknitter-annotations-textbox-rotation-using-css-transforms">MapKnitter Annotations: Textbox Rotation using CSS Transforms</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/005/077/medium/Screenshot_from_2014-07-01_20_15_19_copy.png'/><br /> ### Background ###
+ 
+ I am working to add rich annotation functionality to MapKnitter as part of Google Summer of Code (read about my project here: http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal). This is my second week of coding. The purpose of this research note is to provide an update on my progress with implementing text annotation for Leaflet.
+ 
+ To trace the discussions that have led me up to this point, you can look back through the following research notes, listed in chronological order.
+ 
+ March 18, 2014 - [MapKnitter Annotations Using Fabric.js (GSoC 2014 Proposal)](http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal)
+ 
+ June 17, 2014 - [MapKnitter Annotations Plugin: Preliminary Specification](http://publiclab.org/notes/justinmanley/06-17-2014/mapknitter-annotations-plugin-preliminary-specification)
+ 
+ June 25, 2014 - [MapKnitter Annotations Update: L.Illustrate.Textbox](http://publiclab.org/notes/justinmanley/06-25-2014/mapknitter-annotations-update-l-illustrate-textbox)
+ 
+ ### Progress ###
+ 
+ The first step in my project is implementing basic text annotation for Leaflet. My solution to text annotation for Leaflet uses a textbox-based UI for text annotation which should be familiar to users of Powerpoint, Photoshop, and many other image-editing programs. I am currently developing this functionality in a plugin for Leaflet, [Leaflet.Illustrate](https://github.com/manleyjster/Leaflet.Illustrate) which extends [Leaflet.draw](https://github.com/Leaflet/Leaflet.draw).
+ 
+ [Mathew](http://publiclab.org/profile/mathew) and I determined in [discussion over my last research note](http://publiclab.org/notes/justinmanley/06-25-2014/mapknitter-annotations-update-l-illustrate-textbox#comments-container) that rotatable text was part of the core needs that this plugin aims to address. At the time, I thought that rotatable text would have to be implemented using SVG. After our discussion, I realized that another option could be to use [CSS transforms](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) on HTML text. I decided to go ahead with this, rather than jumping directly into an SVG implementation (which would likely have involved extending Leaflet's core for vector layers), since it seemed that HTML textboxes using CSS transforms would be both easier to implement and more user-friendly for application developers.
+ 
+ This week, I successfully implemented rotatable HTML textboxes using [L.DivIcon](http://leafletjs.com/reference.html#divicon) and CSS transforms. You can view a demo of the functionality below: 
+ 
+ <iframe width=100% height="390" src="//www.youtube.com/embed/a4wf2EvSW6c" frameborder="0" allowfullscreen></iframe>
+ 
+ The code that makes the rotation happen is copied below:
+ 
+ function _updateRotation() {
+ var degrees = Math.round(this._rotation*(180/Math.PI)),
+ rotationString = "rotate(" + degrees + "deg)",
+ size = this.getSize(),
+ translateString = "",
+ center;
+ 
+ if (this._map) {
+ center = this._map.latLngToContainerPoint(this._latlng);
+ translateString = "translate(" + center.x + "px, " + center.y + "px)";
+ 
+ this._textbox._icon.style["-webkit-transform-origin"] = (center.x + Math.round(size.x/2)) + "px " + (center.y + Math.round(size.y/2)) + "px";
+ }
+ 
+ this._textbox._icon.style["-webkit-transform"] = rotationString + " " + translateString;
+ this._textbox._icon.style["-o-transform"] = rotationString + " " + translateString;
+ this._textbox._icon.style["-ms-transform"] = rotationString + " " + translateString;
+ this._textbox._icon.style["-moz-transform"] = rotationString + " " + translateString;
+ this._textbox._icon.style.transform = rotationString + " " + translateString;
+ },
+ 
+ 
+ As the [MDN entry](https://developer.mozilla.org/en-US/docs/Web/CSS/transform) notes, CSS transforms *are* an experimental technology, and that's why all of the vendor prefixes are required. But CSS transforms have been around for quite a while, are well-tested, and with the appropriate vendor prefixes, the basic 2D CSS transforms that I use above (rotate and translate), are supported by
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Chrome (all versions)
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Firefox 3.5+
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Internet Explorer 9.0+
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Opera 10.5+
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Safari 3.1+
+ 
+ ([click for a complete compatibility table](http://caniuse.com/transforms2d)). I think that this will probably be sufficient for compatibility. If we *must* make it compatible with IE 8 and below, that can be done using Microsoft's [Matrix Filters](http://msdn.microsoft.com/en-us/library/ms533014%28VS.85,loband%29.aspx).
+ 
+ ### Issues ###
+ 
+ I'm not really sure why I needed the `translateString` and `transform-origin` properties in the code above - the `rotate` transform should have been enough. I think that the CSS transforms are interacting in a strange way with the `position: absolute` property that the textbox inherits from `L.Marker`. The code above works, but I would like to understand better the way that the CSS transforms are interacting with the positioning.
+ 
+ Currently, the rotation is undone on zooming in or out. This is because Leaflet positions markers using the CSS transform translate function. Whenever the user zooms, the translate values have to be recalculated and the `css-transform` property is reset, which overwrites the rotation and translation put in by `_updateRotation()`. The easiest way to fix this is probably to store the rotation string and then reset the `css-transform` property once the zoom completes.
+ 
+ It's impossible to select text inside the textbox right now. I think that this has to do with the handlers that Leaflet sets up for drag events occurring anywhere over the map. Even when I call `map.enableTextSelection()`, the `selectstart` event is never fired on the `<textarea>.` This is going to take some looking in to.
+ 
+ ### Next Steps ###
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Add editing handles for resizing and moving (the video above implements a handle for rotation).
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Make textbox outline highlighting more natural
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Correct text selection issues.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Fix rotation on zoom.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Remove default `<textarea>` resizing behavior so that there is a single tool for resizing the textbox.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Fix disturbing flickering of the rotation handle when the marker reaches an angle of -&amp;pi;/2.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Rotate handles along with the textbox
+ 
+ </div></div></div><div class="event publiclab-event"><div class="time">Wed, 25 Jun 2014 05:49:58 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/06-25-2014/mapknitter-annotations-update-l-illustrate-textbox">MapKnitter Annotations Update: L.Illustrate.Textbox</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/004/964/medium/illustrate-textbox.png'/><br /> ### Background ###
+ 
+ I am working to add rich annotation functionality to MapKnitter as part of Google Summer of Code (read about my project here: http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal). I just started coding this week, on Monday. The purpose of this research note is to provide an update on the approach that I've chosen (see my [last research note](http://publiclab.org/notes/justinmanley/06-17-2014/mapknitter-annotations-plugin-preliminary-specification)) for implementing basic annotation functionality.
+ 
+ ### Implementation Update ###
+ 
+ Last week, I was trying to decide whether to implement visual annotation for Leaflet using SVG or HTML canvas. After meeting with Jeff, we decided to go with SVG. This was for a number of reasons:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Leaflet core has built-in classes for handling SVG drawing ([L.Rectangle](http://leafletjs.com/reference.html#rectangle), [L.Polyline](http://leafletjs.com/reference.html#polyline), [L.Circle](http://leafletjs.com/reference.html#circle), etc), and there is already a high-quality drawing plugin, [Leaflet.draw](https://github.com/Leaflet/Leaflet.draw), which extends Leaflet core SVG functionality with an excellent UI.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates SVG performance profile is more appropriate. If a user started at a high zoom level, annotations could potentially cover a very large pixel area. Canvas performance degrades quickly with pixel area, while SVG performance is constant with respect to pixel area (SVG performance degrades in proportion to the number of objects).
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates SVG text looks better, and text annotation is one of the most fundamental visual annotation features that the MapKnitter community is looking for
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates We have more options for zooming/scaling behavior with SVG
+ 
+ Jeff and I talked about developing a Leaflet plugin containing the rich annotation functionality that we are looking for - functionality going beyond what is offered in Leaflet.draw. To this end, I've begun development on a new Leaflet plugin, which I've called Leaflet.Illustrate. Jeff and I threw around a bunch of names: Illuminate, Annotate, Explain, Uncover, Storyteller, Cartographer... We wanted a name that would communicate succinctly that the plugin is designed to allow and encourage users to mark up maps in ways that clarify the purpose and background of the map. Leaflet.Illustrate is a working name.
+ 
+ The first feature I've begun to implement is text drawing. This functionality is contained in the classes [Leaflet.Illustrate.Create.Textbox](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/create/L.Illustrate.Create.Textbox.js) and [Leaflet.Illustrate.Edit.Textbox](https://github.com/manleyjster/Leaflet.Illustrate/blob/master/src/edit/L.Illustrate.Edit.Textbox.js), which, respectively, extend Leaflet.Edit.Rectangle and Leaflet.Draw.Rectangle (both exported by Leaflet.draw).
+ 
+ So far, I have added a 'Textbox' button to the drawing toolbar which users can select to draw a textbox on the map. This will enable text annotation in the style of Powerpoint or Photoshop, in which a user designates a rectangular area in which to enable text entry. The textbox is composed of two elements: an SVG rectangle, drawn using L.Draw.Rectangle which displays the outline of the textbox, and an HTML `<textarea>` element inside of an [L.DivIcon](http://leafletjs.com/reference.html#divicon), where the user can enter text. Right now, users can draw a textbox and enter text in it. What remains to be done to round out basic textbox functionality is to:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Allow users to select text inside of the `<textarea>`. Currently, trying to select text inside the `<textarea>` only results in dragging the map.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Determine how the `<textarea>` will behave on zoom. Should it shrink along with the map, or maintain constant size on the screen?
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Correct that initial latlng position of the `<textarea>`.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Make sure that the `<textarea>` resizes properly along with the SVG rectangle.
+ 
+ Some higher-level questions that have occurred to me at this point: 
+ 
+ If I continue to implement textboxes using HTML `<textarea>` elements, then the L.Draw.Rectangle outline is not really necessary. If I want an outline to show up around the `<textarea>` when it is focused, I can do that easily using CSS. The weakness of using `<textarea>` elements is that, as far as I am aware, HTML elements cannot be rotated arbitrarily, which means that any text annotations on the map would always have to be oriented horizontally. I don't think this is necessarily a bad thing, since horizontally-oriented text is most readable. However, if there is a need in the community for text that can be rotated, then we will need to implement textboxes using SVG text elements. This will be more complicated, as it will most likely involve extending Leaflet core, which currently does not support SVG text, only SVG graphics.
+ 
+ Finally, I'm not sure yet if it's really necessary to encapsulate all of this functionality in a separate Leaflet plugin. It may be sufficient to simply add functionality to Leaflet.draw. Leaflet.draw is conveniently designed in that the drawing functionality is only loosely coupled to the toolbar. The more that I think about it, the more it seems to me that, for MapKnitter, we don't really need that much new functionality - we just need existing functionality presented in a specific way (i.e. it's more of a UI problem than a plugin design problem). Accordingly, it may make the most sense to add a few classes to Leaflet.draw and then design a completely new and separate toolbar UI for MapKnitter. This will become clearer as I get further with my coding.
+ 
+ Weigh in! Let me know what you think of all this.</div></div></div><div class="event publiclab-event"><div class="time">Tue, 17 Jun 2014 05:12:21 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/06-17-2014/mapknitter-annotations-plugin-preliminary-specification">MapKnitter Annotations Plugin: Preliminary Specification</a><div class="message"><img src='http://i.publiclab.org/system/images/photos/000/004/823/medium/Barataria_12_june_trip_VI.png'/><br /> ### Background ###
+ 
+ I am working to add rich annotation functionality to MapKnitter as part of Google Summer of Code (read about my project here: http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal). I'm about to start coding next week. The purpose of this research note is to:
+ 
+ 1. Enumerate precisely the annotation features that are desirable (in greater detail than in my proposal)
+ 2. Discuss strategies for implementing these features
+ 3. Determine whether raster or vector formats would be more suited to the type of annotation functionality that we are looking for. This will determine whether I use Fabric.js, which I had advocated in my proposal, or an SVG library - perhaps Snap.js.
+ 
+ ### Visual Annotations Specification ###
+ 
+ There are two types of annotations that I considered in my GSoC proposal: visual annotations (i.e. text, arrows, etc.), and rich media annotations - embedded images, videos from YouTube, or clips from SoundCloud. The first phase of my project is focused on basic visual annotations, so that's all I'm going to discuss here; rich media annotations will come later.
+ 
+ After looking through a lot of Public Lab maps, these are the core annotation features that I think are needed: 
+ 
+ #### Place text directly on the map. ####
+ Users should be able to control the size, color, and orientation of text. The text should sit directly on top of satellite images, as in this example: 
+ 
+ [![h2sexample.png](http://i.publiclab.org/system/images/photos/000/004/802/medium/h2sexample.png)](http://i.publiclab.org/system/images/photos/000/004/802/original/h2sexample.png)
+ ([from ewilder's research note reporting on experiments using photopaper to test Hydrogen Sulfide levels](http://publiclab.org/notes/ewilder/06-16-2014/hydrogen-sulfide-photopaper-sensing-tool-development-notes)).
+ 
+ There's more on this in Mathew's research note from a few months ago: [MapKnitter Annotations (GSOC)](http://publiclab.org/notes/mathew/03-14-2014/mapknitter-annotations-gsoc).
+ 
+ #### Draw small circles to act as markers and circular and rectangular outlines to frame an area of focus. ####
+ As above, users should be able to control the color of the shapes and the weight of the outline. Users should also be able to control whether the shape is filled or only an outline.
+ 
+ For example: 
+ 
+ [![LAX_CO2.png](http://i.publiclab.org/system/images/photos/000/004/811/medium/LAX_CO2.png)](http://i.publiclab.org/system/images/photos/000/004/811/original/LAX_CO2.png)
+ 
+ (from the [From Lot To Spot Carbon Dioxide Mapping Project](http://scienceland.wikispaces.com/FLTS))
+ 
+ and:
+ 
+ [![bayou_manchac_sewer_outful.jpg](http://i.publiclab.org/system/images/photos/000/004/822/medium/bayou_manchac_sewer_outful.jpg)](http://i.publiclab.org/system/images/photos/000/004/822/original/bayou_manchac_sewer_outful.jpg)
+ 
+ (from eustatic's [Bayou Manchac map of sewerage problem](http://publiclab.org/notes/eustatic/2-5-2013/bayou-manchac-map-sewerage-problem) research note.
+ 
+ [![5_1830_Tidmarsh_Farm_Map_with_notes.png](http://i.publiclab.org/system/images/photos/000/004/597/original/5_1830_Tidmarsh_Farm_Map_with_notes.png)](http://i.publiclab.org/system/images/photos/000/004/597/original/5_1830_Tidmarsh_Farm_Map_with_notes.png)
+ 
+ (from eymund's research note [Exploring The Space Unseen: Historic Resources For Guiding Future Story Telling](http://publiclab.org/notes/eymund/06-10-2014/exploring-the-space-unseen-historic-resources-for-guiding-future-story-telling))
+ 
+ #### Draw freely. ####
+ 
+ [![Barataria_12_june_trip_VI.png](http://i.publiclab.org/system/images/photos/000/004/717/original/Barataria_12_june_trip_VI.png)](http://i.publiclab.org/system/images/photos/000/004/717/original/Barataria_12_june_trip_VI.png)
+ 
+ #### Place tooltips/simple lines to indicate small landscape features. ####
+ 
+ [![4_1890_USGS_Map_with_speculative_study_sites.png](http://i.publiclab.org/system/images/photos/000/004/595/original/4_1890_USGS_Map_with_speculative_study_sites.png)](http://i.publiclab.org/system/images/photos/000/004/595/original/4_1890_USGS_Map_with_speculative_study_sites.png)
+ 
+ (from the same research note [Exploring The Space Unseen: Historic Resources For Guiding Future Story Telling](http://publiclab.org/notes/eymund/06-10-2014/exploring-the-space-unseen-historic-resources-for-guiding-future-story-telling)).
+ 
+ Part of the idea behind placing text directly on the map is that this eliminates the need for a legend, because the integrated text does the job of the legend. However, there are some cases where a legend may still be desirable or necessary. It will be possible to make a legend using the above tools - rectangles, text, etc - but it might be worthwhile to create a dedicated legend functionality as part of the annotation tool.
+ 
+ ### Canvas vs. SVG ###
+ 
+ Most of the features above *could* be implemented using either vector graphics (SVG) or raster graphics (HTML `<canvas>` elements. I wrote in my GSoC proposal that I was planning on using Fabric.js, a Javascript library extending the HTML `<canvas>` technology, to implement the above features. However, I spoke to a software engineer at [Inventables](https://www.inventables.com/), which uses Fabric.js in their CNC milling software Easel, and he told me that Fabric.js has been frustrating for them to use - and that a lot of that comes from the fundamental nature of `<canvas>` elements.
+ 
+ One issue is that `<canvas>` elements are stateless. At any point in time, a `<canvas>` element is basically just a .png image. The only difference between `<canvas>` elements and images is that `<canvas>` elements can be dynamically written to using Javascript. Fabric.js adds an object-oriented abstraction layer on top of `<canvas>` and gives it a notion of state. But apparently (according to the engineer I spoke to, at least) - it's not perfect.
+ 
+ SVG has a much more natural notion of state. The disadvantage of SVG is that not all visual annotation functionality can be built naturally using SVG - for example, drawing freely is most naturally implemented using raster graphics, not vector graphics.
+ 
+ The performance of canvas [degrades in proportion to the number of pixels that must be drawn](http://smus.com/canvas-vs-svg-performance/) (the size and resolution of the rendering area), while svg degrades in proportion to the number of objects. MapKnitter currently uses a combination of svg and canvas: Leaflet core uses `<canvas>` elements for rendering map tiles, but the `Leaflet.draw` plugin relies on svg. If a map is very large, then any naive `<canvas>`-based approach may run into performance issues. We could address these by lazily instantiating *small* canvas elements wherever a user clicks on the map with a drawing tool or by only allowing annotations within the bounding box of the uploaded aerial imagery (this could effectively solve any performance issues, since most MapKnitter projects describe a self-contained area).
+ 
+ ### Conclusions ###
+ 
+ Right now, I'm leaning towards using HTML `<canvas>` and Fabric.js, simply because it seems to be a much more natural solution to our annotation needs. However, I'm open to other suggestions - let me know in the comments! If I went with svg, I would either use the [Snap.svg](http://snapsvg.io/) library, or just hard-code it myself, since svg has a natural object model.
+ 
+ If I go with Fabric.js, then the features in the above specifications will correspond to Leaflet bindings for:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates `Fabric.Circle`
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates `Fabric.Rect`
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates `Fabric.Polyline`
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates `Fabric.Text`
+ 
+ at a minimum.
+ 
+ Let me know what you guys think! Also - did I leave anything out of the visual annotations specification? I think that I covered everything that we need, but please let me know if I left anything out.</div></div></div><div class="event publiclab-event"><div class="time">Tue, 18 Mar 2014 10:12:27 +0000</div><div class="title"><a href="http://publiclab.org/profile/justinmanley">justinmanley</a> published 
+				<a href="http://publiclab.org//notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal">Mapknitter Annotations using Fabric.js (GSOC 2014 Proposal)</a><div class="message">##MapKnitter Annotations (GSOC 2014 Proposal)##
+ 
+ **Name:** Justin Manley
+ 
+ **Affiliation:** University of Chicago/ B.S. in Mathematics (third-year)
+ 
+ **Location:** Chicago, IL
+ 
+ **Email:** manleyjster@gmail.com
+ 
+ **Phone:** see email
+ 
+ **Project I want to work on:** MapKnitter
+ 
+ **Project title:** Add rich, narrative annotation functionality to Mapknitter using &amp;lt;canvas&amp;gt; elements and Fabric.js. 
+ 
+ ###What the MapKnitter community needs###
+ 
+ Since 2012, members of the MapKnitter community have [expressed a desire](http://publiclab.org/notes/warren/5-15-2012/annotated-maps-roundup) for an annotation tool built into the MapKnitter interface that would allow users building maps to add notes, arrows, drawings, and rich media content to maps in order to 
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Convey the purpose of their map
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates More effectively use their map as evidence to create an argument or tell a story
+ 
+ This desire was echoed again by [the latest brainstorming session in 2013](http://publiclab.org/notes/shannon/1-9-2013/map-annotation-brainstorming-notes) and most recently in an [excellent post](http://publiclab.org/notes/mathew/03-14-2014/mapknitter-annotations-gsoc) by @michael. As @michael notes, [work has begun](https://github.com/jywarren/mapknitter/commits/master/public/javascripts/annotation.js) on an annotation tool for MapKnitter. However, this annotation toolkit only supports pop-up bubble notes attached to markers on the map. As @michael notes, both historically, and currently, people have annotated maps in a much richer and more immersive way. My project aims to enable rich annotations that are fully integrated into MapKnitter maps, following [this GSoC project idea](http://publiclab.org/wiki/gsoc-ideas#Add+an+annotations+layer+to+Mapknitter).
+ 
+ ###What I want to do###
+ 
+ The goal of my project is to create a Leaflet plugin using HTML &amp;lt;canvas&amp;gt; elements along with Fabric.js to allow users to annotate Leaflet maps, and then to integrate this plugin into MapKnitter.
+ 
+ ####Specific project goals####
+ 
+ 1. Integrate Fabric.js with Leaflet so that canvas and map can function separately, even as each canvas element is linked to a specific coordinate on the map. This will allow users to write and draw directly on the map.
+ 2. Allow users to define a sequence of annotations (canvas elements). Combined with simple transitions (i.e. panning the map between annotations), this will allow users to construct narratives out of their annotations, which is something that many requests have been aimed at.
+ 3. Integrate annotation feature into the MapKnitter. This will include:
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Integrating annotation functionality into MapKnitter UI. This will include usability testing.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Integrating annotations into MapKnitter database so that they can be saved along with user-created maps.
+ 4. Improve the narrative potential of maps by allowing users to attach an audio clip (either an upload from their computer or a link to SoundCloud) to a map, and then to link points in the audio to annotations on the map.
+ 
+ ####Stretch goals####
+ 
+ I will attempt to implement these if I finish the previous primary goals early.
+ 
+ 1. Add rich media annotations, including attaching YouTube videos, audio from SoundCloud, photos, and file attachments. The variety of file types that it would be feasible to support would depend on the existing structure of the database.
+ 3. Link commenting into the annotation system so that users can comment on each annotation.
+ 
+ ####Tools####
+ 
+ It makes sense to use HTML &amp;lt;canvas&amp;gt; elements because these, along with several Javascript libraries, already support many of the annotation functionalities that we are looking for (albeit in a non-geographic context). [Fabric.js](http://fabricjs.com/), [EaselJS](http://www.createjs.com/#!/EaselJS), and [Paper.js](http://paperjs.org/) are a few of the most popular. I chose to go with Fabric.js (although I'm open to other suggestions) because it is well-documented and seemed to have the best support for the kind of interactivity that we are looking for.
+ 
+ [Leaflet.CanvasLayer](https://github.com/CartoDB/Leaflet.CanvasLayer) is a plugin from CartoDB which extends Leaflet's native L.TileLayer.Canvas functionality by providing a canvas covering the entire map, rather than an individual canvas for each tile. I would use this as the canvas for Fabric.js. 
+ 
+ ####Timeline/Milestones####
+ 
+ The University of Chicago, along with a few other U.S. schools - i.e. Stanford, Northwestern, Dartmouth - is on a quarter system, which means I'm not done with school until June 14, 2014. This means that I would need to start my project a bit later than other GSoC participants. However, if permitted, I could work until mid-September, since my fall quarter would not begin until September 29, 2014. The timeline below is scheduled according to that ideal setup.
+ 
+ **May 19 - June 23 (pre-summer period)**
+ Read Fabric.js, Leaflet.js and Mapknitter documentation. Get to know my mentors and the community members most invested in this project.
+ 
+ **June 23**
+ Begin coding Leaflet.js plugin.
+ 
+ **July 4 (End of Week 2)**
+ Complete Leaflet.js plugin, with key methods `Leaflet.Annotate.text()`, `Leaflet.Annotate.arrow()`, `Leaflet.Annotate.shape()` and `Leaflet.Annotate.narrative()` (essentially an array of text, arrow, or shape types).
+ 
+ **July 7 - July 11 (Week 3)**
+ Develop plan for storing the annotations to the database. Could use `Fabric.Canvas.toSVG()` or `Fabric.Canvas.toObject()`, depending on whether JSON or SVG output is preferred. Either method will have to be extended to include the geographic data.
+ 
+ **July 7 - August 8 (Week 3 - Week 7)** 
+ Integrate Leaflet.js plugin with MapKnitter. Integrate with MapKnitter UI and database system.
+ 
+ **August 8 - August 25**
+ Add narrative functionality/Soundcloud integration.
+ 
+ **August 25 - September 5**
+ Run usability testing/focus group with ~20 volunteer MapKnitter community members in order to ensure that the annotation UI is intuitive and useful. Modify UI based on feedback.
+ 
+ **September 5 - September 12**
+ Continue to develop and modify UI based on feedback from usability testing.
+ 
+ **Up to September 22**
+ Complete tests and write up documentation for added features.
+ 
+ **September 22**
+ Wrap up completed project. Revel in the awesome power of the new features!
+ 
+ Ultimately, the goal of this project is to make people at the grassroots level better able to communicate their concerns and their stories using MapKnitter.
+ 
+ ####Support####
+ 
+ I will especially need the support and cooperation of the MapKnitter community when conducting usability testing, as I will depend on people being willing to volunteer some of their time to experiment with the beta UI and give constructive feedback.
+ 
+ ####About me####
+ 
+ **Experience:**
+ 
+ I recently completed a major project building a [Javascript framework for administering geographic/spatial surveys](https://github.com/manleyjster/dowsing-js) using the Google Maps API. Some details:
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Approx. 3000 lines of code (mostly in [core.js](https://github.com/manleyjster/dowsing-js/blob/master/core.js).
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Few dependencies, not even jQuery
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Meant to provide a complete framework for users so that users need only input static HTML content, not write Javascript 
+ 
+ I also built a [survey application for The University of Chicago]() using this framework, which we rolled out to 5000 undergraduates.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates From this project, as well as developing the framework, I have experience working with a large maps API and with addressing the UI challenges peculiar to maps.
+ 
+ I have approx. 1 year of experience coding with Javascript and 3 years of experience with Python, Haskell, and PHP. Check out some of my other projects on Github at [https://github.com/manleyjster](https://github.com/manleyjster?tab=repositories).
+ 
+ **Interest**
+ 
+ I am interested in architecture and the built environment, and my interest in mapping comes out of this. Maps of all sorts are critical tools for architects as well as for planners making decisions that will shape the future of cities. Maps are also key instruments that citizens can use against architects and planners to demonstrate when proposed projects are destructive or otherwise problematic. The survey framework I developed at The University of Chicago (described above) is an example of this interest in action. It was used by the University of Chicago planning department to guide campus planning decisions.
+ 
+ I am also interested in UI/UX design, and I explored this as well with the survey framework I developed.
+ 
+ **Audience**
+ 
+ This feature is intended to make it easy for lay-users to create rich maps that will present a complete narrative.
+ 
+ **Context**
+ 
+ I'm very interested in UI/UX design and in the open maps/map technology community. I'm interested in working in the map technology community after I graduate, so this project relates strongly to my personal interests as well as my long-term career goals.
+ 
+ **Commitment**
+ 
+ I have no other commitment this summer, and would be able to work 40 hours/week on this project. As I mentioned above, The University of Chicago is on a quarter system, which means that I am done with school on June 14, 2014 and begin again on September 29, 2014. Ideally, I would be able to start GSoC late and end late to accommodate my schoolwork and final exams. I would work for the same amount of time as all other GSoC participants, but on a slightly different schedule. I am currently checking with the GSoC organizers to see if this would work.
+ 
+ If this is not an option, then I am willing to take three classes (instead of my normal four) this quarter, which would allow me to commit more time to this project while in school and complete it according to the standard GSoC timeline. 
+ 
+ I am happy to have a conversation about the GSoC schedule/timeline and how my academic schedule relates to this if you have any questions!
+ 
+ ####What I've done so far####
+ So far, I've mocked up a page combining Fabric.js with Leaflet.js, using Leaflet.CanvasLayer as the canvas for Fabric.js. The [code is on Github](https://github.com/manleyjster/cartannotate).
+ 
+ As it stands, this code has a bunch of problems (obviously, since it's just smashing these two libraries together), the most serious of which are:
+ 
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates Both the canvas and the map are trying to respond to `click` and `mousemove` events. This leads to erratic behavior from canvas elements. In order to solve this, I will most likely need to establish UI conventions for when a `click` is supposed to interact with the map, and when it is supposed to interact with the canvas.
+ Gemfile Gemfile.lock Gruntfile.js assets bower.json bugle.json bundler_gems data markedOutput node_modules output package.json scripts site src templates The canvas element is not linked to a geographic location on the map, it is located to a point within the browser window.
+ 
+ My first steps working on the Leaflet plugin for GSoC will be to approach these problems.
+ 
+ ####Resources####
+ Some resources, both on Public Labs, and outside of it, that I have found useful in researching this project.
+ 
+ https://github.com/jywarren/plots/issues/131#issuecomment-5990177
+ https://github.com/jywarren/mapknitter/issues/89
+ https://github.com/makinacorpus/Leaflet.TextPath 
+ https://www.mapbox.com/osmdev/2012/11/20/getting-serious-about-svg/
+ http://www.axismaps.com/blog/2012/07/the-why-not-the-best-map-thematic-mapping-with-leaflet/
+ http://giscollective.org/slippy-map-projections-explained/
+ https://github.com/Leaflet/Leaflet.label
+ 
+ http://publiclab.org/notes/mathew/03-14-2014/mapknitter-annotations-gsoc
+ http://publiclab.org/notes/hagitkeysar/11-18-2013/where-do-the-maps-go
+ http://publiclab.org/notes/shannon/1-9-2013/map-annotation-brainstorming-notes
+ http://publiclab.org/notes/warren/5-15-2012/annotated-maps-roundup
+ https://github.com/jywarren/mapknitter/blob/master/app/controllers/annotation_controller.rb</div></div></div> 
