@@ -5,5 +5,7 @@ assets/bower_components
 site/assets/bower_components
 
 data/config/pass/
+data/feeds
+data/cached
 
 

@@ -19,9 +19,12 @@
     "grunt-newer": "0.7.0",
     "handlebars": "2.0.0-alpha.4",
     "handlebars-helper-compose": "^0.2.12",
+    "libxmljs": "^0.11.0",
+    "lodash": "^2.4.1",
     "marked": "^0.3.2",
     "matchdep": "0.3.0",
-    "nap": "^0.7.19"
+    "nap": "^0.7.19",
+    "xml2js": "^0.4.4"
   },
   "author": "Justin Manley",
   "license": "MIT"
