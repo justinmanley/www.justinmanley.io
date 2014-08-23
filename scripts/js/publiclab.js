@@ -9,39 +9,85 @@
 var fs = require("fs"),
 	marked = require("marked"),
 	_ = require("lodash"),
-	xml2js = require("xml2js");
+	xmlbuilder = require("xmlbuilder"),
+	Q = require("q"),
+	xml2js = require("xml2js").parseString;
 
-var parseXML = xml2js.parseString,
-	buildXML = new xml2js.Builder({ headless: true }),
-	filename = process.cwd() + "/" + process.argv[2];
+var	filename = process.cwd() + "/" + process.argv[2];
 
-fs.readFile(filename, { encoding: 'utf-8'}, function(err, data)  {
-	if (err) throw err;
-	parseXML(data, function(err, result) {
-		if (err) throw err;
+readFile(filename)
+	.then(parseXML)
+	.then(function(xml) {
+		return Q.all(_.map(xml.rss.channel[0].item, function(item) {
+			var markdown = parseMarkdown(item.description[0]);
+			return { event: item, body: { string: markdown, nodes: markdown.then(parseXML) } };
+		}))
+	})
+	.then(function(items) {
+		var output = xmlbuilder.create('root');
 
-		// console.log(buildXML.buildObject(result));
+		_.each(items, function(item) {
+			event = output.ele('div', { class: "event publiclab-event"});
 
-		var output = _.map(result.rss.channel[0].item, function(x) {
-			return {
-				$: { class: "event github-event" },
-				div: [
-					{ time: x.pubDate, $: { class: "time" } },			
-					{ 
-						$: { class: "title" }, a: [
-							x.author[0],
-							x.title[0]
-						], 
-					},
-				]
-			};
+			event.ele('div', { class: "time" })
+				.text(item.event.pubDate[0]);
+
+			event.ele('div', { class: "title" })
+				.ele('a', { href: "http://publiclab.org/profile/justinmanley" })
+				.text(item.event.author)
+				.up()
+				.ele('span').text("published")
+				.up()
+				.ele('a', { href: item.event.link })
+				.text(item.event.title);
+
+			event.ele('div', { class: "details" })
+				.raw(item.body.string);	
 		});
 
-		console.log(buildXML.buildObject({
-			div: { 
-				$: { class: "container" },
-				div: output
-			}
-		}));
+		console.log(output.end({ pretty: true }));
+	})
+	.done();
+
+function readFile(filename) {
+	var deferred = Q.defer();
+
+	fs.readFile(filename, { encoding: 'utf-8' }, function(err, data) {
+		if (err) {
+			deferred.reject(err);
+		} else {
+			deferred.resolve(data);
+		}
 	});
-});
+
+	return deferred.promise;
+}
+
+function parseMarkdown(markdownString, options) {
+	var deferred = Q.defer(),
+		options = options || {};
+
+	marked(markdownString, options, function(err, data) {
+		if (err) {
+			deferred.reject(err);
+		} else {
+			deferred.resolve(data);
+		}
+	});
+
+	return deferred.promise;
+}
+
+function parseXML(xmlString) {
+	var deferred = Q.defer();
+
+	xml2js(xmlString, function(err, data) {
+		if (err) {
+			deferred.reject(err);
+		} else {
+			deferred.resolve(data);
+		}
+	});
+
+	return deferred.promise;
+}
