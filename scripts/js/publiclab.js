@@ -6,13 +6,14 @@
  *     scripts/js/publiclab.js myfile.html
  */
 
-var fs = require("fs"),
-	marked = require("marked"),
-	_ = require("lodash"),
-	xmlbuilder = require("xmlbuilder"),
-	Q = require("q"),
-	htmlparser = require("htmlparser2"),
-	xml2js = require("xml2js").parseString;
+var fs 			= require("fs"),
+	marked 		= require("marked"),
+	_ 			= require("lodash"),
+	xmlbuilder 	= require("xmlbuilder"),
+	Q 			= require("q"),
+	htmlparser 	= require("htmlparser2"),
+	moment		= require("moment"),
+	xml2js 		= require("xml2js").parseString;
 
 var	filename = process.cwd() + "/" + process.argv[2];
 
@@ -39,8 +40,11 @@ function generateFeed(events) {
 
 	_.each(events, function(item) {
 
-		event = output.ele('div', { class: "event publiclab-event"});
+		var event = output.ele('div', { class: "event publiclab-event"}),
+			time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
+			humanReadableTime = time.format('MMMM DD, YYYY')
 
+		/* Get header image, if it exists. */
 		if (item[2][0].children[0].attribs) {
 			var src = item[2][0].children[0].attribs.src;
 			event
@@ -49,24 +53,23 @@ function generateFeed(events) {
 		}
 
 		event.ele('div', { class: "time" })
-			.text(item[0].pubDate[0]);
+			.text(humanReadableTime);
 
 		event.ele('div', { class: "title" })
 			.ele('a', { href: "http://publiclab.org/profile/justinmanley" })
 			.text(item[0].author)
 			.up()
-			.ele('span').text("published")
+			.ele('span').text(" published ")
 			.up()
 			.ele('a', { href: item[0].link })
 			.text(item[0].title);
 
-		event.ele('div', { class: "details" })
-			.raw(item[1]);
+		// event.ele('div', { class: "details" })
+		// 	.raw(item[1]);
+
+		console.log(event.toString({ pretty: true }));
+
 	});
-
-	output.end({ pretty: true });
-
-	console.log(output.children.toString({ pretty: true }));
 }
 
 function readFile(filename) {
