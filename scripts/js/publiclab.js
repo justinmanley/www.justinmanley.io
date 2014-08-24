@@ -72,6 +72,14 @@ function generateFeed(events) {
 	});
 }
 
+function parseMarkdown(markdownString) {
+	return Q.nfcall(marked, markdownString, { xhtml: true });
+}
+
+function parseXML(xmlString) {
+	return Q.nfcall(xml2js, xmlString);
+}
+
 function readFile(filename) {
 	var deferred = Q.defer(),
 		data = '';
@@ -84,34 +92,6 @@ function readFile(filename) {
 
 	process.stdin.on('end', function() {
 		deferred.resolve(data);
-	});
-
-	return deferred.promise;
-}
-
-function parseMarkdown(markdownString) {
-	var deferred = Q.defer();
-
-	marked(markdownString, { xhtml: true }, function(err, data) {
-		if (err) {
-			deferred.reject(err);
-		} else {
-			deferred.resolve(data);
-		}
-	});
-
-	return deferred.promise;
-}
-
-function parseXML(xmlString) {
-	var deferred = Q.defer();
-
-	xml2js(xmlString, function(err, data) {
-		if (err) {
-			deferred.reject(err);
-		} else {
-			deferred.resolve(data);
-		}
 	});
 
 	return deferred.promise;

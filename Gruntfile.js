@@ -9,6 +9,9 @@ module.exports = function(grunt) {
     grunt.initConfig({
         assemble: site,
     	watch: {
+            options: {
+                livereload: true
+            },
     		source: {
     			files: [
     				'Gruntfile.js',
