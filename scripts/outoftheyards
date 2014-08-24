@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Usage:
+#	scripts/outoftheyards
+
+data=`curl http://www.outoftheyards.com/feed/atom/`
+
+echo $data \
+	| xsltproc scripts/xslt/outoftheyards.xslt - \
+	> data/feeds/outoftheyards.html
