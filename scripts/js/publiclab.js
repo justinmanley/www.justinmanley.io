@@ -11,6 +11,7 @@ var fs = require("fs"),
 	_ = require("lodash"),
 	xmlbuilder = require("xmlbuilder"),
 	Q = require("q"),
+	htmlparser = require("htmlparser2"),
 	xml2js = require("xml2js").parseString;
 
 var	filename = process.cwd() + "/" + process.argv[2];
@@ -18,36 +19,53 @@ var	filename = process.cwd() + "/" + process.argv[2];
 readFile(filename)
 	.then(parseXML)
 	.then(function(xml) {
-		return Q.all(_.map(xml.rss.channel[0].item, function(item) {
-			var markdown = parseMarkdown(item.description[0]);
-			return { event: item, body: { string: markdown, nodes: markdown.then(parseXML) } };
+		var items = xml.rss.channel[0].item;
+
+		return Q.all(_.map(items, function(item) {
+			return parseMarkdown(item.description[0]);
 		}))
-	})
-	.then(function(items) {
-		var output = xmlbuilder.create('root');
-
-		_.each(items, function(item) {
-			event = output.ele('div', { class: "event publiclab-event"});
-
-			event.ele('div', { class: "time" })
-				.text(item.event.pubDate[0]);
-
-			event.ele('div', { class: "title" })
-				.ele('a', { href: "http://publiclab.org/profile/justinmanley" })
-				.text(item.event.author)
-				.up()
-				.ele('span').text("published")
-				.up()
-				.ele('a', { href: item.event.link })
-				.text(item.event.title);
-
-			event.ele('div', { class: "details" })
-				.raw(item.body.string);	
+		.then(function(htmls) {
+			return Q.all(_.map(htmls, parseHTML))
+			.then(function(doms) {
+				generateFeed(_.zip(items, htmls, doms));
+			});
 		});
-
-		console.log(output.end({ pretty: true }));
 	})
 	.done();
+
+function generateFeed(events) {
+
+	var output = xmlbuilder.create('root', { headless: true });
+
+	_.each(events, function(item) {
+
+		event = output.ele('div', { class: "event publiclab-event"});
+
+		if (item[2][0].children[0].attribs) {
+			var src = item[2][0].children[0].attribs.src;
+			event
+				.ele('div', { class: "thumbnail" })
+				.ele('img', { src: src });
+		}
+
+		event.ele('div', { class: "time" })
+			.text(item[0].pubDate[0]);
+
+		event.ele('div', { class: "title" })
+			.ele('a', { href: "http://publiclab.org/profile/justinmanley" })
+			.text(item[0].author)
+			.up()
+			.ele('span').text("published")
+			.up()
+			.ele('a', { href: item[0].link })
+			.text(item[0].title);
+
+		event.ele('div', { class: "details" })
+			.raw(item[1]);
+	});
+
+	console.log(output.children.toString({ pretty: true }));
+}
 
 function readFile(filename) {
 	var deferred = Q.defer();
@@ -63,11 +81,10 @@ function readFile(filename) {
 	return deferred.promise;
 }
 
-function parseMarkdown(markdownString, options) {
-	var deferred = Q.defer(),
-		options = options || {};
+function parseMarkdown(markdownString) {
+	var deferred = Q.defer();
 
-	marked(markdownString, options, function(err, data) {
+	marked(markdownString, { xhtml: true }, function(err, data) {
 		if (err) {
 			deferred.reject(err);
 		} else {
@@ -88,6 +105,25 @@ function parseXML(xmlString) {
 			deferred.resolve(data);
 		}
 	});
+
+	return deferred.promise;
+}
+
+function parseHTML(htmlString) {
+	var deferred = Q.defer(),
+		handler, parser;
+
+	handler = new htmlparser.DomHandler(function(err, dom) {
+		if (err) {
+			deferred.reject(err);
+		} else {
+			deferred.resolve(dom);
+		}
+	});
+
+	parser = new htmlparser.Parser(handler);
+	parser.write(htmlString);
+	parser.done();
 
 	return deferred.promise;
 }
