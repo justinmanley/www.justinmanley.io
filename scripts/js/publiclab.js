@@ -64,18 +64,23 @@ function generateFeed(events) {
 			.raw(item[1]);
 	});
 
+	output.end({ pretty: true });
+
 	console.log(output.children.toString({ pretty: true }));
 }
 
 function readFile(filename) {
-	var deferred = Q.defer();
+	var deferred = Q.defer(),
+		data = '';
 
-	fs.readFile(filename, { encoding: 'utf-8' }, function(err, data) {
-		if (err) {
-			deferred.reject(err);
-		} else {
-			deferred.resolve(data);
-		}
+	process.stdin.setEncoding('utf-8');
+
+	process.stdin.on('readable', function() {
+		data += process.stdin.read();
+	});
+
+	process.stdin.on('end', function() {
+		deferred.resolve(data);
 	});
 
 	return deferred.promise;
