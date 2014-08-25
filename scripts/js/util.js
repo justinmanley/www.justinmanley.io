@@ -5,6 +5,8 @@ var marked 	= require("marked"),
 
 module.exports = {
 
+	TIME_FORMAT: 'MMMM D, YYYY',
+
 	parseMarkdown: function(markdownString) {
 		return Q.nfcall(marked, markdownString, { xhtml: true });
 	},
@@ -13,7 +15,7 @@ module.exports = {
 		return Q.nfcall(xml2js, xmlString);
 	},
 
-	readFile: function() {
+	readInput: function() {
 		var deferred = Q.defer(),
 			data = '';
 

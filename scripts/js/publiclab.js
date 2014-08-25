@@ -19,7 +19,7 @@ function generateFeed(events) {
 
 		var event = output.ele('div', { class: "event publiclab-event"}),
 			time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
-			humanReadableTime = time.format('MMMM DD, YYYY')
+			humanReadableTime = time.format(util.TIME_FORMAT)
 
 		/* Get header image, if it exists. */
 		if (item[2][0].children[0].attribs) {
@@ -34,12 +34,12 @@ function generateFeed(events) {
 
 		event.ele('div', { class: "title" })
 			.ele('a', { href: "http://publiclab.org/profile/justinmanley" })
-			.text(item[0].author)
-			.up()
+				.text(item[0].author)
+				.up()
 			.ele('span').text(" published ")
-			.up()
+				.up()
 			.ele('a', { href: item[0].link })
-			.text(item[0].title);
+				.text(item[0].title);
 
 		// event.ele('div', { class: "details" })
 		// 	.raw(item[1]);
@@ -49,7 +49,7 @@ function generateFeed(events) {
 	});
 }
 
-util.readFile()
+util.readInput()
 	.then(util.parseXML)
 	.then(function(xml) {
 		var items = xml.rss.channel[0].item;
