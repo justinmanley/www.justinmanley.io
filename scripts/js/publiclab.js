@@ -1,38 +1,15 @@
 #!/usr/bin/node
 
 /*
- * Example:
- *     scripts/js/publiclab.js <filename>
- *     scripts/js/publiclab.js myfile.html
+ * Usage:
+ *     publiclab.js accepts input on stdin and writes to stdout.
  */
 
-var fs 			= require("fs"),
-	marked 		= require("marked"),
-	_ 			= require("lodash"),
+var	_ 			= require("lodash"),
 	xmlbuilder 	= require("xmlbuilder"),
 	Q 			= require("q"),
-	htmlparser 	= require("htmlparser2"),
 	moment		= require("moment"),
-	xml2js 		= require("xml2js").parseString;
-
-var	filename = process.cwd() + "/" + process.argv[2];
-
-readFile(filename)
-	.then(parseXML)
-	.then(function(xml) {
-		var items = xml.rss.channel[0].item;
-
-		return Q.all(_.map(items, function(item) {
-			return parseMarkdown(item.description[0]);
-		}))
-		.then(function(htmls) {
-			return Q.all(_.map(htmls, parseHTML))
-			.then(function(doms) {
-				generateFeed(_.zip(items, htmls, doms));
-			});
-		});
-	})
-	.done();
+	util 		= require("./util");
 
 function generateFeed(events) {
 
@@ -72,46 +49,19 @@ function generateFeed(events) {
 	});
 }
 
-function parseMarkdown(markdownString) {
-	return Q.nfcall(marked, markdownString, { xhtml: true });
-}
+util.readFile()
+	.then(util.parseXML)
+	.then(function(xml) {
+		var items = xml.rss.channel[0].item;
 
-function parseXML(xmlString) {
-	return Q.nfcall(xml2js, xmlString);
-}
-
-function readFile(filename) {
-	var deferred = Q.defer(),
-		data = '';
-
-	process.stdin.setEncoding('utf-8');
-
-	process.stdin.on('readable', function() {
-		data += process.stdin.read();
-	});
-
-	process.stdin.on('end', function() {
-		deferred.resolve(data);
-	});
-
-	return deferred.promise;
-}
-
-function parseHTML(htmlString) {
-	var deferred = Q.defer(),
-		handler, parser;
-
-	handler = new htmlparser.DomHandler(function(err, dom) {
-		if (err) {
-			deferred.reject(err);
-		} else {
-			deferred.resolve(dom);
-		}
-	});
-
-	parser = new htmlparser.Parser(handler);
-	parser.write(htmlString);
-	parser.done();
-
-	return deferred.promise;
-}
+		return Q.all(_.map(items, function(item) {
+			return util.parseMarkdown(item.description[0]);
+		}))
+		.then(function(htmls) {
+			return Q.all(_.map(htmls, util.parseHTML))
+			.then(function(doms) {
+				generateFeed(_.zip(items, htmls, doms));
+			});
+		});
+	})
+	.done();
