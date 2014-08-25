@@ -1,6 +1,8 @@
-var marked 	= require("marked"),
+var fs 		= require("fs"),
+	marked 	= require("marked"),
 	xml2js 	= require("xml2js").parseString,
 	Q 		= require("q"),
+	yaml 	= require("js-yaml"),
 	htmlparser = require("htmlparser2");
 
 module.exports = {
@@ -30,6 +32,13 @@ module.exports = {
 		});
 
 		return deferred.promise;
+	},
+
+	readYAML: function(filename) {
+		return Q.nfcall(fs.readFile, filename, 'utf-8')
+			.then(function(yamlString) {
+				return Q.fcall(function() { return yaml.safeLoad(yamlString); });
+			});
 	},
 
 	parseHTML: function(htmlString) {

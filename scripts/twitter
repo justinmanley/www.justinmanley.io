@@ -1,0 +1,3 @@
+#!/bin/sh
+
+nodejs scripts/js/twitter.js
