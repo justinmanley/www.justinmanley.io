@@ -35,7 +35,7 @@ function generateFeed(xml) {
 			.text(entity.decode(summary));
 
 		return {
-			timestamp: humanReadableTime, 
+			timestamp: time.format(), 
 			html: event.toString({ pretty: true })
 		};
 	});
@@ -43,7 +43,7 @@ function generateFeed(xml) {
 
 module.exports = {
 	feed: function() {
-		return util.readYAML('data/config/feeds.yml')
+		return util.readYAML('data/config/feedUrls.yml')
 			.then(function(config) {
 				return util.get(config.outoftheyards)
 			})

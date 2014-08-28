@@ -6,7 +6,7 @@ var	_ 			= require("lodash"),
 
 function generateFeed(events) {
 
-	var root = xmlbuilder.create('root', { headless: true });
+	var root = xmlbuilder.create('root');
 
 	return _.map(events, function(item) {
 
@@ -35,7 +35,7 @@ function generateFeed(events) {
 				.text(item[0].title);
 
 		return {
-			timestamp: humanReadableTime,
+			timestamp: time.format(),
 			html: event.toString({ pretty: true })
 		};
 	});
@@ -43,7 +43,7 @@ function generateFeed(events) {
 
 module.exports = {
 	feed: function() {
-		return util.readYAML('data/config/feeds.yml')
+		return util.readYAML('data/config/feedUrls.yml')
 			.then(function(config) {
 				return util.get(config.publiclab);
 			})
@@ -52,14 +52,14 @@ module.exports = {
 				var items = xml.rss.channel[0].item;
 
 				return Q.all(_.map(items, function(item) {
-					return util.parseMarkdown(item.description[0]);
-				}))
-				.then(function(htmls) {
-					return Q.all(_.map(htmls, util.parseHTML))
-					.then(function(doms) {
-						generateFeed(_.zip(items, htmls, doms));
+						return util.parseMarkdown(item.description[0]);
+					}))
+					.then(function(htmls) {
+						return Q.all(_.map(htmls, util.parseHTML))
+						.then(function(doms) {
+							return generateFeed(_.zip(items, htmls, doms));
+						});
 					});
-				});
 			});
 	}
 }

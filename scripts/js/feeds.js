@@ -5,17 +5,21 @@ var Q = require('q'),
 
 var feedGenerators = [
 	require('./github'),
-	require('./publiclab'),
-	require('./outoftheyards')
+	require('./outoftheyards'),
+	require('./publiclab')
 ];
 
-function interpolateFeeds(feeds) {
-	_.each(feeds, function(feed) {
-		_.each(feed, function(event) {
-			console.log(event.timestamp);
-		});
-	});
+function interleaveFeeds(feeds) {
+	return _.chain(feeds)
+		.flatten()
+		.map(function(event) { return event.html; })
+		.first(10)
+		.value();
 }
 
 Q.all(_.map(feedGenerators, function(gen) { return gen.feed(); }))
-	.then(interpolateFeeds);
+	.then(interleaveFeeds)
+	.then(function(feed) {
+		_.each(feed, function(event) { console.log(event); });
+	})
+	.done();

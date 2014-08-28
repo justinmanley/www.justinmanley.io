@@ -9,7 +9,7 @@ function generateFeed(items) {
 			timestamp = moment(updated).format(util.TIME_FORMAT);
 
 		return {
-			timestamp: timestamp,
+			timestamp: moment(updated).format(),
 			html: item.content[0]._
 		};
 	});
@@ -17,7 +17,7 @@ function generateFeed(items) {
 
 module.exports = {
 	feed: function() {
-		return util.readYAML('data/config/feeds.yml') 
+		return util.readYAML('data/config/feedUrls.yml') 
 			.then(function(config) {
 				return util.get(config.github);
 			})
