@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 var Q 			= require('q'),
 	_ 			= require('lodash'),
 	util 		= require('./util'),

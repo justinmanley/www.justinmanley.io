@@ -1,10 +1,3 @@
-#!/usr/bin/node
-
-/*
- * Usage:
- *     outoftheyards.js accepts input on stdin and writes to stdout.
- */
-
 var _ 				= require('lodash'),
  	xmlbuilder 		= require('xmlbuilder'),
  	Q 				= require('q'),
@@ -17,7 +10,7 @@ function generateFeed(xml) {
 		root = xmlbuilder.create('root', { headless: true }),
 		entity = new htmlEntities();
 
-	_.each(items, function(item) {
+	return _.map(items, function(item) {
 		var event = root.ele('div', { class: 'event outoftheyards-event'}),
 			time = moment(item.published[0]),
 			/* time is an ISO-8601 string, so moment understands it natively. */
@@ -41,12 +34,20 @@ function generateFeed(xml) {
 		event.ele('div', { class: "details" })
 			.text(entity.decode(summary));
 
-		console.log(event.toString({ pretty: true }));
-
+		return {
+			timestamp: humanReadableTime, 
+			html: event.toString({ pretty: true })
+		};
 	});
 }
 
-util.readInput()
-	.then(util.parseXML)
-	.then(generateFeed)
-	.done();
+module.exports = {
+	feed: function() {
+		return util.readYAML('data/config/feeds.yml')
+			.then(function(config) {
+				return util.get(config.outoftheyards)
+			})
+			.then(util.parseXML)
+			.then(generateFeed);
+	}
+}

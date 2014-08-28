@@ -1,5 +1,3 @@
-#!/usr/bin/node
-
 var Twitter 	= require('ntwitter'),
 	Q 			= require('q'),
 	_ 			= require('lodash'),
@@ -14,33 +12,38 @@ var params = {
 function generateFeed(tweets) {
 	var root = xmlbuilder.create('root', { headless: true });
 
-	_.each(tweets, function(tweet) {
+	return _.map(tweets, function(tweet) {
 		var event = root.ele('div', { class: 'event twitter-event' });
 
 		event.raw(tweet.html);
 
-		console.log(event.toString({ pretty: true }));
+		return {
+			html: event.toString({ pretty: true })
+		};
 	});
 }
 
-util.readYAML('data/config/pass/twitter.yml')
-	.then(function(config) {
-		return Q.fcall(function() { return new Twitter(config); });
-	})
-	.then(function(twitter) {
-		return Q.ninvoke(twitter, 'verifyCredentials')
-			.then(function() {
-				return Q.ninvoke(twitter, 'getUserTimeline', params);				
+module.exports = {
+	feed: function() {
+		return util.readYAML('data/config/pass/twitter.yml')
+			.then(function(config) {
+				return Q.fcall(function() { return new Twitter(config); });
 			})
-			.then(function(timeline) {
-				return Q.all(_.map(timeline, function(tweet) {
-					var oembedParams = { id: tweet.id_str };
-					return Q.ninvoke(twitter, 'getOEmbedStatus', oembedParams);
-				}));
-			})
-			.then(function(embeddedTweets) {
-				generateFeed(embeddedTweets);
-			})
-			.done();
-	})
-	.done();
+			.then(function(twitter) {
+				return Q.ninvoke(twitter, 'verifyCredentials')
+					.then(function() {
+						return Q.ninvoke(twitter, 'getUserTimeline', params);				
+					})
+					.then(function(timeline) {
+						return Q.all(_.map(timeline, function(tweet) {
+							var oembedParams = { id: tweet.id_str };
+							return Q.ninvoke(twitter, 'getOEmbedStatus', oembedParams);
+						}));
+					})
+					.then(function(embeddedTweets) {
+						generateFeed(embeddedTweets);
+					})
+					.done();
+			});
+	}
+}

@@ -1,10 +1,11 @@
-var fs 		= require("fs"),
-	marked 	= require("marked"),
-	xml2js 	= require("xml2js").parseString,
-	Q 		= require("q"),
-	yaml 	= require("js-yaml"),
-	htmlparser = require("htmlparser2"),
-	https = require("https");
+var fs 			= require("fs"),
+	marked 		= require("marked"),
+	xml2js 		= require("xml2js").parseString,
+	Q 			= require("q"),
+	yaml 		= require("js-yaml"),
+	htmlparser 	= require("htmlparser2"),
+	http 		= require("http"),
+	https 		= require("https");
 
 module.exports = {
 
@@ -62,9 +63,22 @@ module.exports = {
 	},
 
 	get: function(url) {
-		var deferred = Q.defer();
+		var deferred = Q.defer(),
+			protocol = url.slice(0, url.indexOf(":")),
+			h;
 
-		https.get(url, function(response) {
+		switch(protocol) {
+			case 'https':
+				h = https;
+				break;
+			case 'http':
+				h = http;
+				break;
+			default:
+				throw new Error("Only http and https protocols are supported.");				
+		}
+
+		h.get(url, function(response) {
 			var data = [];
 
 			response.setEncoding('utf8');

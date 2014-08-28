@@ -1,10 +1,3 @@
-#!/usr/bin/node
-
-/*
- * Usage:
- *     publiclab.js accepts input on stdin and writes to stdout.
- */
-
 var	_ 			= require("lodash"),
 	xmlbuilder 	= require("xmlbuilder"),
 	Q 			= require("q"),
@@ -13,11 +6,11 @@ var	_ 			= require("lodash"),
 
 function generateFeed(events) {
 
-	var output = xmlbuilder.create('root', { headless: true });
+	var root = xmlbuilder.create('root', { headless: true });
 
-	_.each(events, function(item) {
+	return _.map(events, function(item) {
 
-		var event = output.ele('div', { class: "event publiclab-event"}),
+		var event = root.ele('div', { class: "event publiclab-event"}),
 			time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
 			humanReadableTime = time.format(util.TIME_FORMAT)
 
@@ -41,27 +34,32 @@ function generateFeed(events) {
 			.ele('a', { href: item[0].link })
 				.text(item[0].title);
 
-		// event.ele('div', { class: "details" })
-		// 	.raw(item[1]);
-
-		console.log(event.toString({ pretty: true }));
-
+		return {
+			timestamp: humanReadableTime,
+			html: event.toString({ pretty: true })
+		};
 	});
 }
 
-util.readInput()
-	.then(util.parseXML)
-	.then(function(xml) {
-		var items = xml.rss.channel[0].item;
+module.exports = {
+	feed: function() {
+		return util.readYAML('data/config/feeds.yml')
+			.then(function(config) {
+				return util.get(config.publiclab);
+			})
+			.then(util.parseXML)
+			.then(function(xml) {
+				var items = xml.rss.channel[0].item;
 
-		return Q.all(_.map(items, function(item) {
-			return util.parseMarkdown(item.description[0]);
-		}))
-		.then(function(htmls) {
-			return Q.all(_.map(htmls, util.parseHTML))
-			.then(function(doms) {
-				generateFeed(_.zip(items, htmls, doms));
+				return Q.all(_.map(items, function(item) {
+					return util.parseMarkdown(item.description[0]);
+				}))
+				.then(function(htmls) {
+					return Q.all(_.map(htmls, util.parseHTML))
+					.then(function(doms) {
+						generateFeed(_.zip(items, htmls, doms));
+					});
+				});
 			});
-		});
-	})
-	.done();
+	}
+}
