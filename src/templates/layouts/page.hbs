@@ -1,3 +1,16 @@
+---
+links:
+    - title: GitHub
+      link:  https://github.com
+    - title: Blog
+      link:       
+    - title: Out of the Yards
+      link:  http://outoftheyards.com
+    - title: Portfolio
+      link:  link/to/portfolio
+    - title: Demos
+      link:  /link/to/demos
+---
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,6 +27,9 @@
 
 		<script src="http://localhost:35729/livereload.js"></script>
 
+		<!-- Twitter javascript -->
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 		<!-- Site styles -->
 		<link rel="stylesheet" href="{{assets}}/css/style.css"/>
 	</head>
@@ -23,10 +39,26 @@
 	<div id="header">
 		{{#markdown}} {{> body }} {{/markdown}}
 	</div>
+	<div class="navbar" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-links">
+					<span class="sr-only">Toggle Navigation</span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="nav-links">
+				<ul class="nav navbar-nav">
+				{{#each links}}
+					<li><a href="{{this.link}}">{{this.title}}</a></li>
+				{{/each}}
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="container-fluid" id="feeds">
 		<div class="row">
 			{{#compose src="<%= feeds %>"}}
-				<div class="col-md-4">
+				<div class="col-md-4 feed">
 					<h4 class="feed-header">{{@title}}</h4>
 					{{{@content}}}
 				</div>

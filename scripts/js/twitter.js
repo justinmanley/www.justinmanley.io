@@ -1,17 +1,26 @@
 #!/usr/bin/node
 
-var Twitter = require('ntwitter'),
-	Q 		= require('q'),
-	_ 		= require('lodash'),
-	util 	= require("./util");
+var Twitter 	= require('ntwitter'),
+	Q 			= require('q'),
+	_ 			= require('lodash'),
+	util 		= require('./util')
+	xmlbuilder 	= require('xmlbuilder');
 
 var params = {
 	screen_name: 'outoftheyards',
-	count: 20
+	count: 1
 };
 
 function generateFeed(tweets) {
-	console.log(tweets);
+	var root = xmlbuilder.create('root', { headless: true });
+
+	_.each(tweets, function(tweet) {
+		var event = root.ele('div', { class: 'event twitter-event' });
+
+		event.raw(tweet.html);
+
+		console.log(event.toString({ pretty: true }));
+	});
 }
 
 util.readYAML('data/config/pass/twitter.yml')

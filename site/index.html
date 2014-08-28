@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,6 +15,9 @@
 
 		<script src="http://localhost:35729/livereload.js"></script>
 
+		<!-- Twitter javascript -->
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 		<!-- Site styles -->
 		<link rel="stylesheet" href="assets/css/style.css"/>
 	</head>
@@ -25,10 +29,34 @@
 <p>Coder, mapmaker, aspiring architecture critic, currently a student at the University of Chicago. I write about cities at <a href="http://outoftheyards.com">http://outoftheyards.com</a>. </p>
 
 	</div>
+	<div class="navbar" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-links">
+					<span class="sr-only">Toggle Navigation</span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="nav-links">
+				<ul class="nav navbar-nav">
+				
+					<li><a href="https://github.com">GitHub</a></li>
+				
+					<li><a href="">Blog</a></li>
+				
+					<li><a href="http://outoftheyards.com">Out of the Yards</a></li>
+				
+					<li><a href="link/to/portfolio">Portfolio</a></li>
+				
+					<li><a href="/link/to/demos">Demos</a></li>
+				
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="container-fluid" id="feeds">
 		<div class="row">
 			
-				<div class="col-md-4">
+				<div class="col-md-4 feed">
 					<h4 class="feed-header">Github</h4>
 					<div class="event github-event"><!-- push -->
 <span class="mega-octicon octicon-git-commit"></span>
@@ -189,7 +217,7 @@
 				</div>
 			
 
-				<div class="col-md-4">
+				<div class="col-md-4 feed">
 					<h4 class="feed-header">Outoftheyards</h4>
 					<div class="event outoftheyards-event">
   <div class="time">January 9, 2014</div>
@@ -245,7 +273,7 @@
 				</div>
 			
 
-				<div class="col-md-4">
+				<div class="col-md-4 feed">
 					<h4 class="feed-header">Publiclab</h4>
 					<div class="event publiclab-event">
   <div class="thumbnail">

@@ -3,13 +3,4 @@
 # Usage: 
 # 	scripts/github
 
-limit=5
-events="Issues|Push|CommitComment|Create|Gist|IssueComment|PullRequest|ReleaseEvent"
-githubUrl="https://github.com/manleyjster.private.actor.atom?token=f6728524d3835a2cd3180dab9b758497"
-
-curl -u "manleyjster:$GITHUB_PASS" -K data/config/pass/github.txt $githubUrl \
-	| xsltproc --stringparam predicate $events scripts/xslt/github-prune.xslt - \
-	| xsltproc --stringparam num $limit scripts/xslt/github-limit.xslt - \
-	| sed 's/&lt;/</g' \
-	| sed 's/&gt;/>/g' \
-	> data/feeds/github.html
+nodejs scripts/js/github.js

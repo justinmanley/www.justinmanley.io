@@ -3,7 +3,8 @@ var fs 		= require("fs"),
 	xml2js 	= require("xml2js").parseString,
 	Q 		= require("q"),
 	yaml 	= require("js-yaml"),
-	htmlparser = require("htmlparser2");
+	htmlparser = require("htmlparser2"),
+	https = require("https");
 
 module.exports = {
 
@@ -56,6 +57,27 @@ module.exports = {
 		parser = new htmlparser.Parser(handler);
 		parser.write(htmlString);
 		parser.done();
+
+		return deferred.promise;
+	},
+
+	get: function(url) {
+		var deferred = Q.defer();
+
+		https.get(url, function(response) {
+			var data = [];
+
+			response.setEncoding('utf8');
+			response.on('data', function(chunk) {
+				data.push(chunk);
+			});
+			response.on('end', function() {
+				deferred.resolve(data.join(""));
+			});
+		})
+		.on('error', function(err) {
+			deferred.reject(err);
+		});
 
 		return deferred.promise;
 	}
