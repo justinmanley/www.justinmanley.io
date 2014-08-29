@@ -11,8 +11,7 @@ function generateFeed(events) {
 	return _.map(events, function(item) {
 
 		var event = root.ele('div', { class: "event publiclab-event"}),
-			time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
-			humanReadableTime = time.format(util.TIME_FORMAT)
+			humanReadableTime = niceTime(item[0].pubDate)
 
 		/* Get header image, if it exists. */
 		if (item[2][0].children[0].attribs) {
@@ -35,18 +34,43 @@ function generateFeed(events) {
 				.text(item[0].title);
 
 		return {
-			timestamp: time.format(),
-			html: event.toString({ pretty: true })
+			timestamp: moment(item[0].pubDate).format(),
+			html: event.toString({ pretty: true }),
+			article: generateArticle(item)
 		};
 	});
 }
 
+function generateArticle(item) {
+	var root = xmlbuilder.create('root'),
+		article = root.ele('div', { class: "article" });
+
+	article.ele('h3', { class: "article-title" })
+		.text(item[0].title);
+
+	article.ele('div', { class: "article-souce" })
+		.text('Posted on ')
+		.up()
+		.ele('a', { href: item[0].link })
+			.text('PublicLab.org.')
+
+	article.ele('div', { class: "article-date"})
+		.text(niceTime(item[0].pubDate));
+
+	article.ele('div', { class: "article-body" })
+		.raw(item[1]);
+
+	return article.toString({ pretty: true });
+}
+
+function niceTime(time) {
+	return moment(time, 'ddd Do MMM YYYY hh:mm:ss Z')
+		.format(util.TIME_FORMAT);
+}
+
 module.exports = {
-	feed: function() {
-		return util.readYAML('data/config/feedUrls.yml')
-			.then(function(config) {
-				return util.get(config.publiclab);
-			})
+	feed: function(config) {
+		return util.get(config.publiclab)
 			.then(util.parseXML)
 			.then(function(xml) {
 				var items = xml.rss.channel[0].item;

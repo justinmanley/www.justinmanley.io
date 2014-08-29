@@ -57,12 +57,17 @@ links:
 	</div>
 	<div class="container-fluid" id="feeds">
 		<div class="row">
-			{{#compose src="<%= feeds %>"}}
+			{{#compose src="<%= feedConfig.dest.feed %>"}}
 				<div class="col-md-4 feed">
-					<h4 class="feed-header">{{@title}}</h4>
 					{{{@content}}}
 				</div>
-			{{/compose}}			
+			{{/compose}}
+
+			{{#compose src="<%= feedConfig.dest.article %>"}}
+				<div class="col-md-8 feed">
+					{{{@content}}}
+				</div>
+			{{/compose}}					
 		</div>
 	</div><!-- #feeds -->
 </html>

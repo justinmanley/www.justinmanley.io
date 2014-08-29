@@ -36,17 +36,37 @@ function generateFeed(xml) {
 
 		return {
 			timestamp: time.format(), 
-			html: event.toString({ pretty: true })
+			html: event.toString({ pretty: true }),
+			article: generateArticle(item)
 		};
 	});
 }
 
+function generateArticle(item) {
+	var root = xmlbuilder.create('root'),
+		article = root.ele('div', { class: "article" });
+
+	article.ele('h3', { class: "article-title" })
+		.text(item.title[0]._);
+
+	article.ele('div', { class: "article-source" })
+		.text('Originally published on ')
+		.up()
+		.ele('a', { href: item.link[0].$.href })
+			.text(' Out of the Yards');
+
+	article.ele('div', { class: "article-date" })
+		.text(moment(item.published[0]).format(util.TIME_FORMAT));
+
+	article.ele('div', { class: "article-body" })
+		.raw(item.content[0]._);
+
+	return article.toString({ pretty: true });
+}
+
 module.exports = {
-	feed: function() {
-		return util.readYAML('data/config/feedUrls.yml')
-			.then(function(config) {
-				return util.get(config.outoftheyards)
-			})
+	feed: function(config) {
+		return util.get(config.outoftheyards)
 			.then(util.parseXML)
 			.then(generateFeed);
 	}

@@ -16,11 +16,8 @@ function generateFeed(items) {
 }
 
 module.exports = {
-	feed: function() {
-		return util.readYAML('data/config/feedUrls.yml') 
-			.then(function(config) {
-				return util.get(config.github);
-			})
+	feed: function(config) {
+		return util.get(config.github)
 			.then(util.parseXML)
 			.then(function(data) {
 				return generateFeed(data.feed.entry);

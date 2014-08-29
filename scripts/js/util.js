@@ -36,6 +36,10 @@ module.exports = {
 		return deferred.promise;
 	},
 
+	writeFile: function(filename, data) {
+		return Q.nfcall(fs.writeFile, filename, data, 'utf8' );
+	},
+
 	readYAML: function(filename) {
 		return Q.nfcall(fs.readFile, filename, 'utf-8')
 			.then(function(yamlString) {
