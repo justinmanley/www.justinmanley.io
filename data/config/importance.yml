@@ -1,0 +1,15 @@
+github:
+    1: 
+        - issues
+        - gist
+        - create
+        - deployment
+        - pullrequest
+        - pullrequestreviewcomment
+        - issuecomment
+        - release
+        - teamadd
+        - push
+outoftheyards: 3
+publiclab: 2
+

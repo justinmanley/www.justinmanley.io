@@ -1,16 +1,11 @@
 #!/usr/bin/node
 
-var Q 		= require('q'),
-	_ 		= require('lodash'),
-	util 	= require('./util');
+var Q 			= require('q'),
+	_ 			= require('lodash'),
+	util 		= require('./util'),
+	interleave 	= require('./interleave');
 
 Q.longStackSupport = true;
-
-function interleaveFeeds(feeds) {
-	return _.chain(feeds)
-		.flatten()
-		.value();
-}
 
 function feedToHTML(feed) {
 	return _.chain(feed)
@@ -39,7 +34,7 @@ util.readYAML('data/config/feedConfig.yml')
 		return Q.all(_.map(feeds, function(feed) { 
 				return feed.generate(config.src[feed.name], feed.name); 
 			}))
-			.then(interleaveFeeds)
+			.then(interleave)
 			.then(function(events) {
 				var writers = [
 					util.writeFile(config.dest.feed, feedToHTML(events)),
