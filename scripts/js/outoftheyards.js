@@ -49,14 +49,13 @@ function generateArticle(item) {
 	article.ele('h3', { class: "article-title" })
 		.text(item.title[0]._);
 
-	article.ele('div', { class: "article-source" })
-		.text('Originally published on ')
-		.up()
-		.ele('a', { href: item.link[0].$.href })
-			.text(' Out of the Yards');
-
 	article.ele('div', { class: "article-date" })
 		.text(moment(item.published[0]).format(util.TIME_FORMAT));
+
+	article.ele('div', { class: "article-source" })
+		.text('Originally published on ')
+		.ele('a', { href: item.link[0].$.href })
+			.text(' Out of the Yards');
 
 	article.ele('div', { class: "article-body" })
 		.raw(item.content[0]._);

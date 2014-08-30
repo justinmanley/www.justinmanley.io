@@ -6,7 +6,7 @@ var Twitter 	= require('ntwitter'),
 
 var params = {
 	screen_name: 'outoftheyards',
-	count: 1
+	count: 10
 };
 
 function generateFeed(tweets) {

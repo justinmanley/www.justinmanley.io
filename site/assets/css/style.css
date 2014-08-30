@@ -1,17 +1,30 @@
+/* Variables */
+/* Fonts */
 @font-face {
-  font-family: Linden Hill;
-  src: url('../bower_components/font-linden-hill/webfonts/LindenHill-webfont.ttf');
+  font-family: 'Sorts Mill Goudy';
+  src: url('../bower_components/font-sorts-mill-goudy/OFLGoudyStM.otf'), url('../bower_components/font-sorts-mill-goudy/OFLGoudyStMTT.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-  font-family: Chunk;
+  font-family: 'Linden Hill';
+  src: url('../bower_components/font-linden-hill/Linden Hill.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Chunk';
   src: url('../bower_components/font-chunk/Chunk Five Print.otf');
+  src: url('../bower_components/font-chunk/Chunk Five Print.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 html,
 body {
   margin: 0;
 }
 h2 {
-  font-family: "Chunk";
+  font-family: 'Chunk';
   font-weight: normal;
   font-size: 2.5em;
   text-align: center;
@@ -22,7 +35,8 @@ h2 {
     display: inline-block;
     float: none;
     vertical-align: top;
-    font-family: "Linden Hill";
+    margin-bottom: 40px;
+    font-family: 'Sorts Mill Goudy';
     font-size: 16px;
   }
   .navbar .navbar-collapse {
@@ -30,49 +44,48 @@ h2 {
   }
 }
 #header {
-  font-family: "Linden Hill";
+  font-family: 'Sorts Mill Goudy';
   text-align: center;
   font-size: 1.5em;
   width: 600px;
   margin: 0 auto;
 }
-#feeds {
-  width: 100%;
-  height: 100px;
-}
-#feeds .row {
+.row {
   margin: 0 5%;
 }
-#feeds .feed {
+.feed {
   padding: 0 40px;
 }
-#feeds .event:hover {
+.event {
+  padding: 10px;
+}
+.event:hover {
   background-color: #f2f2f2;
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
 }
-#feeds .github-event {
+.github-event {
   padding-left: 45px;
 }
-#feeds .github-event .mega-octicon {
+.github-event .mega-octicon {
   position: absolute;
   display: inline-block;
-  left: 15px;
+  left: 45px;
   color: #bbbbbb;
 }
-#feeds .github-event .gravatar {
+.github-event .gravatar {
   display: none;
 }
-#feeds .github-event ul {
+.github-event ul {
   padding-left: 0;
 }
-#feeds .github-event li {
+.github-event li {
   list-style-type: none;
 }
-#feeds .github-event .message {
+.github-event .message {
   display: inline;
 }
-#feeds .github-event .message blockquote {
+.github-event .message blockquote {
   color: #666;
   margin: 0;
   border: 0;
@@ -82,11 +95,14 @@ h2 {
   padding-botom: 3px;
   font-size: 13px;
 }
-#feeds .publiclab-event {
+.github-event .details {
+  display: none;
+}
+.publiclab-event {
   padding-left: 100px;
   margin-bottom: 20px;
 }
-#feeds .publiclab-event .thumbnail {
+.publiclab-event .thumbnail {
   position: absolute;
   display: inline-block;
   left: 0px;
@@ -96,8 +112,22 @@ h2 {
   box-shadow: none;
   background-color: transparent;
 }
-#feeds .publiclab-event .thumbnail img {
+.publiclab-event .thumbnail img {
   border-image-width: 0;
+}
+.brand {
+  margin-top: 25px;
+}
+.article {
+  font-family: 'Sorts Mill Goudy';
+}
+.article .article-title {
+  font-size: 3em;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+.article p {
+  font-size: 1.5em;
 }
 .feed-header {
   text-align: center;

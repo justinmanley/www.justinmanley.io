@@ -48,14 +48,14 @@ function generateArticle(item) {
 	article.ele('h3', { class: "article-title" })
 		.text(item[0].title);
 
+	article.ele('div', { class: "article-date"})
+		.text(niceTime(item[0].pubDate));
+
 	article.ele('div', { class: "article-souce" })
 		.text('Posted on ')
 		.up()
 		.ele('a', { href: item[0].link })
 			.text('PublicLab.org.')
-
-	article.ele('div', { class: "article-date"})
-		.text(niceTime(item[0].pubDate));
 
 	article.ele('div', { class: "article-body" })
 		.raw(item[1]);

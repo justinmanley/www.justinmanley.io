@@ -14,7 +14,7 @@ links:
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8"/>
+		<meta charset="utf-8"/>
 
 		<!-- GitHub icons and styles -->
 		<link rel="stylesheet" href="{{include.css.octicons}}"/>
@@ -34,10 +34,10 @@ links:
 		<link rel="stylesheet" href="{{assets}}/css/style.css"/>
 	</head>
 	<body>
-		
 	</body>
 	<div id="header">
-		{{#markdown}} {{> body }} {{/markdown}}
+		<h2 class="brand">Justin Manley</h2>
+		<p>Coder, mapmaker, aspiring architecture critic, currently a student at the University of Chicago. I write about cities at <a href="http://outoftheyards.com.">outoftheyards.com</a>.</p>	
 	</div>
 	<div class="navbar" role="navigation">
 		<div class="container-fluid">
@@ -55,19 +55,5 @@ links:
 			</div>
 		</div>
 	</div>
-	<div class="container-fluid" id="feeds">
-		<div class="row">
-			{{#compose src="<%= feedConfig.dest.feed %>"}}
-				<div class="col-md-4 feed">
-					{{{@content}}}
-				</div>
-			{{/compose}}
-
-			{{#compose src="<%= feedConfig.dest.article %>"}}
-				<div class="col-md-8 feed">
-					{{{@content}}}
-				</div>
-			{{/compose}}					
-		</div>
-	</div><!-- #feeds -->
+	{{> body }}
 </html>
