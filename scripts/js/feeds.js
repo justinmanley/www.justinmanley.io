@@ -25,24 +25,51 @@ function articleToHTML(feed) {
 		.article;
 }
 
-util.readYAML('data/config/feedConfig.yml')
-	.then(function(config) {
-		var feeds = _.map(_.keys(config.src), function(src) { 
-				return { name: src, generate: require('./' + src) }; 
-			});
+Q.all([
+		util.readYAML('data/config/feedConfig.yml'),
+		util.readYAML('data/config/importance.yml')
+	])
+	.then(function(configurations) {
+		var config = initConfig(configurations),
+			dest = configurations[0].dest,
+			feeds;
+
+		/* Require the corresponding transformer for each feed in the configuration. */
+		feeds = _.map(_.keys(config), function(src) { 
+			return { name: src, generate: require('./' + src) }; 
+		});
 
 		return Q.all(_.map(feeds, function(feed) { 
-				return feed.generate(config.src[feed.name], feed.name); 
-			}))
-			.then(interleave)
-			.then(function(events) {
-				var writers = [
-					util.writeFile(config.dest.feed, feedToHTML(events)),
-					util.writeFile(config.dest.article, articleToHTML(events))
-				];
-
-				return Q.all(writers);
+				return feed.generate(config[feed.name]); 
 			})
-			.done();
+		)
+		.then(function(feeds) { return _.flatten(feeds); })
+		.then(function(feed) {
+			return interleave(feed)
+				.then(function(randomizedFeed) {
+					var writers = [
+						util.writeFile(dest.feed, feedToHTML(randomizedFeed)),
+						util.writeFile(dest.article, articleToHTML(feed))
+					];
+
+					return Q.all(writers);
+				})
+		})
+		.done();
 	})
 	.done();
+
+/* Merge configuration files. */
+function initConfig(configurations) {
+	var config = {};
+
+	_.each(configurations[0].src, function(url, name) {
+		config[name] = {
+			url: url,
+			importance: configurations[1][name],
+			name: name
+		};
+	});
+
+	return config;
+}

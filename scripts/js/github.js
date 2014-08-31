@@ -16,10 +16,10 @@ function generateEvent(item) {
 	};
 }
 
-module.exports = function(url, feedType) {
-	return util.get(url)
+module.exports = function(config) {
+	return util.get(config.url)
 		.then(util.parseXML)
 		.then(function(data) {
-			return generateFeed(data.feed.entry, feedType, generateEvent);
+			return generateFeed(data.feed.entry, config.name, generateEvent);
 		});		
 }

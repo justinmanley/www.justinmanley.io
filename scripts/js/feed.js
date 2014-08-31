@@ -18,3 +18,7 @@ module.exports = function(items, feedType, transform) {
 		return eventInfo;
 	});
 }
+
+function calculateImportance() {
+	
+}

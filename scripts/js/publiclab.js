@@ -61,8 +61,8 @@ function niceTime(time) {
 		.format(util.TIME_FORMAT);
 }
 
-module.exports = function(url, feedType) {
-	return util.get(url)
+module.exports = function(config) {
+	return util.get(config.url)
 		.then(util.parseXML)
 		.then(function(xml) {
 			var items = xml.rss.channel[0].item;
@@ -73,7 +73,7 @@ module.exports = function(url, feedType) {
 				.then(function(htmls) {
 					return Q.all(_.map(htmls, util.parseHTML))
 					.then(function(doms) {
-						return generateFeed(_.zip(items, htmls, doms), feedType, generateEvent);
+						return generateFeed(_.zip(items, htmls, doms), config.name, generateEvent);
 					});
 				});
 		});
