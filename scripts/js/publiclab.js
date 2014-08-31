@@ -9,14 +9,6 @@ function generateEvent(item) {
 	var time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
 		humanReadableTime = time.format(util.TIME_FORMAT);
 
-	/* Get header image, if it exists. */
-	if (item[2][0].children[0].attribs) {
-		var src = item[2][0].children[0].attribs.src;
-		this.event
-			.ele('div', { class: "thumbnail" })
-			.ele('img', { src: src });
-	}
-
 	this.event.ele('div', { class: "time" })
 		.text(humanReadableTime);
 
