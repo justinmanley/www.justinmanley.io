@@ -6,7 +6,8 @@ var	_ 				= require("lodash"),
 	generateFeed	= require("./feed");
 
 function generateEvent(item) {
-	var humanReadableTime = niceTime(item[0].pubDate)
+	var time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
+		humanReadableTime = time.format(util.TIME_FORMAT);
 
 	/* Get header image, if it exists. */
 	if (item[2][0].children[0].attribs) {
@@ -29,20 +30,22 @@ function generateEvent(item) {
 			.text(item[0].title);
 
 	return {
-		timestamp: moment(item[0].pubDate).format(),
+		timestamp: time.format(),
 		article: generateArticle(item)
 	};
 }
 
 function generateArticle(item) {
 	var root = xmlbuilder.create('root'),
-		article = root.ele('div', { class: "article" });
+		article = root.ele('div', { class: "article" }),
+		time = moment(time, 'ddd Do MMM YYYY hh:mm:ss Z'),
+		humanReadableTime = time.format(util.TIME_FORMAT);		
 
 	article.ele('h3', { class: "article-title" })
 		.text(item[0].title);
 
 	article.ele('div', { class: "article-date"})
-		.text(niceTime(item[0].pubDate));
+		.text(humanReadableTime);
 
 	article.ele('div', { class: "article-souce" })
 		.text('Posted on ')
@@ -54,11 +57,6 @@ function generateArticle(item) {
 		.raw(item[1]);
 
 	return article.toString({ pretty: true });
-}
-
-function niceTime(time) {
-	return moment(time, 'ddd Do MMM YYYY hh:mm:ss Z')
-		.format(util.TIME_FORMAT);
 }
 
 module.exports = function(config) {
