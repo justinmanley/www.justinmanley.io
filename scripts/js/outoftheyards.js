@@ -14,11 +14,11 @@ function generateEvent(item) {
 		humanReadableTime = time.format(util.TIME_FORMAT),
 		summary = item.summary[0]._.replace('[&#8230;]', ' &#8230;')
 
-	event.ele('div', { class: 'time' })
+	this.event.ele('div', { class: 'time' })
 		.text(humanReadableTime);
 
 
-	event.ele('div', { class: 'title' })
+	this.event.ele('div', { class: 'title' })
 		.ele('a', { href: 'http://outoftheyards.com' })
 			.text('justinmanley')
 			.up()
@@ -28,13 +28,11 @@ function generateEvent(item) {
 		.ele('a', { href: item.link[0].$.href })
 			.text(entity.decode(item.title[0]._));
 
-	event.ele('div', { class: "details" })
+	this.event.ele('div', { class: "details" })
 		.text(entity.decode(summary));
 
 	return {
-		type: this.feedType,
 		timestamp: time.format(), 
-		html: event.toString({ pretty: true }),
 		article: generateArticle(item)
 	};
 }

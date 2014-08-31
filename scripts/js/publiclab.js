@@ -11,15 +11,15 @@ function generateEvent(item) {
 	/* Get header image, if it exists. */
 	if (item[2][0].children[0].attribs) {
 		var src = item[2][0].children[0].attribs.src;
-		event
+		this.event
 			.ele('div', { class: "thumbnail" })
 			.ele('img', { src: src });
 	}
 
-	event.ele('div', { class: "time" })
+	this.event.ele('div', { class: "time" })
 		.text(humanReadableTime);
 
-	event.ele('div', { class: "title" })
+	this.event.ele('div', { class: "title" })
 		.ele('a', { href: "http://publiclab.org/profile/justinmanley" })
 			.text(item[0].author)
 			.up()
@@ -29,9 +29,7 @@ function generateEvent(item) {
 			.text(item[0].title);
 
 	return {
-		type: this.feedType,
 		timestamp: moment(item[0].pubDate).format(),
-		html: event.toString({ pretty: true }),
 		article: generateArticle(item)
 	};
 }

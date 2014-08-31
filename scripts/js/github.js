@@ -12,9 +12,7 @@ function generateEvent(item) {
 	this.event.raw(item.content[0]._);
 
 	return {
-		type: this.feedType,
 		timestamp: moment(updated).format(),
-		html: this.event.toString({ pretty: true })
 	};
 }
 
