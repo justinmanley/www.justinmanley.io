@@ -53,15 +53,15 @@ function generateArticle(item) {
 			.text(' Out of the Yards');
 
 	article.ele('div', { class: "article-body" })
-		.raw(item.content[0]._);
+		.raw(entity.decode(item.content[0]._));
 
 	return article.toString({ pretty: true });
 }
 
-module.exports = function(url, feedType) {
-	return util.get(url)
+module.exports = function(config) {
+	return util.get(config.url)
 		.then(util.parseXML)
 		.then(function(xml) {
-			return generateFeed(xml.feed.entry, feedType, generateEvent);
+			return generateFeed(xml.feed.entry, config.name, generateEvent);
 		});
 }

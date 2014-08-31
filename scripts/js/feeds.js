@@ -45,7 +45,7 @@ Q.all([
 		)
 		.then(function(feeds) { return _.flatten(feeds); })
 		.then(function(feed) {
-			return interleave(feed)
+			return Q.fcall(interleave, feed, config)
 				.then(function(randomizedFeed) {
 					var writers = [
 						util.writeFile(dest.feed, feedToHTML(randomizedFeed)),

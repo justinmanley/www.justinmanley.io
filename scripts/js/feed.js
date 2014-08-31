@@ -8,7 +8,7 @@ module.exports = function(items, feedType, transform) {
 	return _.map(items, function(item) {
 		var eventInfo;
 
-		this.event = root.ele('div', { class: "event " + feedType + "-event <%= %>"});
+		this.event = root.ele('div', { class: "event " + feedType + "-event"});
 
 		/* Call the source-specific feed transformer function. */
 		eventInfo = transform.call(this, item);
@@ -20,5 +20,5 @@ module.exports = function(items, feedType, transform) {
 }
 
 function calculateImportance() {
-	
+
 }
