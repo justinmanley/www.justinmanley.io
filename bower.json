@@ -9,6 +9,7 @@
 		"font-chunk": "theleagueof/chunk",
 		"font-linden-hill": "theleagueof/linden-hill",
 		"font-sorts-mill-goudy": "theleagueof/sorts-mill-goudy",
+		"font-awesome": "FortAwesome/Font-Awesome",
 		"socket-io": "Automattic/socket.io#1.0.6",
 		"socket-io-client": "Automattic/socket.io-client#1.0.6"
 	}

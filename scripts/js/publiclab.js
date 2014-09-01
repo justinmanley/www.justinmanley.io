@@ -39,7 +39,7 @@ function generateArticle(item) {
 	article.ele('div', { class: "article-date"})
 		.text(humanReadableTime);
 
-	article.ele('div', { class: "article-souce" })
+	article.ele('div', { class: "article-source" })
 		.text('Posted on ')
 		.up()
 		.ele('a', { href: item[0].link })

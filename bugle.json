@@ -5,14 +5,13 @@
 		"engine": "handlebars",
 		"data": "data/config/*.yml",
 		"layoutdir": "src/templates/layouts",
-		"helpers": ["handlebars-helper-compose", "~/prog/handlebars-helpers"]
+		"helpers": ["handlebars-helper-compose", "helper-moment"]
 	},
 	"markdown": {
 		"options": {
 			"ext": ".html",
 			"layout": "page.hbs",
-			"flatten": true,
-			"feeds": "data/feeds/*.html"
+			"flatten": true
 		},
 		"files": {
 			"site/": ["src/**.md"]

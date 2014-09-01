@@ -3,6 +3,7 @@ css:
     octicons:           <%= bower %>/octicons/octicons/octicons.css
     bootstrap:          <%= bower %>/bootstrap/dist/css/bootstrap.min.css
     bootstrapTheme:     <%= bower %>/bootstrap/dist/css/bootstrap-theme.css
+    fontAwesome:		<%= bower %>/font-awesome/css/font-awesome.min.css
 js: 
     jquery:             <%= bower %>/jquery/dist/jquery.min.js
     bootstrap:          <%= bower %>/bootstrap/dist/js/bootstrap.min.js

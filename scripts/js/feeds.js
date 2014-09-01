@@ -26,7 +26,7 @@ function articleToHTML(feed) {
 }
 
 Q.all([
-		util.readYAML('data/config/feedConfig.yml'),
+		util.readYAML('data/config/feeds.yml'),
 		util.readYAML('data/config/importance.yml')
 	])
 	.then(function(configurations) {

@@ -19,6 +19,8 @@
   font-weight: normal;
   font-style: normal;
 }
+/* Mixins */
+/* Styles */
 html,
 body {
   margin: 0;
@@ -50,6 +52,18 @@ h2 {
   width: 600px;
   margin: 0 auto;
 }
+#header h2 a {
+  color: #333333;
+}
+#header h2 a:hover {
+  text-decoration: none;
+}
+#header h2 a:hover {
+  color: #666666;
+}
+/*
+ * Dynamically interleaved feed
+ */
 .row {
   margin: 0 5%;
 }
@@ -58,14 +72,12 @@ h2 {
 }
 .event {
   padding: 10px;
+  padding-left: 45px;
 }
 .event:hover {
   background-color: #f2f2f2;
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
-}
-.github-event {
-  padding-left: 45px;
 }
 .github-event .mega-octicon {
   position: absolute;
@@ -98,23 +110,6 @@ h2 {
 .github-event .details {
   display: none;
 }
-.publiclab-event {
-  padding-left: 100px;
-  margin-bottom: 20px;
-}
-.publiclab-event .thumbnail {
-  position: absolute;
-  display: inline-block;
-  left: 0px;
-  border: 0;
-  max-height: 100px;
-  max-width: 100px;
-  box-shadow: none;
-  background-color: transparent;
-}
-.publiclab-event .thumbnail img {
-  border-image-width: 0;
-}
 .brand {
   margin-top: 25px;
 }
@@ -131,4 +126,33 @@ h2 {
 }
 .feed-header {
   text-align: center;
+}
+footer {
+  border-top: 1px solid #e6e6e6;
+  color: #959595;
+}
+footer .social-media {
+  width: 350px;
+  margin: 30px auto;
+  text-align: center;
+}
+footer .social-media a {
+  font-size: 1.3em;
+  color: #bbbbbb;
+}
+footer .social-media a:hover {
+  text-decoration: none;
+}
+footer .social-media a:hover {
+  color: #888888;
+}
+footer .social-media .fa {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 2em;
+}
+footer .attributions {
+  width: 350px;
+  margin: 30px auto;
+  text-align: justify;
 }

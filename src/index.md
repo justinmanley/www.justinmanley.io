@@ -4,13 +4,13 @@ template: page.hbs
 
 <div class="container-fluid">
 	<div class="row">
-		{{#compose src="<%= feedConfig.dest.feed %>"}}
+		{{#compose src="<%= feeds.dest.feed %>"}}
 			<div class="col-md-4 feed">
 				{{{@content}}}
 			</div>
 		{{/compose}}
 
-		{{#compose src="<%= feedConfig.dest.article %>"}}
+		{{#compose src="<%= feeds.dest.article %>"}}
 			<div class="col-md-8 feed">
 				{{{@content}}}
 			</div>

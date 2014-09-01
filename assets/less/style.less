@@ -1,6 +1,9 @@
 /* Variables */
-@font-signage: 		'Chunk';
-@font-serif:		'Sorts Mill Goudy';
+@font-signage: 			'Chunk';
+@font-serif:			'Sorts Mill Goudy';
+@divider-color:			#e6e6e6;
+@subtle-icon-color: 	#bbb;
+@subtle-text-color: 	darken(@subtle-icon-color, 15%);
 
 /* Fonts */
 @font-face {
@@ -29,7 +32,19 @@
     font-style: normal;
 }
 
+/* Mixins */
+.link(@base-color) {
+	color: @base-color;
+	&:hover { text-decoration: none; }
+	&:hover when (lightness(@base-color) > 50%) {
+		color: darken(@base-color, 20%);
+	}
+	&:hover when (lightness(@base-color) <= 50%) {
+		color: lighten(@base-color, 20%);
+	} 	
+}
 
+/* Styles */
 html, body {
 	margin: 0;
 }
@@ -65,6 +80,8 @@ h2 {
 
 	width: 600px;
 	margin: 0 auto;
+
+	h2 a { .link(#333); }
 }
 
 
@@ -79,8 +96,8 @@ h2 {
 	padding-left: 45px;
 	&:hover {
 		background-color: #f2f2f2;
-		border-top: 1px solid #e6e6e6;
-		border-bottom: 1px solid #e6e6e6;
+		border-top: 1px solid @divider-color;
+		border-bottom: 1px solid @divider-color;
 	}
 }
 
@@ -89,7 +106,7 @@ h2 {
 		position: absolute;
 		display: inline-block;
 		left: 45px;
-		color: rgb(187, 187, 187)
+		color: @subtle-icon-color;
 	}
 	.gravatar { display: none; }
 	ul { padding-left: 0; }
@@ -126,4 +143,32 @@ h2 {
 
 .feed-header {
 	text-align: center;
+}
+
+.footer-content() {
+	width: 350px;
+	margin: 30px auto;
+}
+
+footer {
+	border-top: 1px solid @divider-color;
+	color: @subtle-text-color;
+	.social-media {
+		.footer-content();
+		text-align: center;	
+		a {
+			color: @subtle-icon-color;
+			font-size: 1.3em;
+			.link(@subtle-icon-color) 
+		}
+		.fa { 
+			padding-left: 10px;
+			padding-right: 10px;
+			font-size: 2em;
+		}
+	}
+	.attributions {
+		.footer-content();
+		text-align: justify;
+	}
 }
