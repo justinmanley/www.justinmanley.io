@@ -11,7 +11,7 @@ template: page.hbs
 		{{/compose}}
 
 		{{#compose src="<%= feeds.dest.article %>"}}
-			<div class="col-md-8 feed">
+			<div class="col-md-8 article">
 				{{{@content}}}
 			</div>
 		{{/compose}}				

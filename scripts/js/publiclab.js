@@ -9,7 +9,7 @@ function generateEvent(item) {
 	var time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
 		humanReadableTime = time.format(util.TIME_FORMAT);
 
-	this.event.ele('div', { class: "time" })
+	this.event.ele('time', { class: "time" })
 		.text(humanReadableTime);
 
 	this.event.ele('div', { class: "title" })
@@ -29,21 +29,22 @@ function generateEvent(item) {
 
 function generateArticle(item) {
 	var root = xmlbuilder.create('root'),
-		article = root.ele('div', { class: "article" }),
+		article = root.ele('article'),
 		time = moment(time, 'ddd Do MMM YYYY hh:mm:ss Z'),
 		humanReadableTime = time.format(util.TIME_FORMAT);		
 
 	article.ele('h3', { class: "article-title" })
 		.text(item[0].title);
 
-	article.ele('div', { class: "article-date"})
-		.text(humanReadableTime);
-
-	article.ele('div', { class: "article-source" })
-		.text('Posted on ')
-		.up()
+	article.ele('div', { class: "article-info"})
+		.ele('time', { class: "article-date"})
+			.text(humanReadableTime)
+			.up()
+		.ele('div', { class: "article-source" })
+			.text('Posted on ')
+			.up()
 		.ele('a', { href: item[0].link })
-			.text('PublicLab.org.')
+			.text('PublicLab.org.');
 
 	article.ele('div', { class: "article-body" })
 		.raw(item[1]);

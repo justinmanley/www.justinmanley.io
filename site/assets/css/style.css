@@ -20,11 +20,14 @@
   font-style: normal;
 }
 /* Mixins */
-/* Styles */
+/* 
+ * Styles 
+ */
 html,
 body {
   margin: 0;
 }
+/* Header */
 h2 {
   font-family: 'Chunk';
   font-weight: normal;
@@ -32,6 +35,7 @@ h2 {
   text-align: center;
   letter-spacing: 1px;
 }
+/* Center the navbar. */
 @media (min-width: 768px) {
   .navbar .navbar-nav {
     display: inline-block;
@@ -45,34 +49,39 @@ h2 {
     text-align: center;
   }
 }
-#header {
+.header {
   font-family: 'Sorts Mill Goudy';
   text-align: center;
   font-size: 1.5em;
   width: 600px;
   margin: 0 auto;
 }
-#header h2 a {
+.header h2 a {
   color: #333333;
 }
-#header h2 a:hover {
+.header h2 a:hover {
   text-decoration: none;
 }
-#header h2 a:hover {
+.header h2 a:hover {
   color: #666666;
 }
 /*
  * Dynamically interleaved feed
  */
-.row {
-  margin: 0 5%;
-}
 .feed {
   padding: 0 40px;
+}
+@media (min-width: 768px) {
+  .row {
+    margin: 0 5%;
+  }
 }
 .event {
   padding: 10px;
   padding-left: 45px;
+}
+.event .time {
+  color: #a2a2a2;
 }
 .event:hover {
   background-color: #f2f2f2;
@@ -110,26 +119,34 @@ h2 {
 .github-event .details {
   display: none;
 }
+.feed-header {
+  text-align: center;
+}
 .brand {
   margin-top: 25px;
 }
+/* Article */
 .article {
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 40px;
   font-family: 'Sorts Mill Goudy';
 }
 .article .article-title {
   font-size: 3em;
   margin-top: 0;
-  margin-bottom: 25px;
+}
+.article .article-info {
+  margin-bottom: 15px;
+  color: #a2a2a2;
 }
 .article p {
   font-size: 1.5em;
 }
-.feed-header {
-  text-align: center;
-}
+/* Footer */
 footer {
   border-top: 1px solid #e6e6e6;
-  color: #959595;
+  color: #a2a2a2;
 }
 footer .social-media {
   width: 350px;

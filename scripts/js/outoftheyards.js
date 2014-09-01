@@ -14,7 +14,7 @@ function generateEvent(item) {
 		humanReadableTime = time.format(util.TIME_FORMAT),
 		summary = item.summary[0]._.replace('[&#8230;]', ' &#8230;')
 
-	this.event.ele('div', { class: 'time' })
+	this.event.ele('time', { class: 'time' })
 		.text(humanReadableTime);
 
 
@@ -39,18 +39,19 @@ function generateEvent(item) {
 
 function generateArticle(item) {
 	var root = xmlbuilder.create('root'),
-		article = root.ele('div', { class: "article" });
+		article = root.ele('article');
 
 	article.ele('h3', { class: "article-title" })
 		.text(item.title[0]._);
 
-	article.ele('div', { class: "article-date" })
-		.text(moment(item.published[0]).format(util.TIME_FORMAT));
-
-	article.ele('div', { class: "article-source" })
-		.text('Originally published on ')
-		.ele('a', { href: item.link[0].$.href })
-			.text(' Out of the Yards');
+	article.ele('div', { class: "article-info" })
+		.ele('time', { class: "article-date" })
+			.text(moment(item.published[0]).format(util.TIME_FORMAT))
+			.up()
+		.ele('div', { class: "article-source" })
+			.text('Originally published on ')
+			.ele('a', { href: item.link[0].$.href })
+				.text(' Out of the Yards');
 
 	article.ele('div', { class: "article-body" })
 		.raw(entity.decode(item.content[0]._));
