@@ -2,7 +2,6 @@ github:
     1: 
         - issues
         - gist
-        - create
         - deployment
         - pullrequest
         - pullrequestreviewcomment
@@ -10,6 +9,6 @@ github:
         - release
         - teamadd
         - push
-outoftheyards: 3
-publiclab: 2
+outoftheyards: 4
+publiclab: 3
 

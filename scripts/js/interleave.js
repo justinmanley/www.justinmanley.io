@@ -27,16 +27,42 @@ var Interleave = function(feed, config, n) {
 _.merge(Interleave.prototype, {
 
 	getImportance: function(event) {
-		var importance;
+		var config = this._config[event.type].importance,
+			importance;
 
-		if (typeof this._config[event.type].importance === 'number') {
-			importance = this._config[event.type].importance;
-		} else {
-			/* Will need to make this more complex in order to handle GitHub. */
-			importance = 1;
+		if (typeof config === 'number') {
+			importance = config;
+		} else if (typeof config === 'object' ) {
+			importance = this.getImportanceByTag(event)
 		}
 
 		return importance;
+	},
+
+	getImportanceByTag: function(event) {
+		var config = this._config[event.type].importance,
+			importanceMap = {},
+			tagsNum = 0,
+			total;
+
+		/* Create hashmap of tag / importance pairs. */
+		_.each(config, function(tags, rating) {
+			_.each(tags, function(tag) {
+				importanceMap[tag] = rating;
+			});
+		});
+
+		total = _.reduce(importanceMap, function(result, num, key) {
+			if (_.contains(event.tags, key)) {
+				tagsNum += 1;
+				return result + num;
+			} else {
+				return result;
+			}
+		}, 0);
+
+		/* Check to see if tagsNum === 0 (don't want to divide by zero) */
+		return tagsNum ? total / tagsNum : 0;
 	},
 
 	select: function(event) {

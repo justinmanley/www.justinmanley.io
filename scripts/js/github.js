@@ -13,7 +13,15 @@ function generateEvent(item) {
 
 	return {
 		timestamp: moment(updated).format(),
+		tags: readTags(item)
 	};
+}
+
+function readTags(item) {
+	var eventType = /:([a-zA-Z]*)Event\/\d*$/,
+		result = eventType.exec(item.id);
+
+	return result ? [result[1].toLowerCase()] : [];
 }
 
 module.exports = function(config) {
