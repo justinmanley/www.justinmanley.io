@@ -90,11 +90,11 @@ _.merge(Interleave.prototype, {
 	normalizeImportance: function(feed) {
 		var that = this,
 			max = _.chain(feed)
-			.map(function(event) {
-				return that.getImportance(event);
-			})
-			.max()
-			.value();
+				.map(function(event) {
+					return that.getImportance(event);
+				})
+				.max()
+				.value();
 
 		return _.map(feed, function(event) {
 			event.importance = that.getImportance(event) / max;

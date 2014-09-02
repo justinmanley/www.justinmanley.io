@@ -3,53 +3,24 @@ var	_ 				= require("lodash"),
 	Q 				= require("q"),
 	moment			= require("moment"),
 	util 			= require("./util"),
-	generateFeed	= require("./feed");
+	generateHTML	= require("./html");
 
-function generateEvent(item) {
-	var time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z'),
-		humanReadableTime = time.format(util.TIME_FORMAT);
-
-	this.event.ele('time', { class: "time" })
-		.text(humanReadableTime);
-
-	this.event.ele('div', { class: "title" })
-		.ele('a', { href: "http://publiclab.org/profile/justinmanley" })
-			.text(item[0].author)
-			.up()
-		.ele('span').text(" published ")
-			.up()
-		.ele('a', { href: item[0].link })
-			.text(item[0].title);
+function getContent(item) {
+	var time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z');
 
 	return {
-		timestamp: time.format(),
-		article: generateArticle(item)
+		timestamp: 	time.format(),
+		srcLink: 	'http://publiclab.org/profile/justinmanley',
+		src: 		'Public Lab',
+		verb: 		'posted',
+		link: 		item[0].link,
+		title: 		item[0].title,
+		body: 		item[1],
+		username: 	'justinmanley',
+		
+		article: 	true,
+		event: 		true
 	};
-}
-
-function generateArticle(item) {
-	var root = xmlbuilder.create('root'),
-		article = root.ele('article'),
-		time = moment(time, 'ddd Do MMM YYYY hh:mm:ss Z'),
-		humanReadableTime = time.format(util.TIME_FORMAT);		
-
-	article.ele('h3', { class: "article-title" })
-		.text(item[0].title);
-
-	article.ele('div', { class: "article-info"})
-		.ele('time', { class: "article-date"})
-			.text(humanReadableTime)
-			.up()
-		.ele('div', { class: "article-source" })
-			.text('Posted on ')
-			.up()
-		.ele('a', { href: item[0].link })
-			.text('PublicLab.org.');
-
-	article.ele('div', { class: "article-body" })
-		.raw(item[1]);
-
-	return article.toString({ pretty: true });
 }
 
 module.exports = function(config) {
@@ -64,7 +35,7 @@ module.exports = function(config) {
 				.then(function(htmls) {
 					return Q.all(_.map(htmls, util.parseHTML))
 					.then(function(doms) {
-						return generateFeed(_.zip(items, htmls, doms), config.name, generateEvent);
+						return generateHTML(_.zip(items, htmls, doms), config.name, getContent);
 					});
 				});
 		});

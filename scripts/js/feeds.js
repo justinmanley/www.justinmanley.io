@@ -7,24 +7,6 @@ var Q 			= require('q'),
 
 Q.longStackSupport = true;
 
-function feedToHTML(feed) {
-	return _.chain(feed)
-		.first(10)
-		.foldl(function(feedString, event) {
-			return feedString + event.html;
-		}, '')
-		.value();
-}
-
-/* Gets the most recent article from the feed. */
-function articleToHTML(feed) {
-	return _.chain(feed)
-		.filter(function(event) { return event.article })
-		.first()
-		.value()
-		.article;
-}
-
 Q.all([
 		util.readYAML('data/config/feeds.yml'),
 		util.readYAML('data/config/importance.yml')
@@ -72,4 +54,22 @@ function initConfig(configurations) {
 	});
 
 	return config;
+}
+
+function feedToHTML(feed) {
+	return _.chain(feed)
+		.first(10)
+		.foldl(function(feedString, item) {
+			return feedString + item.event;
+		}, '')
+		.value();
+}
+
+/* Gets the most recent article from the feed. */
+function articleToHTML(feed) {
+	return _.chain(feed)
+		.filter(function(event) { return event.article })
+		.first()
+		.value()
+		.article;
 }

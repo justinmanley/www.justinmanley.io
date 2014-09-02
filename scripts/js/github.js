@@ -1,66 +1,26 @@
-var Q 				= require('q'),
-	_ 				= require('lodash'),
-	util 			= require('./util'),
+var util 			= require('./util'),
 	moment 			= require('moment'),
-	xmlbuilder 		= require('xmlbuilder'),
-	url 			= require('url'),
-	generateFeed	= require('./feed');
+	generateHTML	= require('./html');
 
-function generateEvent(item) {
-	var body,
-		title,
-		verb;
-
-	switch(item.type) {
-		case "PushEvent": 
-			body = item.payload.commits[0].body;
-			verb = " pushed to ";
-			break;
-		case "PullRequestEvent":
-			body = item.payload.pull_request.body;
-			verb = " opened pull request ";
-			break;
-		case "IssueCommentEvent":
-			body = item.payload.issue.body;
-			break;
-		case "IssuesEvent":
-			body = item.payload.issue.title;
-			verb = " opened issue ";
-			break;
-		default:
-			throw new Error(item.type + "s are not yet supported.");
-			break;
-	}
-
+function getContent(item) {
 	return {
-		body: body,
-		timestamp: moment(item.created_at).format(),
-		title: '',
-		tags: readTags(item)
+		timestamp: 	moment(item.updated[0]).format(),
+		tags: 		readTags(item),
+		event: 		this._event.raw(item.content[0]._)
 	};
 }
 
 function readTags(item) {
-	var eventType = /:([a-zA-Z]*)Event$/,
-		result = eventType.exec(item.type);
+	var eventType = /:([a-zA-Z]*)Event\/\d*$/,
+		result = eventType.exec(item.id);
 
 	return result ? [result[1].toLowerCase()] : [];
 }
 
 module.exports = function(config) {
-	var githubConfig = url.parse(config.url),
-		options = _.merge(githubConfig, { headers: { 
-			'user-agent': 'justinmanley.com',
-			'accept': 'application/vnd.github.v3+json'
-		}});
-
-	return util.get(options)
-		.then(JSON.parse)
+	return util.get(config.url)
+		.then(util.parseXML)
 		.then(function(data) {
-			return generateFeed(data, config.name, generateEvent);
-		});
-		// .then(util.parseXML)
-		// .then(function(data) {
-		// 	// return generateFeed(data.feed.entry, config.name, generateEvent);
-		// });		
+			return generateHTML(data.feed.entry, config.name, getContent);
+		});		
 }
