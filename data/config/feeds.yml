@@ -1,5 +1,5 @@
 src:
-    github:         https://github.com/manleyjster.private.actor.atom?token=f6728524d3835a2cd3180dab9b758497
+    github:         https://api.github.com/users/manleyjster/events
     outoftheyards:  http://www.outoftheyards.com/feed/atom/
     publiclab:      http://publiclab.org/feed/justinmanley.rss
 dest: 

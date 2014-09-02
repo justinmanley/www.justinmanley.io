@@ -26,9 +26,10 @@
 html,
 body {
   margin: 0;
+  color: #444444;
 }
 /* Header */
-h2 {
+.brand {
   font-family: 'Chunk';
   font-weight: normal;
   font-size: 2.5em;
@@ -57,16 +58,16 @@ h2 {
   margin: 0 auto;
 }
 .header h2 a {
-  color: #333333;
+  color: #444444;
 }
 .header h2 a:hover {
   text-decoration: none;
 }
 .header h2 a:hover {
-  color: #666666;
+  color: #777777;
 }
 /*
- * Dynamically interleaved feed
+ * Dynamically generated feed
  */
 .feed {
   padding: 0 40px;
@@ -83,10 +84,16 @@ h2 {
 .event .time {
   color: #a2a2a2;
 }
+.event .title {
+  color: #a2a2a2;
+}
+.event .title a {
+  color: #444444;
+}
 .event:hover {
   background-color: #f2f2f2;
-  border-top: 1px solid #e6e6e6;
-  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 .github-event .mega-octicon {
   position: absolute;
@@ -145,7 +152,7 @@ h2 {
 }
 /* Footer */
 footer {
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #e5e5e5;
   color: #a2a2a2;
 }
 footer .social-media {

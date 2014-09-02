@@ -5,6 +5,7 @@ var fs 			= require("fs"),
 	yaml 		= require("js-yaml"),
 	htmlparser 	= require("htmlparser2"),
 	http 		= require("http"),
+	urlHelper 	= require('url'),
 	https 		= require("https");
 
 module.exports = {
@@ -66,23 +67,23 @@ module.exports = {
 		return deferred.promise;
 	},
 
-	get: function(url) {
+	get: function(options) {
 		var deferred = Q.defer(),
-			protocol = url.slice(0, url.indexOf(":")),
+			protocol = typeof options === 'object' ? options.protocol : urlHelper.parse(options).protocol,
 			h;
 
 		switch(protocol) {
-			case 'https':
+			case 'https:':
 				h = https;
 				break;
-			case 'http':
+			case 'http:':
 				h = http;
 				break;
 			default:
 				throw new Error("Only http and https protocols are supported.");				
 		}
 
-		h.get(url, function(response) {
+		h.get(options, function(response) {
 			var data = [];
 
 			response.setEncoding('utf8');

@@ -1,9 +1,11 @@
 /* Variables */
-@font-signage: 			'Chunk';
-@font-serif:			'Sorts Mill Goudy';
-@divider-color:			#e6e6e6;
-@subtle-icon-color: 	#bbb;
-@subtle-text-color: 	darken(@subtle-icon-color, 10%);
+@font-signage: 				'Chunk';
+@font-serif:				'Sorts Mill Goudy';
+@text-color: 				#444;
+@subtle-icon-color: 		#bbb;
+@subtle-text-color: 		darken(@subtle-icon-color, 10%);
+@subtle-highlight-color:	#f2f2f2;
+@subtle-divider-color:		darken(@subtle-highlight-color, 5%);
 
 /* Fonts */
 @font-face {
@@ -49,10 +51,11 @@
  */
 html, body {
 	margin: 0;
+	color: @text-color; 
 }
 
 /* Header */
-h2 {
+.brand {
 	font-family: @font-signage;
 	font-weight: normal;
 	font-size: 2.5em;
@@ -85,12 +88,12 @@ h2 {
 	width: 600px;
 	margin: 0 auto;
 
-	h2 a { .link(#333); }
+	h2 a { .link(@text-color); }
 }
 
 
 /*
- * Dynamically interleaved feed
+ * Dynamically generated feed
  */
 .feed { padding: 0 40px; }
 @media (min-width: 768px) {
@@ -101,10 +104,12 @@ h2 {
 	padding: 10px;
 	padding-left: 45px;
 	.time { color: @subtle-text-color; }
+	.title { color: @subtle-text-color; }
+	.title a { color: @text-color }
 	&:hover {
-		background-color: #f2f2f2;
-		border-top: 1px solid @divider-color;
-		border-bottom: 1px solid @divider-color;
+		background-color: @subtle-highlight-color;
+		border-top: 1px solid @subtle-divider-color;
+		border-bottom: 1px solid @subtle-divider-color;
 	}
 }
 
@@ -170,7 +175,7 @@ h2 {
 }
 
 footer {
-	border-top: 1px solid @divider-color;
+	border-top: 1px solid @subtle-divider-color;
 	color: @subtle-text-color;
 	.social-media {
 		.footer-content();
