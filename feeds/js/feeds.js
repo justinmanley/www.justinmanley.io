@@ -31,7 +31,8 @@ Q.all([
 				.then(function(randomizedFeed) {
 					var writers = [
 						util.writeFile(dest.feed, feedToHTML(randomizedFeed)),
-						util.writeFile(dest.article, articleToHTML(feed))
+						util.writeFile(dest.article, articleToHTML(feed)),
+						util.writeFile(dest.archive, archiveToHTML(feed))
 					];
 
 					return Q.all(writers);
@@ -68,8 +69,17 @@ function feedToHTML(feed) {
 /* Gets the most recent article from the feed. */
 function articleToHTML(feed) {
 	return _.chain(feed)
-		.filter(function(event) { return event.article })
+		.filter(function(event) { return event.article; })
 		.first()
 		.value()
 		.article;
+}
+
+function archiveToHTML(feed) {
+	return _.chain(feed)
+		.filter(function(item) { return item.archive; })
+		.map(function(item) {
+			return item.archive; 
+		})
+		.value();
 }

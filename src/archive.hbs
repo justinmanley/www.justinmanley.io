@@ -1,0 +1,9 @@
+---
+template: page.hbs
+---
+
+<div>
+	{{#compose src="<%= feeds.dest.archive %>"}}
+		{{{@content}}}
+	{{/compose}}
+</div>

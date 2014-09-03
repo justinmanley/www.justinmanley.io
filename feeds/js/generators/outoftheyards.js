@@ -1,6 +1,6 @@
 var moment 			= require('moment'),
  	util  			= require('../util'),
- 	generateHTML 	= require('../html'),
+	generateHTML	= require('../htmlbuilders/htmlbuilder'),
 	HtmlEntities 	= require('html-entities').XmlEntities; 
 
 var entity = new HtmlEntities();	
@@ -18,7 +18,8 @@ function getContent(item) {
 
 		/* Content types to output */
 		article: 	true,
-		event: 		true
+		event: 		true,
+		archive: 	true
 	};
 }
 

@@ -3,7 +3,7 @@ var	_ 				= require("lodash"),
 	Q 				= require("q"),
 	moment			= require("moment"),
 	util 			= require("../util"),
-	generateHTML	= require("../html");
+	generateHTML	= require('../htmlbuilders/htmlbuilder');
 
 function getContent(item) {
 	var time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z');
@@ -19,7 +19,8 @@ function getContent(item) {
 		username: 	'justinmanley',
 		
 		article: 	true,
-		event: 		true
+		event: 		true,
+		archive: true
 	};
 }
 

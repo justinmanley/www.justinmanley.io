@@ -1,6 +1,6 @@
 var util 			= require('../util'),
 	moment 			= require('moment'),
-	generateHTML	= require('../html');
+	generateHTML	= require('../htmlbuilders/htmlbuilder');
 
 function getContent(item) {
 	return {

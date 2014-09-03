@@ -3,7 +3,7 @@ var	_ 			= require('lodash'),
 
 var	outputTypes = [ 'event', 'article', 'archive' ]
 	htmlGenerators = _.map(outputTypes, function(outputType) {
-		return { type: outputType, generate: require('./htmlbuilders/' + outputType) };
+		return { type: outputType, generate: require('./' + outputType) };
 	});
 
 /* Generate html content from a single raw data source. */
@@ -15,8 +15,8 @@ module.exports = function(items, src, transform) {
 
 		/* Set up different types of html builders. */
 		this._event = root.ele('div', { class: "event " + src + "-event"});
-		this._article = root.ele('article', { class: "article" });
-		this._archive = root.ele('div', { class: "archive" });
+		this._article = root.ele('article');
+		this._archive = root.ele('div', { class: "archive " + src + "-archive" });
 
 		/* Call the source-specific feed transformer function. */
 		eventInfo = _.merge(eventInfo, transform.call(this, item));

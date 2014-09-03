@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     				'src/**',
                     'templates/**',
                     'assets/less/*.less',
-                    'data/feeds/*.html'
+                    'feeds/**.html'
     			],
     			tasks: [ 
                     'newer:copy',

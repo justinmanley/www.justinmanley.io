@@ -3,7 +3,7 @@
 		"assets": "site/assets",
 		"bower": "assets/bower_components",
 		"engine": "handlebars",
-		"data": "data/config/*.yml",
+		"data": "config/*.yml",
 		"layoutdir": "src/templates/layouts",
 		"helpers": ["handlebars-helper-compose", "helper-moment"]
 	},
@@ -14,7 +14,7 @@
 			"flatten": true
 		},
 		"files": {
-			"site/": ["src/**.md"]
+			"site/": ["src/**.hbs", "src/**.md"]
 		}
 	}
 }

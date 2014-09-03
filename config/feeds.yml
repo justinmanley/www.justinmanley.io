@@ -5,3 +5,4 @@ src:
 dest: 
     feed: feeds/cache/feed.html
     article: feeds/cache/article.html
+    archive: feeds/cache/archive.html
