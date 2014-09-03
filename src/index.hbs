@@ -4,7 +4,7 @@ template: page.hbs
 
 <div class="container-fluid">
 	<div class="row">
-		{{#compose src="<%= feeds.dest.feed %>"}}
+		{{#compose src="<%= feeds.dest.event %>"}}
 			<div class="col-md-4 feed">
 				{{{@content}}}
 			</div>

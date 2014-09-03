@@ -27,16 +27,15 @@ Q.all([
 		)
 		.then(function(feeds) { return _.flatten(feeds); })
 		.then(function(feed) {
-			return Q.fcall(interleave, feed, config)
-				.then(function(randomizedFeed) {
-					var writers = [
-						util.writeFile(dest.feed, feedToHTML(randomizedFeed)),
-						util.writeFile(dest.article, articleToHTML(feed)),
-						util.writeFile(dest.archive, archiveToHTML(feed))
-					];
+			this._config = config;
 
-					return Q.all(writers);
-				})
+			var writers = _.map(dest, function(destination, type) {
+				util.writeFile(
+					destination, 
+					require('./htmlbuilders/' + type).serializeFeed.call(this, feed)
+				);
+			}, this);
+			return Q.all(writers);
 		})
 		.done();
 	})
@@ -55,31 +54,4 @@ function initConfig(configurations) {
 	});
 
 	return config;
-}
-
-function feedToHTML(feed) {
-	return _.chain(feed)
-		.first(10)
-		.foldl(function(feedString, item) {
-			return feedString + item.event;
-		}, '')
-		.value();
-}
-
-/* Gets the most recent article from the feed. */
-function articleToHTML(feed) {
-	return _.chain(feed)
-		.filter(function(event) { return event.article; })
-		.first()
-		.value()
-		.article;
-}
-
-function archiveToHTML(feed) {
-	return _.chain(feed)
-		.filter(function(item) { return item.archive; })
-		.map(function(item) {
-			return item.archive; 
-		})
-		.value();
 }

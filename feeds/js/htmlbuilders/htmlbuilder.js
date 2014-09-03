@@ -3,28 +3,34 @@ var	_ 			= require('lodash'),
 
 var	outputTypes = [ 'event', 'article', 'archive' ]
 	htmlGenerators = _.map(outputTypes, function(outputType) {
-		return { type: outputType, generate: require('./' + outputType) };
+		return { type: outputType, generate: require('./' + outputType).serializeItem };
 	});
 
 /* Generate html content from a single raw data source. */
-module.exports = function(items, src, transform) {
-	var root = xmlbuilder.create('root');
+module.exports = function(items, src, getContent) {
+	this.root = xmlbuilder.create('root');
 
 	return _.map(items, function(item) {
 		var eventInfo = { type: src };
 
-		/* Set up different types of html builders. */
-		this._event = root.ele('div', { class: "event " + src + "-event"});
-		this._article = root.ele('article');
-		this._archive = root.ele('div', { class: "archive " + src + "-archive" });
+		/* Set up top-level div for each output type. */
+		_.each(htmlGenerators, function(output) {
+			this["_" + output.type] = this.root.ele('div', { 
+				class: output.type + " " + src + "-" + output.type 
+			});
+		}, this);
 
 		/* Call the source-specific feed transformer function. */
-		eventInfo = _.merge(eventInfo, transform.call(this, item));
+		eventInfo = _.merge(eventInfo, getContent.call(this, item));
 
 		/* Writes each of the different requested types of output. */
 		_.each(htmlGenerators, function(output) {
 			if (eventInfo[output.type] === true) {
-				eventInfo[output.type] = output.generate.call(this, eventInfo);
+
+				/* Create HTML in this.container. */
+				output.generate.call(this, eventInfo);
+
+				eventInfo[output.type] = this["_" + output.type].toString({ pretty: true });
 			}
 		}, this);
 

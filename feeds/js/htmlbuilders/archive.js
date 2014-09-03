@@ -1,12 +1,25 @@
+// archive.js
+
 var moment 	= require('moment'),
+	_ 		= require('lodash'),
 	util 	= require('../util');
 
-module.exports = function(item) {
-	this._archive.ele('div', { class: "archive-title" })
-		.text(item.title);
+module.exports = {
 
-	this._archive.ele('time', { class: "archive-time" })
-		.text(moment(item.timestamp).format(util.TIME_FORMAT));
+	serializeFeed: function(feed) {
+		return _.chain(feed)
+			.filter(function(item) { return item.archive; })
+			.map(function(item) {
+				return item.archive; 
+			})
+			.value();
+	},
 
-	return this._archive.toString({ pretty: true });
+	serializeItem: function(item) {
+		this._archive.ele('div', { class: "archive-title" })
+			.text(item.title);
+
+		this._archive.ele('time', { class: "archive-time" })
+			.text(moment(item.timestamp).format(util.TIME_FORMAT));
+	}
 }

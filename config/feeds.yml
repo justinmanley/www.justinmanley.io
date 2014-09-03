@@ -3,6 +3,6 @@ src:
     outoftheyards:  http://www.outoftheyards.com/feed/atom/
     publiclab:      http://publiclab.org/feed/justinmanley.rss
 dest: 
-    feed: feeds/cache/feed.html
+    event: feeds/cache/feed.html
     article: feeds/cache/article.html
     archive: feeds/cache/archive.html
