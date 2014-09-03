@@ -3,7 +3,7 @@ var	_ 			= require('lodash'),
 
 var	outputTypes = [ 'event', 'article', 'archive' ]
 	htmlGenerators = _.map(outputTypes, function(outputType) {
-		return { type: outputType, generate: require('./' + outputType) };
+		return { type: outputType, generate: require('./htmlbuilders/' + outputType) };
 	});
 
 /* Generate html content from a single raw data source. */

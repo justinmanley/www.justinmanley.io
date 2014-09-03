@@ -1,7 +1,7 @@
 var Twitter 	= require('ntwitter'),
 	Q 			= require('q'),
 	_ 			= require('lodash'),
-	util 		= require('./util')
+	util 		= require('../util')
 	xmlbuilder 	= require('xmlbuilder');
 
 var params = {

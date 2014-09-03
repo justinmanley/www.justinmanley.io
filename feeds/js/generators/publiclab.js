@@ -2,8 +2,8 @@ var	_ 				= require("lodash"),
 	xmlbuilder 		= require("xmlbuilder"),
 	Q 				= require("q"),
 	moment			= require("moment"),
-	util 			= require("./util"),
-	generateHTML	= require("./html");
+	util 			= require("../util"),
+	generateHTML	= require("../html");
 
 function getContent(item) {
 	var time = moment(item[0].pubDate, 'ddd Do MMM YYYY hh:mm:ss Z');

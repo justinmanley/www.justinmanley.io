@@ -1,5 +1,5 @@
 var moment 			= require('moment'),
-	util 			= require('./util');
+	util 			= require('../util');
 
 module.exports = function(item) {
 	var niceTime 	= moment(item.timestamp).format(util.TIME_FORMAT),

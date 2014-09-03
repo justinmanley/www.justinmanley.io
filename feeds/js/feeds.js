@@ -8,8 +8,8 @@ var Q 			= require('q'),
 Q.longStackSupport = true;
 
 Q.all([
-		util.readYAML('data/config/feeds.yml'),
-		util.readYAML('data/config/importance.yml')
+		util.readYAML('config/feeds.yml'),
+		util.readYAML('config/importance.yml')
 	])
 	.then(function(configurations) {
 		var config = initConfig(configurations),
@@ -18,7 +18,7 @@ Q.all([
 
 		/* Require the corresponding transformer for each feed in the configuration. */
 		feeds = _.map(_.keys(config), function(src) { 
-			return { name: src, generate: require('./' + src) }; 
+			return { name: src, generate: require('./generators/' + src) }; 
 		});
 
 		return Q.all(_.map(feeds, function(feed) { 

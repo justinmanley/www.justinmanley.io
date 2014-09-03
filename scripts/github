@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# Usage: 
-# 	scripts/github
-
-nodejs scripts/js/github.js

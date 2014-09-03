@@ -1,6 +1,6 @@
 var moment 			= require('moment'),
- 	util  			= require('./util'),
- 	generateHTML 	= require('./html'),
+ 	util  			= require('../util'),
+ 	generateHTML 	= require('../html'),
 	HtmlEntities 	= require('html-entities').XmlEntities; 
 
 var entity = new HtmlEntities();	
