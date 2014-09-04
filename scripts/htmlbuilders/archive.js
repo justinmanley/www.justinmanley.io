@@ -8,10 +8,10 @@ module.exports = {
 
 	serializeFeed: function(feed) {
 		return _.chain(feed)
-			.filter(function(item) { return item.archive; })
-			.map(function(item) {
-				return item.archive; 
-			})
+			.filter(function(item){ return item.archive; })
+			.foldl(function(feedString, item) {
+				return feedString + item.archive;
+			}, '')
 			.value();
 	},
 

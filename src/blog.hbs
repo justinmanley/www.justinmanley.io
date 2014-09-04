@@ -1,0 +1,10 @@
+---
+template: page.hbs
+---
+
+{{#compose src="<%= blog %>"}}
+	{{@title}}
+	{{#markdown}}
+		{{@content}}
+	{{/markdown}}
+{{/compose}}

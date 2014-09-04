@@ -1,34 +1,20 @@
----
-links:
-    - title: GitHub
-      link:  https://github.com/manleyjster
-    - title: Blog
-      link:  /site/blog  
-    - title: Out of the Yards
-      link:  http://outoftheyards.com
-    - title: Portfolio
-      link:  http://justinmanley.portfoliobox.me/
-    - title: Demos
-      link:  /site/demos
-    - title: Archive
-      link:  /site/archive
----
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8"/>
 
 		<!-- GitHub icons and styles -->
-		<link rel="stylesheet" href="{{include.css.octicons}}"/>
+		<link rel="stylesheet" href="assets/bower_components/octicons/octicons/octicons.css"/>
 
 		<!-- Bootstrap -->
-		<link rel="stylesheet" href="{{include.css.bootstrap}}"/>
-		<link rel="stylesheet" href="{{include.css.bootstrapTheme}}"/>
-		<script src="{{include.js.jquery}}"></script>
-		<script src="{{include.js.bootstrap}}"></script>
+		<link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+		<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 		<!-- FontAwesome -->	
-		<link rel="stylesheet" href="{{include.css.fontAwesome}}"/>
+		<link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css"/>
 		
 		<!-- LiveReload (development) -->
 		<script src="http://localhost:35729/livereload.js"></script>
@@ -37,7 +23,7 @@ links:
 		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 		<!-- Site styles -->
-		<link rel="stylesheet" href="{{assets}}/css/style.css"/>
+		<link rel="stylesheet" href="assets/css/style.css"/>
 	</head>
 	<body>
 		<div class="header">
@@ -53,14 +39,30 @@ links:
 				</div>
 				<div class="collapse navbar-collapse" id="nav-links">
 					<ul class="nav navbar-nav">
-					{{#each links}}
-						<li><a href="{{this.link}}">{{this.title}}</a></li>
-					{{/each}}
+					
+						<li><a href="https://github.com/manleyjster">GitHub</a></li>
+					
+						<li><a href="/site/blog">Blog</a></li>
+					
+						<li><a href="http://outoftheyards.com">Out of the Yards</a></li>
+					
+						<li><a href="http://justinmanley.portfoliobox.me/">Portfolio</a></li>
+					
+						<li><a href="/site/demos">Demos</a></li>
+					
+						<li><a href="/site/archive">Archive</a></li>
+					
 					</ul>
 				</div>
 			</div>
 		</div>
-		{{> body }}
+		
+
+
+	My First Post
+	<pre><code>    This is my first post!</code></pre>
+
+
 		<footer class="footer">
 			<div class="social-media">
 				<a href="www.linkedin.com/in/justinmanley/" target="_blank">
@@ -77,7 +79,8 @@ links:
 				</a>		
 			</div>
 			<div class="attributions">
-				{{#markdown}}This site was generated on {{moment format="MMM Do, YYYY"}} with [Grunt](http://gruntjs.com/) and [Assemble](http://assemble.io/) using fonts and icons from [Glyphicons](http://glyphicons.com/), [Font Awesome](http://fortawesome.github.io/Font-Awesome/), and [The League of Moveable Type](https://www.theleagueofmoveabletype.com/).{{/markdown}}				
+				<p>This site was generated on Sep 4th, 2014 with <a href="http://gruntjs.com/">Grunt</a> and <a href="http://assemble.io/">Assemble</a> using fonts and icons from <a href="http://glyphicons.com/">Glyphicons</a>, <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, and <a href="https://www.theleagueofmoveabletype.com/">The League of Moveable Type</a>.</p>
+				
 			</div>		
 		</footer>	
 	</body>

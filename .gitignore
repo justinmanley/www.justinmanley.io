@@ -1,10 +1,7 @@
 node_modules
-bundler_gems
 
-assets/bower_components
+src/assets/bower_components
 site/assets/bower_components
 
 config/pass/
 feeds/cache
-
-

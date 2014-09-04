@@ -2,35 +2,34 @@ module.exports = function(grunt) {
     var nap = require('nap'),
         fs = require('fs'),
         pkg =   grunt.file.readJSON('package.json'),
-        site =  grunt.file.readJSON('bugle.json');
+        site =  grunt.file.readJSON('config/assemble.json');
 
     require('matchdep').filterDev(['grunt-*', 'assemble']).forEach(grunt.loadNpmTasks);
 
     grunt.initConfig({
         assemble: site,
-    	watch: {
+        watch: {
             options: {
                 livereload: true
             },
-    		source: {
-    			files: [
-    				'Gruntfile.js',
-    				'src/**',
-                    'templates/**',
-                    'assets/less/*.less',
-                    'feeds/**.html'
-    			],
-    			tasks: [ 
+            source: {
+                files: [
+                    'Gruntfile.js',
+                    'src/**',
+                    '!src/assets/bower_components/**'
+                ],
+                tasks: [ 
                     'newer:copy',
                     'newer:less',
                     'newer:assemble'
                 ]
-    		}
-    	},
+            }
+        },
         copy: {
             assets: {
                 files: [
-                    { 
+                    {
+                        cwd: 'src/', 
                         src: ['assets/**', '!{assets/less,assets/less/*}'], 
                         dest: 'site', 
                         expand: true 
@@ -41,7 +40,7 @@ module.exports = function(grunt) {
         less: {
             site: {
                 files: {
-                    'site/assets/css/style.css': 'assets/less/style.less'
+                    'site/assets/css/style.css': 'src/assets/less/style.less'
                 }
             }
         },
@@ -51,4 +50,4 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', 'watch');
-}
+};

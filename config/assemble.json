@@ -11,7 +11,8 @@
 		"options": {
 			"ext": ".html",
 			"layout": "page.hbs",
-			"flatten": true
+			"flatten": true,
+			"blog": "src/blog/**.md"
 		},
 		"files": {
 			"site/": ["src/**.hbs", "src/**.md"]
