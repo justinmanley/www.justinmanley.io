@@ -9,6 +9,7 @@ module.exports = {
 	serializeFeed: function(feed) {
 		return _.chain(feed)
 			.filter(function(item){ return item.archive; })
+			.sort(util.byDate)
 			.foldl(function(feedString, item) {
 				return feedString + item.archive;
 			}, '')

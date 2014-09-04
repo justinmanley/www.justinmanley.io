@@ -12,6 +12,7 @@ module.exports = {
 	serializeFeed: function(feed) {
 		return _.chain(feed)
 			.filter(function(event) { return event.article; })
+			.sort(util.byDate)
 			.first()
 			.value()
 			.article;

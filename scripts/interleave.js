@@ -19,7 +19,7 @@ var Interleave = function(feed, config, n) {
 	return _.chain(feed)
 		.shuffle()
 		.filter(this.select)
-		.sort(this.eventDate)
+		.sort(util.byDate)
 		.map(this.addPositionalClass)
 		.value();
 };
@@ -67,19 +67,6 @@ _.merge(Interleave.prototype, {
 
 	select: function(event) {
 		return Math.random() < event.importance ? true : false;
-	},
-
-	eventDate: function(event1, event2) {
-		var t1 = moment(event1.timestamp),
-			t2 = moment(event2.timestamp);
-
-		if (t1.isBefore(t2)) {
-			return 1;
-		} else if (t1.isAfter(t2)) {
-			return -1;
-		} else if (t1.isSame(t2)) {
-			return 0;
-		}
 	},
 
 	addPositionalClass: function(event) {

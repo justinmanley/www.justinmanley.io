@@ -6,7 +6,8 @@ var fs 			= require("fs"),
 	htmlparser 	= require("htmlparser2"),
 	http 		= require("http"),
 	urlHelper 	= require('url'),
-	https 		= require("https");
+	https 		= require("https"),
+	moment 		= require('moment');
 
 module.exports = {
 
@@ -99,5 +100,18 @@ module.exports = {
 		});
 
 		return deferred.promise;
+	},
+
+	byDate: function(event1, event2) {
+		var t1 = moment(event1.timestamp),
+			t2 = moment(event2.timestamp);
+
+		if (t1.isBefore(t2)) {
+			return 1;
+		} else if (t1.isAfter(t2)) {
+			return -1;
+		} else if (t1.isSame(t2)) {
+			return 0;
+		}
 	}
 }
