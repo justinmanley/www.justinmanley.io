@@ -1,0 +1,20 @@
+options:
+    assets: site/assets
+    bower: assets/bower_components
+    engine: handlebars
+    data: config/*.yml
+    layoutdir: src/templates/layouts
+    helpers:
+        - handlebars-helper-compose
+        - helper-moment
+markdown:
+    options:
+        ext: .html
+        layout: page.hbs
+        flatten: true
+        blog: src/blog/**.md
+    files: 
+        "site/": 
+            - src/**.hbs
+            - src/**.md 
+

@@ -2,7 +2,7 @@ module.exports = function(grunt) {
     var nap = require('nap'),
         fs = require('fs'),
         pkg =   grunt.file.readJSON('package.json'),
-        site =  grunt.file.readJSON('config/assemble.json');
+        site =  grunt.file.readYAML('config/assemble.yml');
 
     require('matchdep').filterDev(['grunt-*', 'assemble']).forEach(grunt.loadNpmTasks);
 

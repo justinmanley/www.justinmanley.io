@@ -1,3 +1,4 @@
+# Shortcuts for static assets
 bower: <%= assets %>/bower_components
 css:
     octicons:           <%= bower %>/octicons/octicons/octicons.css
