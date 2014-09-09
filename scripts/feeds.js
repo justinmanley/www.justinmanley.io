@@ -7,29 +7,24 @@ var Q 			= require('q'),
 
 Q.longStackSupport = true;
 
-Q.all([
-		util.readYAML('config/feeds.yml'),
-		util.readYAML('config/importance.yml')
-	])
-	.then(function(configurations) {
-		var config = initConfig(configurations),
-			dest = configurations[0].dest,
-			feeds;
-
+util.readYAML('config/feeds.yml')
+	.then(processConfig)
+	.then(function(config) {
 		/* Require the corresponding transformer for each feed in the configuration. */
-		feeds = _.map(_.keys(config), function(src) { 
+		var feeds = _.map(_.keys(config.src), function(src) {
 			return { name: src, generate: require('./generators/' + src) }; 
 		});
 
-		return Q.all(_.map(feeds, function(feed) { 
-				return feed.generate(config[feed.name]); 
-			})
-		)
+		/* Retrieve raw content and generate arrays of HTML snippets. */
+		return Q.all(_.map(feeds, function(feed) {
+			return feed.generate(config.src[feed.name]); 
+		}))
 		.then(function(feeds) { return _.flatten(feeds); })
 		.then(function(feed) {
-			this._config = config;
+			this._config = config.src;
 
-			var writers = _.map(dest, function(destination, type) {
+			/* Serialize arrays of HTML snippets into HTML strings and write to files. */
+			var writers = _.map(config.dest, function(destination, type) {
 				util.writeFile(
 					destination, 
 					require('./htmlbuilders/' + type).serializeFeed.call(this, feed)
@@ -41,16 +36,10 @@ Q.all([
 	})
 	.done();
 
-/* Merge configuration files. */
-function initConfig(configurations) {
-	var config = {};
-
-	_.each(configurations[0].src, function(url, name) {
-		config[name] = {
-			url: url,
-			importance: configurations[1][name],
-			name: name
-		};
+/* Process configuration file. */
+function processConfig(config) {
+	_.each(config.src, function(srcConfig, srcName) {
+		srcConfig.name = srcName;
 	});
 
 	return config;

@@ -5,9 +5,7 @@
   "keywords": [
     "architecture",
     "maps",
-    "programming",
-    "justin",
-    "manley"
+    "programming"
   ],
   "devDependencies": {
     "assemble": "0.4.41",
@@ -25,12 +23,10 @@
     "html-entities": "^1.1.0",
     "htmlparser2": "^3.7.3",
     "js-yaml": "^3.2.1",
-    "libxmljs": "^0.11.0",
     "lodash": "^2.4.1",
     "marked": "^0.3.2",
     "matchdep": "0.3.0",
     "moment": "^2.8.2",
-    "nap": "^0.7.19",
     "ntwitter": "^0.5.0",
     "q": "^1.0.1",
     "xml2js": "^0.4.4",

@@ -1,8 +1,31 @@
+### Content Sources
 src:
-    github:         https://github.com/manleyjster.private.actor.atom?token=f6728524d3835a2cd3180dab9b758497
-    outoftheyards:  http://www.outoftheyards.com/feed/atom/
-    publiclab:      http://publiclab.org/feed/justinmanley.rss
-dest: 
-    event: src/feeds/feed.html
-    article: src/feeds/article.html
-    archive: src/feeds/archive.html
+    # ---------------------------------------------------------------------- 
+    github:         
+        url:            https://github.com/manleyjster.private.actor.atom?token=f6728524d3835a2cd3180dab9b758497
+        importance: 
+            1: 
+                - issues
+                - gist
+                - deployment
+                - pullrequest
+                - pullrequestreviewcomment
+                - issuecomment
+                - release
+                - teamadd
+                - push
+    # ---------------------------------------------------------------------- 
+    outoftheyards:  
+        url:            http://www.outoftheyards.com/feed/atom/
+        importance:     4
+    # ---------------------------------------------------------------------- 
+    publiclab:
+        url:            http://publiclab.org/feed/justinmanley.rss
+        importance:     3
+    # ---------------------------------------------------------------------- 
+
+### Output Types
+dest:
+    event:      src/feeds/feed.html
+    article:    src/feeds/article.html
+    archive:    src/feeds/archive.html
