@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
-    var nap = require('nap'),
-        fs = require('fs'),
+    var fs = require('fs'),
         pkg =   grunt.file.readJSON('package.json'),
         site =  grunt.file.readYAML('config/assemble.yml');
 
