@@ -11,7 +11,7 @@ module.exports = function(items, src, getContent) {
 	this.root = xmlbuilder.create('root');
 
 	return _.map(items, function(item) {
-		var eventInfo = { type: src };
+		var eventInfo;
 
 		/* Set up top-level div for each output type. */
 		_.each(htmlGenerators, function(output) {
@@ -21,13 +21,12 @@ module.exports = function(items, src, getContent) {
 		}, this);
 
 		/* Call the source-specific feed transformer function. */
-		eventInfo = _.merge(eventInfo, getContent.call(this, item));
+		eventInfo = _.merge({ type: src }, getContent.call(this, item));
 
-		/* Writes each of the different requested types of output. */
+		/* Generate HTML string for each output type. */
 		_.each(htmlGenerators, function(output) {
 			if (eventInfo[output.type] === true) {
-
-				/* Create HTML in this.container. */
+				/* Create HTML in this["_" + output.type]. */
 				output.generate.call(this, eventInfo);
 
 				eventInfo[output.type] = this["_" + output.type].toString({ pretty: true });

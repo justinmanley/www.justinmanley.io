@@ -1,12 +1,18 @@
 var util 			= require('../util'),
 	moment 			= require('moment'),
-	generateHTML	= require('../htmlbuilders/htmlbuilder');
+	generateHTML	= require('../htmlbuilders/htmlbuilder')
 
 function getContent(item) {
+	var iconClass = 'mega-octicon octicon-mark-github content-src-icon';
+
+	/* Have to include .text('') to force the empty span to render as an open tag and a close tag. */
+	this._event.ele('span', { class: iconClass }).text('');
+	this._event.raw(item.content[0]._);
+
 	return {
 		timestamp: 	moment(item.updated[0]).format(),
 		tags: 		readTags(item),
-		event: 		this._event.raw(item.content[0]._)
+		event: 		this._event.toString({ pretty: true })
 	};
 }
 

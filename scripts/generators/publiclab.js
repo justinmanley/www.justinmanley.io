@@ -17,7 +17,7 @@ function getContent(item) {
 		title: 		item[0].title,
 		body: 		item[1],
 		username: 	'justinmanley',
-		
+				
 		article: 	true,
 		event: 		true,
 		archive: true

@@ -17,10 +17,11 @@ module.exports = {
 	},
 
 	serializeItem: function(item) {
-		this._archive.ele('div', { class: "archive-title" })
-			.text(item.title);
-
 		this._archive.ele('time', { class: "archive-time" })
 			.text(moment(item.timestamp).format(util.TIME_FORMAT));
+
+		this._archive.ele('a', { href: item.link })
+			.ele('div', { class: "archive-title" })
+				.text(item.title);
 	}
 }

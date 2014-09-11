@@ -18,7 +18,7 @@ var Interleave = function(feed, config, n) {
 
 	return _.chain(feed)
 		.shuffle()
-		.filter(this.select)
+		.filter(this.selectRandomly)
 		.sort(util.byDate)
 		.map(this.addPositionalClass)
 		.value();
@@ -65,7 +65,7 @@ _.merge(Interleave.prototype, {
 		return tagsNum ? total / tagsNum : 0;
 	},
 
-	select: function(event) {
+	selectRandomly: function(event) {
 		return Math.random() < event.importance ? true : false;
 	},
 
