@@ -1,0 +1,36 @@
+#github-link {
+  position: absolute;
+  bottom: 15px;
+  font-family: 'Andada', serif;
+  font-size: 18px;
+  text-align: center;
+  left: 10%;
+  right: 10%;
+  color: #ffffff;
+}
+#help-teaser {
+  color: #ff0000;
+  cursor: pointer;
+}
+#help-teaser::selection {
+  background-color: rgba(0, 0, 0, 0);
+}
+#help-content {
+  display: none;
+  margin-bottom: 13.7px;
+}
+#sidebar-start-time,
+#sidebar-end-time {
+  color: #696969;
+}
+.sidebar-start-end-time {
+  float: left;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.sidebar-start-end-time input {
+  width: 65px;
+  padding: 5px 5px;
+  border-radius: 3px;
+  background-color: #d3d3d3;
+}

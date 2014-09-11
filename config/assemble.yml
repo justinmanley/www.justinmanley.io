@@ -7,7 +7,7 @@ options:
     helpers:
         - handlebars-helper-compose
         - helper-moment
-markdown:
+site:
     options:
         ext: .html
         layout: page.hbs

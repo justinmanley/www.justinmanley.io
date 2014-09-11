@@ -30,7 +30,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         cwd: 'src/', 
-                        src: ['assets/**', '!{assets/less,assets/less/*}'], 
+                        src: ['assets/**', 'demos/**', '!{assets/less,assets/less/*}'], 
                         dest: 'site', 
                         expand: true 
                     }

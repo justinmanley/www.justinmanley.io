@@ -34,7 +34,9 @@
     font-style: normal;
 }
 
-/* Mixins */
+/*  
+ * ------------ Mixins --------------------------- 
+ */
 .link(@base-color) {
 	color: @base-color;
 	&:hover { text-decoration: none; }
@@ -66,7 +68,9 @@ p, h1, h2, h3, h4, h5, h6 { font-family: @font-serif; }
 p { font-size: 1.2em; }
 
 
-/* Header */
+/*  
+ * ------------ Header --------------------------- 
+ */
 .header {
 	font-family: @font-serif;
 	text-align: center;
@@ -93,7 +97,6 @@ p { font-size: 1.2em; }
         display: inline-block;
         float: none;
         vertical-align: top;
-        margin-bottom: 40px;
 
         font-family: @font-serif;
         font-size: 16px;
@@ -104,8 +107,8 @@ p { font-size: 1.2em; }
     }
 }
 
-/*
- * Dynamically generated feed
+/*  
+ * ---------- Dynamically generated feed ------------- 
  */
 .feed { padding: 0 40px; }
 @media (min-width: 768px) {
@@ -159,30 +162,9 @@ p { font-size: 1.2em; }
 	text-align: center;
 }
 
-.content {
-	.responsive-centered(50%, 0);
-	font-family: @font-serif;
-}
-
-/* Archive */
-.archive {
-	&.content-header {
-		font-size: 1.4em;
-		margin-bottom: 20px;
-	}
-
-	margin-bottom: 20px;
-
-	font-family: @font-serif;
-	font-size: 1.2em;
-	.archive-time {
-		float: right;
-		margin-left: 4rem;
-		color: @subtle-text-color;
-	}
-}
-
-/* Article */
+/*  
+ * ------------ Article --------------------------- 
+ */
 @article-padding: 40px;
 @media (min-width: 768px) {
 	@article-padding: 10px;
@@ -203,7 +185,50 @@ p { font-size: 1.2em; }
 	p { font-size: 1.5em; }
 }
 
-/* Footer */
+/*
+ * ------------ Content ---------------------------
+ */
+
+
+/*  
+ * ------------ Archive --------------------------- 
+ */
+.archive {
+	.responsive-centered(55%, 0);
+	margin-bottom: 20px;
+	font-family: @font-serif;
+	font-size: 1.2em;
+	&.content-header {
+		font-size: 1.4em;
+		margin-bottom: 20px;
+	}
+	.archive-time {
+		float: right;
+		margin-left: 4rem;
+		color: @subtle-text-color;
+	}
+}
+
+/*
+ * ------------ Demos ---------------------------
+ */
+
+.demos {
+	margin: 0 10%;
+	img {
+		width: 100%;
+		height: 100%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	.col-md-4 {
+		text-align: center;
+	}
+}
+
+/*  
+ * ------------ Footer --------------------------- 
+ */
 .footer-content() {
 	width: 350px;
 	margin: 30px auto;

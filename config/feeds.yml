@@ -26,6 +26,6 @@ src:
 
 ### Output Types
 dest:
-    event:      src/feeds/feed.html
-    article:    src/feeds/article.html
-    archive:    src/feeds/archive.html
+    event:      src/content/feeds/feed.html
+    article:    src/content/feeds/article.html
+    archive:    src/content/feeds/archive.html
