@@ -4,14 +4,14 @@ template: page.hbs
 
 <div class="container-fluid">
 	<div class="row">
-		{{#compose src="<%= feeds.dest.event %>"}}
-			<div class="col-md-4 feed">
+		{{#compose src="<%= feeds.dest.article %>"}}
+			<div class="col-md-8 col-md-push-4 article">
 				{{{@content}}}
 			</div>
 		{{/compose}}
 
-		{{#compose src="<%= feeds.dest.article %>"}}
-			<div class="col-md-8 article">
+		{{#compose src="<%= feeds.dest.event %>"}}
+			<div class="col-md-4 col-md-pull-8 feed">
 				{{{@content}}}
 			</div>
 		{{/compose}}				
