@@ -17,11 +17,11 @@ src:
     # ---------------------------------------------------------------------- 
     outoftheyards:  
         url:            http://www.outoftheyards.com/feed/atom/
-        importance:     4
+        importance:     5
     # ---------------------------------------------------------------------- 
     publiclab:
         url:            http://publiclab.org/feed/justinmanley.rss
-        importance:     3
+        importance:     4
     # ---------------------------------------------------------------------- 
 
 ### Output Types
