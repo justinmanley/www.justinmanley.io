@@ -1,5 +1,8 @@
 git clone https://github.com/manleyjster/www.justinmanley.io.git
 
+npm install
+bower install
+
 cd www.justinmanley.io
 git checkout master
 
