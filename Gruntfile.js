@@ -34,6 +34,16 @@ module.exports = function(grunt) {
                         expand: true 
                     }
                 ]
+            },
+            config: {
+                files: [
+                    {
+                        cwd: 'config/',
+                        src: 'CNAME',
+                        dest: 'site',
+                        expand: true // need expand: true when cwd is set
+                    }
+                ]
             }
         },
         less: {
