@@ -49,4 +49,10 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', 'watch');
+
+    grunt.registerTask('get-content', 'Create dynamically-generated content', function() {
+        require('./scripts/feeds/feeds');
+    });
+
+    grunt.registerTask('build', ['get-content', 'copy', 'less', 'assemble']);
 };
