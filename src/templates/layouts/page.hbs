@@ -2,14 +2,17 @@
 links:
     - title: GitHub
       link:  https://github.com/manleyjster
+      external: true
     - title: Blog
       link:  /blog  
     - title: Out of the Yards
       link:  http://outoftheyards.com
+      external: true
     - title: Portfolio
       link:  http://justinmanley.portfoliobox.me/
-    - title: Projects
-      link:  /projects
+      external: true
+    - title: Work
+      link:  /work
     - title: Archive
       link:  /archive
 ---
@@ -18,7 +21,7 @@ links:
 	<head>
 		<meta charset="utf-8"/>
 
-		<link rel="icon" type="image/png" href="{{ assets }}/favicon.ico"/>
+		<link rel="icon" type="image/png" href="{{assets}}/images/favicon.ico"/>
 
 		<!-- GitHub icons and styles -->
 		<link rel="stylesheet" href="{{include.css.octicons}}"/>
@@ -56,7 +59,12 @@ links:
 				<div class="collapse navbar-collapse" id="nav-links">
 					<ul class="nav navbar-nav">
 					{{#each links}}
-						<li><a href="{{this.link}}">{{this.title}}</a></li>
+						<li><a href="{{this.link}}">
+							{{this.title}}
+							{{#if this.external}}
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							{{/if}}
+						</a></li>
 					{{/each}}
 					</ul>
 				</div>

@@ -1,0 +1,15 @@
+---
+template: page.hbs
+---
+<div class="works content">
+
+{{#compose src="<%= content.work %>"}}
+<div class="work">
+	<div class="work-header">
+		<a href="{{@link}}"><h3 class="work-title">{{@title}}</h3></a>
+		<span class="work-summary">{{@summary}}</span>
+	</div>
+	{{#markdown}}{{{@content}}}{{/markdown}}
+</div><!-- .work -->
+{{/compose}}
+</div>

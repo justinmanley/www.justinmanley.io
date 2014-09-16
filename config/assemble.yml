@@ -12,7 +12,9 @@ site:
         ext: .html
         layout: page.hbs
         flatten: true
-        blog: src/blog/**.md
+        content:
+            blog: src/content/blog/**.md
+            work: src/content/work/**.md
     files: 
         "site/": 
             - src/**.hbs

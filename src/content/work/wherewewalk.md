@@ -1,13 +1,8 @@
 ---
-template: page.hbs
+title: 		WhereWeWalk
+link:		https://github.com/manleyjster/wherewewalk
+summary: 	A spatial survey tool.
 ---
-<div class="demos content container-fluid">
-
-
-<div class="row">
-<div class="col-md-8">
-{{#markdown}}
-## WhereWeWalk
 ![WhereWeWalk]({{assets}}/images/wherewewalk.png)
 Most surveys are verbal.  WhereWeWalk is a web survey tool designed for *spatial* questions.
 
@@ -18,24 +13,3 @@ The survey presented students with an satellite map of campus (I used the Google
 This was an exciting tool to develop because urban planners, architects, logistics analysts, etc. can gain important insights by asking relatively few spatial questions.  Recent improvements in web map display technologies make it easier than every to ask spatial questions.  When combined with demographic and population statistics, these surveys can yield rich and interesting data sets.
 
 All of the code for this project is open source.
-{{/markdown}}
-</div><!-- .col-md-8 -->
-<div class="col-md-4">
-</div><!-- .col-md-4 -->
-</div><!-- .row -->
-
-<div class="row">
-<div class="col-md-8">
-{{#markdown}}
-## MapKnitter
-
-More info coming soon.
-
-In the meantime, you can check out some of the [articles that I've written about MapKnitter](/archive).
-{{/markdown}}	
-</div><!-- .col-md-8 -->
-<div class="col-md-4">
-	
-</div><!-- .col-md-4 -->
-</div><!-- .row -->
-</div>
