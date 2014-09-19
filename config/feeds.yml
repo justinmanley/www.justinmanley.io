@@ -2,7 +2,7 @@
 src:
     # ---------------------------------------------------------------------- 
     github:         
-        url:            https://github.com/manleyjster.private.actor.atom?token=f6728524d3835a2cd3180dab9b758497
+        url:            https://github.com/manleyjster.private.actor.atom?token=<%= secret.github.token %>
         importance: 
             1: 
                 - issues
