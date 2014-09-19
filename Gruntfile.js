@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
     var fs = require('fs'),
+        getContent = require('./scripts/feeds/feeds'),
+
         pkg =   grunt.file.readJSON('package.json'),
         site =  grunt.file.readYAML('config/assemble.yml');
 
@@ -61,7 +63,9 @@ module.exports = function(grunt) {
     grunt.registerTask('default', 'watch');
 
     grunt.registerTask('get-content', 'Create dynamically-generated content', function() {
-        require('./scripts/feeds/feeds');
+        var done = this.async();
+
+        getContent(done);
     });
 
     grunt.registerTask('build', ['get-content', 'copy', 'less', 'assemble']);
