@@ -133,6 +133,8 @@ a:hover {
 .event {
   padding: 10px;
   padding-left: 65px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 2px;
 }
 .event .time {
   color: #a2a2a2;
@@ -152,7 +154,6 @@ a:hover {
 .event:hover {
   background-color: #f2f2f2;
   border: 1px solid #e5e5e5;
-  border-radius: 2px;
 }
 .feed-header {
   text-align: center;
