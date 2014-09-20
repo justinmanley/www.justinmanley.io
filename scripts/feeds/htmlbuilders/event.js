@@ -22,6 +22,8 @@ module.exports = {
 		var niceTime 	= moment(item.timestamp).format(util.TIME_FORMAT),
 			verb 		= item.verb ? item.verb : 'published'
 
+		this._event.ele('div', { class: 'content-src-icon' }).text('');
+
 		this._event.ele('time', { class: 'time' })
 			.text(niceTime);
 
