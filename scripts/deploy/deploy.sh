@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # exit script with nonzero exit code if any command fails
 set -e
 
