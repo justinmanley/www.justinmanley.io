@@ -3,4 +3,4 @@ node_modules
 src/assets/bower_components
 site/assets/bower_components
 
-config/secrets.*
+config/secret.*
