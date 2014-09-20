@@ -1,6 +1,3 @@
-git clone https://github.com/manleyjster/www.justinmanley.io.git
-
-cd www.justinmanley.io
 git checkout master
 
 npm install
