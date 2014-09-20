@@ -23,3 +23,8 @@ git subtree split --prefix site -b gh-pages
 
 # force push the gh-pages branch
 git push -f origin gh-pages:gh-pages
+
+# cleanup
+git branch -D gh-pages
+cd ../ && sudo rm -r www.justinmanley.io
+rm ~/.netrc
