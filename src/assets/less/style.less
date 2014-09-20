@@ -121,7 +121,7 @@ a:hover { text-decoration: none; }
 }
 
 .github-event {
-	.octicon, 
+	.octicon,
 	.mega-octicon { display: none; }
 	.gravatar { display: none; }
 	ul { padding-left: 0; }
@@ -144,22 +144,33 @@ a:hover { text-decoration: none; }
 	}
 }
 
+.publiclab-event {
+	.content-src-icon {
+		background-image: url('../images/publiclab.jpg');
+		background-size: contain;
+		width: 40px;
+		height: 40px;
+
+		opacity: 0.25;
+	}
+}
+
 .event {
 	padding: 10px;
-	padding-left: 45px;
+	padding-left: 65px;
 	.time { color: @subtle-text-color; }
 	.title { color: @subtle-text-color; }
 	.title a { color: @text-color }
 	.content-src-icon { 
 		position: absolute;
 		display: inline-block;
-		left: 40px;
+		left: 60px;
 		color: @subtle-icon-color;
 	}
 	&:hover {
 		background-color: @subtle-highlight-color;
-		border-top: 1px solid @subtle-divider-color;
-		border-bottom: 1px solid @subtle-divider-color;
+		border: 1px solid @subtle-divider-color;
+		border-radius: 2px;
 	}
 }
 

@@ -123,9 +123,16 @@ a:hover {
 .github-event .details {
   display: none;
 }
+.publiclab-event .content-src-icon {
+  background-image: url('../images/publiclab.jpg');
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  opacity: 0.25;
+}
 .event {
   padding: 10px;
-  padding-left: 45px;
+  padding-left: 65px;
 }
 .event .time {
   color: #a2a2a2;
@@ -139,13 +146,13 @@ a:hover {
 .event .content-src-icon {
   position: absolute;
   display: inline-block;
-  left: 40px;
+  left: 60px;
   color: #bbbbbb;
 }
 .event:hover {
   background-color: #f2f2f2;
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
+  border: 1px solid #e5e5e5;
+  border-radius: 2px;
 }
 .feed-header {
   text-align: center;
