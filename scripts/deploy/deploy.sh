@@ -1,3 +1,6 @@
+# exit script with nonzero exit code if any command fails
+set -e
+
 git checkout master
 
 npm install
