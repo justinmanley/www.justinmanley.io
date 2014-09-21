@@ -24,7 +24,7 @@ module.exports = {
 
 		this._event.ele('div', { class: 'content-src-icon' }).text('');
 
-		this._event.ele('time', { class: 'time' })
+		this._event.ele('time', { class: 'time', datetime: item.timestamp })
 			.text(niceTime);
 
 		this._event.ele('div', { class: 'title' })

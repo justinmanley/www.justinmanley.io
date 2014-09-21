@@ -26,7 +26,7 @@ module.exports = {
 			.text(item.title);
 
 		this._article.ele('div', { class: "article-info" })
-			.ele('time', { class: "article-date" })
+			.ele('time', { class: "article-date", datetime: item.timestamp })
 				.text(moment(item.timestamp).format(util.TIME_FORMAT))
 				.up()
 			.ele('div', { class: "article-source" })

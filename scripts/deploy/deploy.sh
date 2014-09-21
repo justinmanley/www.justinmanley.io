@@ -11,6 +11,9 @@ bower install
 # Retrieve and generate dynamic content and build site
 grunt build
 
+# test
+scripts/deploy/test.sh
+
 # allow the site's static assets to be recognized by git
 sed -i '/site\/assets\/bower_components/d' .gitignore
 

@@ -1,15 +1,18 @@
 ---
 template: page.hbs
+title: Blog
 ---
 
 <div class="blogs-posts content">
 {{#compose src="<%= content.blog %>"}}
-<div class="blog-post">
-	<div class="blog-header">
-		<h2 class="blog-title">{{@title}}</h2>
-		<time class="blog-published">{{moment @date format="dddd MMMM Do, YYYY"}}</time>
-	</div>
-	{{#markdown}}{{{@content}}}{{/markdown}}
-</div>
+	{{#is @state 'published'}}
+		<div class="blog-post">
+			<div class="blog-header">
+				<h2 class="blog-title">{{@title}}</h2>
+				<time class="blog-published">{{moment @date format="dddd MMMM Do, YYYY"}}</time>
+			</div>
+			{{#markdown}}{{{@content}}}{{/markdown}}
+		</div>
+	{{/is}}
 {{/compose}}
 </div><!-- .blog-posts -->

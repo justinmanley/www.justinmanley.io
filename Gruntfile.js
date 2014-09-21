@@ -56,7 +56,24 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            site: ["site/*.html"]
+            site: [ 'src/content/feeds/*.html' ]
+        },
+        validation: {
+            options: {
+                reset: true,
+                failHard: true,
+                relaxerror: [
+                    'An img element must have an alt attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.',
+                    'Attribute is not allowed on element time at this point.'                 
+                ]
+            },
+            content: {
+                options: { wrapfile: 'test/wrap.html' },
+                files: { src: [ 'src/content/feeds/*.html' ] }
+            },
+            output: {
+                files: { src: [ 'site/*.html' ] }
+            }
         }
     });
 
@@ -68,5 +85,7 @@ module.exports = function(grunt) {
         getContent(done);
     });
 
-    grunt.registerTask('build', ['get-content', 'copy', 'less', 'assemble']);
+    grunt.registerTask('build', ['clean', 'get-content', 'copy', 'less', 'assemble']);
+
+    grunt.registerTask('test', [ 'validation' ]);
 };

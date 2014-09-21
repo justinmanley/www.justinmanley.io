@@ -17,7 +17,7 @@ module.exports = {
 	},
 
 	serializeItem: function(item) {
-		this._archive.ele('time', { class: "archive-time" })
+		this._archive.ele('time', { class: "archive-time", datetime: item.timestamp })
 			.text(moment(item.timestamp).format(util.TIME_FORMAT));
 
 		this._archive.ele('a', { href: item.link })
