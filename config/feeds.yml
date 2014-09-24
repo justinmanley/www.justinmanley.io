@@ -4,7 +4,7 @@ src:
     github:         
         url:            https://github.com/manleyjster.private.actor.atom?token=<%= secret.github.token %>
         importance: 
-            1: 
+            4: 
                 - issues
                 - gist
                 - deployment
@@ -14,6 +14,8 @@ src:
                 - release
                 - teamadd
                 - push
+            -10:
+                - www.justinmanley.io
     # ---------------------------------------------------------------------- 
     outoftheyards:  
         url:            http://www.outoftheyards.com/feed/atom/

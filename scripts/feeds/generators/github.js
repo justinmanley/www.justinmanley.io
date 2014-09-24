@@ -1,5 +1,6 @@
 var util 			= require('../util'),
 	moment 			= require('moment'),
+	_ 				= require('lodash'),
 	generateHTML	= require('../htmlbuilders/htmlbuilder')
 
 function getContent(item) {
@@ -17,10 +18,21 @@ function getContent(item) {
 }
 
 function readTags(item) {
-	var eventType = /:([a-zA-Z]*)Event\/\d*$/,
+	var tags = [],
+		eventType = /:([a-zA-Z]*)Event\/\d*$/,
 		result = eventType.exec(item.id);
 
-	return result ? [result[1].toLowerCase()] : [];
+	/* Add the event type (issues, watch, gist, pullrequest, etc). */
+	if (result) {
+		tags.push(result[1].toLowerCase());
+	}
+
+	/* Prevent any commits to the www.justinmanley.io repository from showing up on the timeline. */
+	if (_.contains(item.content[0]._, 'www.justinmanley.io')) {
+		tags.push('www.justinmanley.io');
+	}
+
+	return tags;
 }
 
 module.exports = function(config) {
