@@ -3,8 +3,7 @@
 var Q 				= require('q'),
 	_ 				= require('lodash'),
 	util 			= require('./util'),
-	configure		= require('./config'),
-	interleave 		= require('./interleave');
+	configure		= require('./config');
 
 Q.longStackSupport = true;
 
@@ -37,8 +36,6 @@ function fetchSources() {
 }
 
 function writeOutput(feed) {
-	this._config = this.config.src;
-
 	/* Serialize arrays of HTML snippets into HTML strings and write to files. */
 	return Q.all(writers = _.map(this.config.dest, function(destination, type) {
 		var content = require('./htmlbuilders/' + type).serializeFeed.call(this, feed);

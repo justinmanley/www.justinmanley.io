@@ -113,5 +113,9 @@ module.exports = {
 		} else if (t1.isSame(t2)) {
 			return 0;
 		}
+	},
+
+	calculateAverageFrequency: function(feed) {
+
 	}
 }

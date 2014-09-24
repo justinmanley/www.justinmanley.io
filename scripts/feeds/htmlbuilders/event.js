@@ -2,13 +2,13 @@
 
 var moment 			= require('moment'),
 	_ 				= require('lodash'),
-	interleave		= require('../interleave'),
+	interleave		= require('../relevance'),
 	util 			= require('../util');
 
 module.exports = {
 
 	serializeFeed: function(feed) {
-		var randomizedFeed = interleave(feed, this._config);
+		var randomizedFeed = interleave.call(this, feed);
 
 		return _.chain(randomizedFeed)
 			.first(10)

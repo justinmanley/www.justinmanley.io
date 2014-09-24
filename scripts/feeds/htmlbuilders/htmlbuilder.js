@@ -21,7 +21,7 @@ module.exports = function(items, src, getContent) {
 		}, this);
 
 		/* Call the source-specific feed transformer function. */
-		eventInfo = _.merge({ type: src }, getContent.call(this, item));
+		eventInfo = _.merge({ src: src }, getContent.call(this, item));
 
 		/* Generate HTML string for each output type. */
 		_.each(htmlGenerators, function(output) {
