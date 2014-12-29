@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>  justinmanley.io</title>
+
+		<link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
+
+		<!-- GitHub icons and styles -->
+		<link rel="stylesheet" href="assets/bower_components/octicons/octicons/octicons.css"/>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+		<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<!-- FontAwesome -->	
+		<link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css"/>
+		
+		<!-- LiveReload (development) -->
+		<script src="http://localhost:35729/livereload.js"></script>
+
+		<!-- Twitter javascript -->
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+		<!-- Site styles -->
+		<link rel="stylesheet" href="assets/css/style.css"/>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="brand"><a href="/">Justin Manley</a></h2>
+			<p>Coder, mapmaker, aspiring architecture critic, currently a student at the University of Chicago. I write about cities at <a href="http://outoftheyards.com.">outoftheyards.com</a>.</p>	
+		</div>
+		<div class="navbar" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-links">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="glyphicon glyphicon-justify"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="nav-links">
+					<ul class="nav navbar-nav">
+					
+						<li><a href="https://github.com/manleyjster">
+							GitHub
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/blog">
+							Blog
+							
+						</a></li>
+					
+						<li><a href="http://outoftheyards.com">
+							Out of the Yards
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="http://justinmanley.portfoliobox.me/">
+							Portfolio
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/work">
+							Work
+							
+						</a></li>
+					
+						<li><a href="/archive">
+							Archive
+							
+						</a></li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+<div class="container-fluid">
+	<div class="row">
+		
+			<div class="col-md-8 col-md-push-4 article">
+				<article>
+  <h3 class="article-title">Growing the Public Lab Software Development Community</h3>
+  <div class="article-info">
+    <time class="article-date" datetime="2014-12-21T14:25:10-05:00">December 21, 2014</time>
+    <div class="article-source">
+      Originally published on 
+      <a href="http://publiclab.org/profile/justinmanley">Public Lab</a>
+    </div>
+  </div>
+  <div class="article-body"><p><img src='http://i.publiclab.org/system/images/photos/000/008/515/medium/contributing.png'/><br />
+I have become convinced over the past few months that Public Lab can improve the way we produce software.  Open source software developed by Public Lab - MapKnitter, Infragram, and SpectralWorkbench, to name a few of the most widely-used - powers much of the grassroots scientific research that is central to Public Lab's mission.  Despite this, contributions to Public Lab software come overwhelmingly from a tiny core cadre of developers.</p>
+<p>For example, as of now (December 2014), while the main Public Lab mailing list has over 3,100 members and the plots-dev mailing list has about 70 members,</p>
+<ul>
+<li>MapKnitter has five contributors</li>
+<li>SpectralWorkbench has five contributors</li>
+<li>The website publiclab.org has seven contributors</li>
+<li>Infragram has four contributors.</li>
+</ul>
+<p>(counting only contributors to the master branch).  Many of these (few) contributors commit to multiple Public Lab projects.</p>
+<p>More seriously, code quality is not consistent.  Code is seldom tested, follows no standard conventions, and (in some cases) relies on legacy libraries that are not maintained.  In short, much of Public Lab's codebase flaunts software development best practices and makes joining and maintaining the code more difficult than need be.</p>
+<h3 id="how-can-we-improve-">How can we improve?</h3>
+<h4 id="develop-guidelines-for-contributors">Develop Guidelines for Contributors</h4>
+<p>I'm starting by putting together a wiki page for Public Lab software contributors.  </p>
+<p>There already a wiki page covering <a href="http://publiclab.org/wiki/developing-open-source-tools-public-lab-draft-page">Developing Source Tools with Public Lab</a> - but this page is more about the philosophy of open-source and the advantages of developing open-source tools as part of a community.  We could use a page that provides a technical guide to working with Public Lab. <a href="http://publiclab.org/wiki/contributing-to-public-lab-software">Contributing to Public Lab Software</a> is that page.</p>
+<p>Compiling a list of development guidelines and best practices is critical to the growth of the Public Lab software development community.  First and most importantly, it will improve the quality of our code.  Prominently published contributor guidelines following standard conventions - and a codebase conforming to those guidelines - are signals to developers of the integrity of an open-source project.  Guidelines are also important for newcomers - folks just getting started with coding - because they provide structure and instruction.</p>
+<h4 id="integrate-discussion-on-plots-dev-and-github-issues">Integrate discussion on plots-dev and GitHub Issues</h4>
+<p>Another thing we might do is to create an <a href="https://ifttt.com">IFTTT</a> recipe to send an email to the plots-dev list whenever someone opens a bug report for a Public Lab software project on GitHub.  Right now, for the most part, users with issues either send a message to the plots-dev mailing list reporting a bug, or they open an issue on GitHub - but not both.  </p>
+<p>Sending a message to the plots-dev mailing list is great.  Really!  Sometimes people don't want to report a bug - they just have questions about how to use the software - and the mailing list is a great place for those questions.  The mailing list is great because everyone who is interested in Public Lab software is on it, so sending a message to the plots-dev list gives that message a wide audience.</p>
+<p>But GitHub is where most of the actual work gets done.  New features and bugfixes are pushed to GitHub, and pull requests are discussed on GitHub.  Furthermore, GitHub provides powerful, simple, and expressive tools for engaging with code, including GitHub Issues, diff comments, and todo lists.  The disadvantage of GitHub (at the moment) is that the audience for GitHub issues is vastly smaller than the audience on plots-dev.</p>
+<p>The status quo serves to maintain the gulf between technical and non-technical Public Lab contributors.  Issues often start on plots-dev, then migrate over to GitHub Issues once work begins on bugfixes; splitting the discussion across multiple forums like this makes it hard to follow the trajectory of a bug.  It is my hope that integrating plots-dev and GitHub Issues with an IFTTT recipe would make the bugfix process more efficient and get non-technical or non-contributing technical folks involved with the codebase on GitHub in new ways.</p>
+<h3 id="goals">Goals</h3>
+<ul>
+<li>Make it easier for technical folks to make high-quality contributions to the Public Lab codebase</li>
+<li>Make it easier for maintainers to accept contributions from the community</li>
+<li>Engage non-technical community members with Public Lab code</li>
+<li>Encourage software development best practices that will make Public Lab software more reliable, easier to maintain, less buggy, and longer-lived</li>
+</ul>
+<h3 id="questions">Questions</h3>
+<p>As I've worked on the Contributors guide, I've realized that I'm unsure of the proper audience for the guide.  Is it possible to assemble a guide for contributors that is appropriate for non-technical and technical community members alike?  Is it too early to add non-technical content to the Contributors guide (i.e. What is git? What is GitHub?).  This raises a few questions to which I've provided some partial answers:</p>
+<p>What forms might non-technical engagement take?</p>
+<ul>
+<li>Get non-technical folks to create a GitHub account and post bug reports on GitHub issues rather than sending it to the plots-dev list (See above).</li>
+<li>In addition to kite-mapping and spectrometry, we might host workshops every now and then focused on getting people set up with GitHub and git and thinking about open-source software.</li>
+</ul>
+<p>How might we reach outside of the Public Lab community to engage technical folks?</p>
+<ul>
+<li>Release general-purpose libraries.</li>
+<li>Libraries that are used by the open-source community at large will raise Public Lab's profile in the open-source software community and pique the interest of serious developers who are looking to get involved.</li>
+<li>Leaflet.Illustrate, Leaflet.DistortableImage, and Leaflet.Toolbar are examples of general-purpose libraries (all JavaScript libraries) that have been developed in service of Public Lab products.</li>
+<li>Are there features in other Public Lab software projects - Infragram, SpectralWorkbench - that might be drawn out and developed as a standalone library supporting the Public Lab app?</li>
+</ul>
+<p>I envision Public Lab growing to include a community of engineers and software developers who are excited about building open-source software tools and teaching members of the community how to contribute.  What do you think?  Let's get a discussion started!</p>
+</div>
+</article>
+
+			</div>
+		
+
+		
+			<div class="col-md-4 col-md-pull-8 feed">
+				<div class="event github-event">
+  <span class="mega-octicon octicon-mark-github content-src-icon"></span>
+  <!-- push -->
+<span class="mega-octicon octicon-git-commit"></span>
+
+<div class="time">
+  <time datetime="2014-12-29T20:36:19Z" is="relative-time">Dec 29, 2014</time>
+</div>
+
+<div class="title">
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/Leaflet.DistortableImage/tree/update-toolbar">update-toolbar</a> at <a href="https://github.com/manleyjster/Leaflet.DistortableImage" class="css-truncate css-truncate-target">manleyjster/Leaflet.DistortableImage</a>
+</div>
+
+<div class="details">
+  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars2.githubusercontent.com/u/1668487?v=3&amp;s=60" width="30" /></a>
+
+    <div class="commits pusher-is-only-committer">
+      <ul>
+        <li>
+          <span title="manleyjster">
+            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars3.githubusercontent.com/u/1668487?v=3&amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/Leaflet.DistortableImage/commit/203520e0f2ebfbbde4489a7a67724f75d68253fb">203520e</a></code>
+          <div class="message">
+            <blockquote>
+              Toolbar actions are passed as an option by default, rather than as an…
+            </blockquote>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>
+
+</div>
+<div class="event github-event">
+  <span class="mega-octicon octicon-mark-github content-src-icon"></span>
+  <!-- push -->
+<span class="mega-octicon octicon-git-commit"></span>
+
+<div class="time">
+  <time datetime="2014-12-29T20:35:39Z" is="relative-time">Dec 29, 2014</time>
+</div>
+
+<div class="title">
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/Leaflet.DistortableImage/tree/master">master</a> at <a href="https://github.com/manleyjster/Leaflet.DistortableImage" class="css-truncate css-truncate-target">manleyjster/Leaflet.DistortableImage</a>
+</div>
+
+<div class="details">
+  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars2.githubusercontent.com/u/1668487?v=3&amp;s=60" width="30" /></a>
+
+    <div class="commits ">
+      <ul>
+        <li>
+          <span title="jywarren">
+            <img alt="Jeffrey Warren" data-user="24359" height="16" src="https://avatars2.githubusercontent.com/u/24359?v=3&amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/Leaflet.DistortableImage/commit/cad89a0939f5f19971c8a428ddc854a8e41e987d">cad89a0</a></code>
+          <div class="message">
+            <blockquote>
+              Merge pull request #20 from manleyjster/master
+            </blockquote>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>
+
+</div>
+<div class="event github-event">
+  <span class="mega-octicon octicon-mark-github content-src-icon"></span>
+  <!-- push -->
+<span class="mega-octicon octicon-git-commit"></span>
+
+<div class="time">
+  <time datetime="2014-12-29T20:33:40Z" is="relative-time">Dec 29, 2014</time>
+</div>
+
+<div class="title">
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/Leaflet.Toolbar/tree/master">master</a> at <a href="https://github.com/manleyjster/Leaflet.Toolbar" class="css-truncate css-truncate-target">manleyjster/Leaflet.Toolbar</a>
+</div>
+
+<div class="details">
+  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars2.githubusercontent.com/u/1668487?v=3&amp;s=60" width="30" /></a>
+
+    <div class="commits pusher-is-only-committer">
+      <ul>
+        <li>
+          <span title="manleyjster">
+            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars3.githubusercontent.com/u/1668487?v=3&amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/Leaflet.Toolbar/commit/dbbd4a8e6d635601b407bb763bfe4a6dd878f827">dbbd4a8</a></code>
+          <div class="message">
+            <blockquote>
+              Modify L.Toolbar call to accomodate toolbar actions-as-option rather …
+            </blockquote>
+          </div>
+        </li>
+        <li>
+          <span title="manleyjster">
+            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars3.githubusercontent.com/u/1668487?v=3&amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/Leaflet.Toolbar/commit/6e6482f468ff1f831b7466645f4d2fa42e4806a9">6e6482f</a></code>
+          <div class="message">
+            <blockquote>
+              Pass actions to toolbars via a property in the options hash rather th…
+            </blockquote>
+          </div>
+        </li>
+        <li class="more"><a href="https://github.com/manleyjster/Leaflet.Toolbar/compare/82698ce1e7...dbbd4a8e6d">View comparison for these 2 commits &raquo;</a></li>
+      </ul>
+    </div>
+</div>
+
+</div>
+<div class="event github-event">
+  <span class="mega-octicon octicon-mark-github content-src-icon"></span>
+  <!-- push -->
+<span class="mega-octicon octicon-git-commit"></span>
+
+<div class="time">
+  <time datetime="2014-12-29T04:30:28Z" is="relative-time">Dec 29, 2014</time>
+</div>
+
+<div class="title">
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>pushed</span> to <a href="/manleyjster/Leaflet.Toolbar/tree/master">master</a> at <a href="https://github.com/manleyjster/Leaflet.Toolbar" class="css-truncate css-truncate-target">manleyjster/Leaflet.Toolbar</a>
+</div>
+
+<div class="details">
+  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars2.githubusercontent.com/u/1668487?v=3&amp;s=60" width="30" /></a>
+
+    <div class="commits pusher-is-only-committer">
+      <ul>
+        <li>
+          <span title="manleyjster">
+            <img alt="Justin Manley" data-user="1668487" height="16" src="https://avatars3.githubusercontent.com/u/1668487?v=3&amp;s=32" width="16" />
+          </span>
+          <code><a href="/manleyjster/Leaflet.Toolbar/commit/82698ce1e7885d3b488bd685a02ebce0494dde29">82698ce</a></code>
+          <div class="message">
+            <blockquote>
+              Bugfix - ensure that control-style toolbars are removed from the map …
+            </blockquote>
+          </div>
+        </li>
+      </ul>
+    </div>
+</div>
+
+</div>
+<div class="event github-event">
+  <span class="mega-octicon octicon-mark-github content-src-icon"></span>
+  <!-- pull_request -->
+<span class="mega-octicon octicon-git-pull-request"></span>
+
+<div class="time">
+  <time datetime="2014-12-29T04:15:40Z" is="relative-time">Dec 29, 2014</time>
+</div>
+
+<div class="title">
+  <a href="https://github.com/manleyjster">manleyjster</a> <span>opened</span> pull request <a href="https://github.com/publiclab/Leaflet.DistortableImage/pull/21">publiclab/Leaflet.DistortableImage#21</a>
+</div>
+
+<div class="details">
+  <a href="https://github.com/manleyjster"><img alt="Justin Manley" class="gravatar" data-user="1668487" height="30" src="https://avatars2.githubusercontent.com/u/1668487?v=3&amp;s=60" width="30" /></a>
+  <div class="message">
+    <blockquote>Update DistortableImage.EditToolbar to ccomodate changes to the leaflet-toolbar API.</blockquote>
+      <div class="pull-info">
+        <span class="octicon octicon-git-commit"></span>
+        <em>1</em> commit with
+        <em>199</em> additions and
+        <em>106</em> deletions
+      </div>
+  </div>
+</div>
+
+</div>
+<div class="event publiclab-event">
+  <div class="content-src-icon"></div>
+  <time class="time" datetime="2014-09-01T23:22:48-04:00">September 1, 2014</time>
+  <div class="title">
+    <a href="http://publiclab.org/profile/justinmanley">justinmanley</a>
+    <span> posted </span>
+    <a href="http://publiclab.org//notes/justinmanley/09-02-2014/mapknitter-annotations-first-live-release">MapKnitter Annotations: First Live Release</a>
+  </div>
+</div>
+<div class="event publiclab-event">
+  <div class="content-src-icon"></div>
+  <time class="time" datetime="2014-08-19T14:56:49-04:00">August 19, 2014</time>
+  <div class="title">
+    <a href="http://publiclab.org/profile/justinmanley">justinmanley</a>
+    <span> posted </span>
+    <a href="http://publiclab.org//notes/justinmanley/08-19-2014/mapknitter-annotations-riffle-data-as-map-annotations">MapKnitter Annotations: Riffle Data as Map Annotations</a>
+  </div>
+</div>
+<div class="event publiclab-event">
+  <div class="content-src-icon"></div>
+  <time class="time" datetime="2014-08-06T16:03:19-04:00">August 6, 2014</time>
+  <div class="title">
+    <a href="http://publiclab.org/profile/justinmanley">justinmanley</a>
+    <span> posted </span>
+    <a href="http://publiclab.org//notes/justinmanley/08-06-2014/mapknitter-annotations-interface-refactoring">MapKnitter Annotations: Interface Refactoring</a>
+  </div>
+</div>
+<div class="event publiclab-event">
+  <div class="content-src-icon"></div>
+  <time class="time" datetime="2014-07-29T03:02:01-04:00">July 29, 2014</time>
+  <div class="title">
+    <a href="http://publiclab.org/profile/justinmanley">justinmanley</a>
+    <span> posted </span>
+    <a href="http://publiclab.org//notes/justinmanley/07-29-2014/mapknitter-annotations-version-0-0-2-released-with-l-illustrate-textbox-and-l-illustrate-pointer">MapKnitter Annotations: Version 0.0.2 released with L.Illustrate.Textbox and L.Illustrate.Pointer</a>
+  </div>
+</div>
+<div class="event publiclab-event">
+  <div class="content-src-icon"></div>
+  <time class="time" datetime="2014-07-14T03:23:26-04:00">July 14, 2014</time>
+  <div class="title">
+    <a href="http://publiclab.org/profile/justinmanley">justinmanley</a>
+    <span> posted </span>
+    <a href="http://publiclab.org//notes/justinmanley/07-14-2014/mapknitter-annotations-leaflet-illustrate-edithandle-and-leaflet-illustrate-pointer">MapKnitter Annotations: Leaflet.Illustrate.EditHandle and Leaflet.Illustrate.Pointer</a>
+  </div>
+</div>
+
+			</div>
+						
+	</div>
+</div>
+		<footer class="footer">
+			<div class="social-media">
+				<a href="www.linkedin.com/in/justinmanley/" target="_blank">
+					<span class="fa fa-linkedin"></span>
+				</a>
+				<a href="https://github.com/manleyjster" target="_blank">
+					<span class="fa fa-github"></span>
+				</a>
+				<a href="https://twitter.com/outoftheyards" target="_blank">
+					<span class="fa fa-twitter"></span>
+				</a>
+				<a href="mailto:manleyjster@gmail.com" target="_blank">
+					<span class="fa fa-envelope"></span>
+				</a>		
+			</div>
+			<div class="attributions">
+				<p>This site was generated on Dec 29th, 2014 with <a href="http://gruntjs.com/">Grunt</a> and <a href="http://assemble.io/">Assemble</a> using fonts and icons from <a href="http://glyphicons.com/">Glyphicons</a>, <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, and <a href="https://www.theleagueofmoveabletype.com/">The League of Moveable Type</a>.</p>
+				
+			</div>		
+		</footer>	
+	</body>
+</html>
