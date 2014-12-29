@@ -21,7 +21,7 @@ sed --in-place '/site\/*/d' .gitignore
 #	http://www.damian.oquanta.info/posts/one-line-deployment-of-your-site-to-gh-pages.html
 #   http://lukecod.es/2014/08/15/deploy-a-static-subdirectory-to-github-pages/
 git add --all site
-git commit -m "Generate website on $(date +\"%m-%d-%Y\") at $(date +\"%H:%M:%S\")."
+git commit -m "Generate website on $(date +"%m-%d-%Y") at $(date +"%H:%M:%S")."
 
 # check out a new local branch containing the site/ directory
 git subtree split --prefix site -b gh-pages
