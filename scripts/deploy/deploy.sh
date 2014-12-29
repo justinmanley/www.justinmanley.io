@@ -14,8 +14,8 @@ grunt build
 # test
 scripts/deploy/test.sh
 
-# allow the site's static assets to be recognized by git
-sed -i '/site\/assets\/bower_components/d' .gitignore
+# add generated site to git 
+sed --in-place '/site\/*/d' .gitignore
 
 # deploy to gh-pages branch.  See: 
 #	http://www.damian.oquanta.info/posts/one-line-deployment-of-your-site-to-gh-pages.html

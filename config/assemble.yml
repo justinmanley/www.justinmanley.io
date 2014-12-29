@@ -16,7 +16,7 @@ site:
             blog: src/content/blog/**.md
             work: src/content/work/**.md
     files: 
-        "site/": 
+        "site/":
             - src/**.hbs
             - src/**.md 
 
