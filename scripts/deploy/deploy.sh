@@ -16,11 +16,11 @@ scripts/deploy/test.sh
 
 # add generated site to git 
 sed --in-place '/site\/*/d' .gitignore
+git add --all site
 
 # deploy to gh-pages branch.  See: 
 #	http://www.damian.oquanta.info/posts/one-line-deployment-of-your-site-to-gh-pages.html
 #   http://lukecod.es/2014/08/15/deploy-a-static-subdirectory-to-github-pages/
-git add --all site
 git commit -m "Generate website on $(date +"%m-%d-%Y") at $(date +"%H:%M:%S")."
 
 # check out a new local branch containing the site/ directory
