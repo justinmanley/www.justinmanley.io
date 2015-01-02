@@ -45,6 +45,11 @@ links:
 		<!-- Twitter javascript -->
 		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+		<!-- Syntax highlighting for code snippets -->
+		<link rel="stylesheet" href="{{include.css.highlightTheme}}">
+		<script src="{{include.js.highlight}}"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+
 		<!-- Site styles -->
 		<link rel="stylesheet" href="{{assets}}/css/style.css"/>
 	</head>
