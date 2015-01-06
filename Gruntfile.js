@@ -51,7 +51,8 @@ module.exports = function(grunt) {
         less: {
             site: {
                 files: {
-                    'site/assets/css/style.css': 'src/assets/less/style.less'
+                    'site/assets/css/bootstrap.css' : 'src/assets/less/bootstrap.less',
+                    'site/assets/css/style.css'     : 'src/assets/less/style.less'
                 }
             }
         },
