@@ -5,7 +5,7 @@ state: 	published
 header: <%= assets %>/images/leaflet-toolbar-header.png
 ---
 
-Leaflet.Toolbar, a JavaScript library for building flexible and extensible toolbars for Leaflet maps, is just released and available on `npm`. Leaflet.Toolbar is an effort to extend the excellent Leaflet.draw plugin and to enable new kinds of map / user interactions.  In particular, Leaflet.Toolbar aims to:
+[Leaflet.Toolbar](https://github.com/manleyjster/Leaflet.Toolbar), a JavaScript library for building flexible and extensible toolbars for Leaflet maps, is just released and available on [`npm`](https://www.npmjs.com/package/leaflet-toolbar). Leaflet.Toolbar is an effort to extend the excellent Leaflet.draw plugin and to enable new kinds of map / user interactions.  In particular, Leaflet.Toolbar aims to:
 * Decouple the actions exposed by a toolbar from its overall behavior and appearance;
 * Enable *both* control-style and popup-style toolbars out of the box;
 * Make it easy for library developers to define new kinds of toolbars;
@@ -22,13 +22,13 @@ Matt and Jeff were my mentors for a [Google Summer of Code project](http://publi
 
 Matt and Jeff had found that Public Lab community members, unable to communicate the purpose of their maps using MapKnitter, would export their maps as images, then draw on them in Powerpoint or by hand, adding arrows, lines, circles, and text annotations directly on the map. Matt noted in a [wonderful research note](http://publiclab.org/notes/mathew/03-14-2014/mapknitter-annotations-gsoc) that, historically, mapmakers have written and annotated their maps using different size fonts, multiple colors, and fonts of varying sizes to encode dense, overlapping geographic information. Until recently, web maps (and especially raster maps) lacked this degree of expressiveness.
 
-![Mapmakers were exporting their maps as images and drawing on them in Powerpoint to communicate their purpose.](http://i.publiclab.org/system/images/photos/000/003/256/original/bayou_manchac_sewer_outful.jpg)
+[![Mapmakers were exporting their maps as images and drawing on them in Powerpoint to communicate their purpose.](http://i.publiclab.org/system/images/photos/000/003/256/original/bayou_manchac_sewer_outful.jpg)](http://i.publiclab.org/system/images/photos/000/003/256/original/bayou_manchac_sewer_outful.jpg)
 
 It was important to us to bring the full expressiveness of analog mapping into the browser so that citizen scientists and mapmakers could easily communicate the purpose of their maps.
 
 Migrating from OpenLayers to Leaflet gave Public Lab the opportunity to envision how we might enable this kind of expressive digital mapmaking. Leaflet ships with a full complement of vector annotation layers - circles, rectangles, polygons, and polylines - that can be overlaid on maps. Leaflet.draw makes these layers interactive, enabling users to create annotations dynamically by drawing them on the map. This was a great first step. However, Leaflet.draw didn't provide any way for users to alter the style of these map annotations - their color, weight, or opacity, for example.
 
-Leaflet.draw exported a toolbar which was the entry point for its interaction functionality. In Leaflet.Illustrate, I began developing new kinds of map annotations. Yet, when I tried to expose these new kinds of annotations to users alongside those provided by Leaflet.draw, I found that its toolbar wasn't easy to extend. The toolbar was not the core of the new features I was trying to develop, but because it was the entry point for users, it deeply affected the user experience.
+Leaflet.draw exported a toolbar which was the entry point for its interaction functionality. In [Leaflet.Illustrate](https://github.com/manleyjster/Leaflet.Illustrate), I began developing new kinds of map annotations. Yet, when I tried to expose these new kinds of annotations to users alongside those provided by Leaflet.draw, I found that its toolbar wasn't easy to extend. The toolbar was not the core of the new features I was trying to develop, but because it was the entry point for users, it deeply affected the user experience.
 
 This plugin is an effort to generalize the elegant toolbar provided by Leaflet.draw and to overcome some of its limitations.
 
