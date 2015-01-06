@@ -8,6 +8,9 @@ title: Blog
 	{{#is @state 'published'}}
 		<div class="blog-post">
 			<div class="blog-header">
+				{{#if @header}}
+					<img class="blog-header-image" src="{{@header}}"></img>
+				{{/if}}
 				<h2 class="blog-title">{{@title}}</h2>
 				<time class="blog-published">{{moment @date format="dddd MMMM Do, YYYY"}}</time>
 			</div>
