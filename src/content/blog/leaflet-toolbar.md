@@ -1,22 +1,22 @@
 ---
-title: 	Designing Leaflet.Toolbar
+title: 	Designing Leaflet.toolbar
 date: 	Mon Jan  5 22:15:21 CST 2015
 state: 	published
 header: <%= assets %>/images/leaflet-toolbar-header.png
 ---
 
-[Leaflet.Toolbar](https://github.com/manleyjster/Leaflet.Toolbar), a JavaScript library for building flexible and extensible toolbars for Leaflet maps, is just released and available on [`npm`](https://www.npmjs.com/package/leaflet-toolbar). Leaflet.Toolbar is an effort to extend the excellent Leaflet.draw plugin and to enable new kinds of map / user interactions.  In particular, Leaflet.Toolbar aims to:
+[Leaflet.toolbar](https://github.com/Leaflet/Leaflet.toolbar), a JavaScript library for building flexible and extensible toolbars for Leaflet maps, is just released and available on [`npm`](https://www.npmjs.com/package/leaflet-toolbar). Leaflet.toolbar is an effort to extend the excellent Leaflet.draw plugin and to enable new kinds of map / user interactions.  In particular, Leaflet.toolbar aims to:
 * Decouple the actions exposed by a toolbar from its overall behavior and appearance;
 * Enable *both* control-style and popup-style toolbars out of the box;
 * Make it easy for library developers to define new kinds of toolbars;
 * Be easy for application developers to instantiate;
 * Remain interoperable with Leaflet.draw.
 
-Here's where Leaflet.Toolbar came from and why I built it.
+Here's where Leaflet.toolbar came from and why I built it.
 
 ### Why build a toolbar plugin?
 
-The idea for Leaflet.Toolbar came from a discussion with [Mathew Lippincott](http://publiclab.org/profile/mathew) and [Jeffrey Warren](http://publiclab.org/profile/warren) at the end of the summer of 2014.
+The idea for Leaflet.toolbar came from a discussion with [Mathew Lippincott](http://publiclab.org/profile/mathew) and [Jeffrey Warren](http://publiclab.org/profile/warren) at the end of the summer of 2014.
 
 Matt and Jeff were my mentors for a [Google Summer of Code project](http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal) focused on improving MapKnitter, a piece of software created by Public Lab for Open Technology and Science to enable grassroots mappers to do [georectification](http://publiclab.org/wiki/mapping-curriculum-map-preparation#3.3+-+MapKnitter:+Map+stitching).
 
@@ -34,7 +34,7 @@ This plugin is an effort to generalize the elegant toolbar provided by Leaflet.d
 
 ### Toolbar actions
 
-The toughest and most protracted challenge in designing Leaflet.Toolbar was deciding how to represent toolbar actions. The difficult was that toolbar actions couldn't be instantiated when the toolbar was defined (for example, by a plugin developer) because these actions took as mandatory arguments to their constructors a `map` object, which is usually created by application developers.
+The toughest and most protracted challenge in designing Leaflet.toolbar was deciding how to represent toolbar actions. The difficult was that toolbar actions couldn't be instantiated when the toolbar was defined (for example, by a plugin developer) because these actions took as mandatory arguments to their constructors a `map` object, which is usually created by application developers.
 
 Leaflet.draw solved this by defining the actions in the toolbar in a method of the concrete `DrawToolbar` class.
 ```javascript
@@ -57,7 +57,7 @@ L.DrawToolbar = L.Toolbar.extend({
 
 I struggled with this for a long time. I wanted to separate the specification of a toolbar's actions from its behavior as an generic interface, so I didn't feel that it was appropriate to define the actions in a method of a specific toolbar class. Yet I was facing the same difficulty as Leaflet.draw - the necessity to make the `map` variable available to the toolbar action constructors.
 
-I'm very pleased with the solution I came up with (at long last, after months of re-re-refactoring). Leaflet.Toolbar requires developers to define the actions in a toolbar as a simple array of constructors extending L.ToolbarAction:
+I'm very pleased with the solution I came up with (at long last, after months of re-re-refactoring). Leaflet.toolbar requires developers to define the actions in a toolbar as a simple array of constructors extending L.ToolbarAction:
 
 ```javascript
 L.DrawToolbar = L.Toolbar.Control.extend({
@@ -89,7 +89,7 @@ This succint specification for toolbar actions is made possible by a little bit 
 
 ### Overloaded #addTo method and _getActionConstructor
 
-Conceptually, a toolbar is an interface that allows a user to manipulate the state of objects on the map or the map itself. Leaflet.Toolbar allows the developer to specify which map objects the toolbar will control. In order to keep the API simple, `L.Toolbar#addTo` is overloaded to add the toolbar to the map, *and* to designate the map objects which the toolbar will control. The arguments of `L.Toolbar#addTo` are passed to each action in turn.  That is, 
+Conceptually, a toolbar is an interface that allows a user to manipulate the state of objects on the map or the map itself. Leaflet.toolbar allows the developer to specify which map objects the toolbar will control. In order to keep the API simple, `L.Toolbar#addTo` is overloaded to add the toolbar to the map, *and* to designate the map objects which the toolbar will control. The arguments of `L.Toolbar#addTo` are passed to each action in turn.  That is, 
 ```javascript
 new L.Popup.Toolbar({
 	options: { actions: [EditShape, DeleteShape] }
@@ -115,7 +115,7 @@ This trick uses Leaflet's built-in classical inheritance system to create pseudo
 
 ### Secondary toolbars
 
-I thought I was done developing Leaflet.Toolbar after about a month of tinkering with it in my spare time. Looking back at Leaflet.draw to confirm I had implemented all of its features, I noticed that each action in the toolbar, once triggered, provided a menu of secondary options related to the action at hand; for example, users drawing a polygon or polyline are given the option to cancel drawing, or to delete just the last point. No problem, I thought. I'll just add that in - it'll take a couple of days.
+I thought I was done developing Leaflet.toolbar after about a month of tinkering with it in my spare time. Looking back at Leaflet.draw to confirm I had implemented all of its features, I noticed that each action in the toolbar, once triggered, provided a menu of secondary options related to the action at hand; for example, users drawing a polygon or polyline are given the option to cancel drawing, or to delete just the last point. No problem, I thought. I'll just add that in - it'll take a couple of days.
 
 ![Primary and secondary toolbar actions](assets/images/toolbar-actions.png)
 
@@ -123,16 +123,16 @@ Wrong! My design at the time had no way of accomodating these secondary actions.
 
 The menu of secondary actions, I realized, was kind of like a toolbar.  Why not just make it an instance of `L.Toolbar`? This was the solution I settled on: the `subToolbar` option of each toolbar action points to an instance of `L.Toolbar` containing the appropriate secondary actions.
 
-This system of nested toolbars made for efficient code reuse, but meant that the CSS styles had to be seriously modified. Toolbars in `Leaflet.Toolbar` are automatically given a `leaflet-toolbar-n` class, where `n` is the 0-based level of the toolbar in the nested toolbar hierarchy. This allows for styles to be applied easily across all toolbars and menus at the same hierarchical level. One drawback of this method is that styles have to be tightly scoped to avoid inadvertently styling containing toolbars (for example: `leaflet-toolbar-0 > li > .leaflet-toolbar-icon {...}`) - but hey, you can't win them all!
+This system of nested toolbars made for efficient code reuse, but meant that the CSS styles had to be seriously modified. Toolbars in `Leaflet.toolbar` are automatically given a `leaflet-toolbar-n` class, where `n` is the 0-based level of the toolbar in the nested toolbar hierarchy. This allows for styles to be applied easily across all toolbars and menus at the same hierarchical level. One drawback of this method is that styles have to be tightly scoped to avoid inadvertently styling containing toolbars (for example: `leaflet-toolbar-0 > li > .leaflet-toolbar-icon {...}`) - but hey, you can't win them all!
 
 ### Looking back
 
-The toughest part of this project, hands down, was dealing with the constraints of an existing API.  Developing Leaflet.Toolbar was different from working on other libraries that I've contributed to because, with Leaflet.Toolbar, I was proposing to take over functionality from Leaflet.draw, rather than extending it. I wanted to inroduce a new dependency into the stack that would handle *existing* functionality. Working on a project with this degree of interdependence between the parts was new for me, and it was difficult. There were times when I felt that my ideas for Leaflet.Toolbar couldn't possibly be accomodated by Leaflet.draw's API, and I dreamed about drastic rewrites of Leaflet.draw that might mesh more neatly with my toolbars. Thank god I didn't follow through on those dreams! Both Leaflet.draw and Leaflet.Toolbar would have been worse off! I did make some small changes to Leaflet.draw, such as modifying each drawing handler to inherit from `L.ToolbarAction` rather than `L.Handler`, but for the most part, I left it as-is.
+The toughest part of this project, hands down, was dealing with the constraints of an existing API.  Developing Leaflet.toolbar was different from working on other libraries that I've contributed to because, with Leaflet.toolbar, I was proposing to take over functionality from Leaflet.draw, rather than extending it. I wanted to inroduce a new dependency into the stack that would handle *existing* functionality. Working on a project with this degree of interdependence between the parts was new for me, and it was difficult. There were times when I felt that my ideas for Leaflet.toolbar couldn't possibly be accomodated by Leaflet.draw's API, and I dreamed about drastic rewrites of Leaflet.draw that might mesh more neatly with my toolbars. Thank god I didn't follow through on those dreams! Both Leaflet.draw and Leaflet.toolbar would have been worse off! I did make some small changes to Leaflet.draw, such as modifying each drawing handler to inherit from `L.ToolbarAction` rather than `L.Handler`, but for the most part, I left it as-is.
 
-While it was sometimes frustrating, Leaflet.draw was an enormous help to me in developing Leaflet.Toolbar. I used [@jacobtoye](https://github.com/jacobtoye)'s excellent control-style toolbar as the inspiration and the spec for Leaflet.Toolbar, and I was constantly tabbing back to Leaflet.draw to check the functionality of the Leaflet.draw toolbars. I worked on porting the Leaflet.draw toolbar interface over to `Leaflet.Toolbar` as I was developing `Leaflet.Toolbar`, which helped maintain a tight feedback loop and informed the features I was building in to Leaflet.Toolbar. If anything made my job difficult, it was that [@jacobtoye](https://github.com/jacobtoye) and the Leaflet.draw set the bar so high!
+While it was sometimes frustrating, Leaflet.draw was an enormous help to me in developing Leaflet.toolbar. I used [@jacobtoye](https://github.com/jacobtoye)'s excellent control-style toolbar as the inspiration and the spec for Leaflet.toolbar, and I was constantly tabbing back to Leaflet.draw to check the functionality of the Leaflet.draw toolbars. I worked on porting the Leaflet.draw toolbar interface over to `Leaflet.toolbar` as I was developing `Leaflet.toolbar`, which helped maintain a tight feedback loop and informed the features I was building in to Leaflet.toolbar. If anything made my job difficult, it was that [@jacobtoye](https://github.com/jacobtoye) and the Leaflet.draw set the bar so high!
 
 Thanks are in order to [@jacobtoye](https://github.com/jacobtoye), for a wonderful drawing plugin, and, of course, to [@mourner](https://github.com/mourner), for the amazing open-source mapping library that started it all.
 
 ### What's next
 
-If you're a Leaflet developer, I'd love to hear your thoughts! Let me know what you think in the comments on [issue #324 in Leaflet.draw](https://github.com/Leaflet/Leaflet.draw/issues/324), or [open a new issue on Leaflet.Toolbar](https://github.com/manleyjster/Leaflet.Toolbar/issues).
+If you're a Leaflet developer, I'd love to hear your thoughts! Let me know what you think in the comments on [issue #324 in Leaflet.draw](https://github.com/Leaflet/Leaflet.draw/issues/324), or [open a new issue on Leaflet.toolbar](https://github.com/Leaflet/Leaflet.toolbar/issues).
