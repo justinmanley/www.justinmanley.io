@@ -6,8 +6,10 @@ var util 			= require('../util'),
 function getContent(item) {
 	var iconClass = 'mega-octicon octicon-mark-github content-src-icon';
 
-	/* Have to include .text('') to force the empty span to render as an open tag and a close tag. */
-	this._event.ele('span', { class: iconClass }).text('');
+	/* Have to include .text('') to force the empty span to render as an open tag and a close tag. 
+     * See https://github.com/oozcitak/xmlbuilder-js/issues/65.
+	 */
+	this._event.ele('span', { class: iconClass }).text(' ');
 	this._event.raw(item.content[0]._);
 
 	return {

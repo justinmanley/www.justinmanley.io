@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # end with nonzero exit code if any command fails 
-zset -e
+set -e
 
 git clone https://github.com/manleyjster/www.justinmanley.io.git
 
