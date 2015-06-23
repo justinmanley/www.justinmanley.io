@@ -65,7 +65,8 @@ module.exports = function(grunt) {
                 failHard: true,
                 relaxerror: [
                     'An img element must have an alt attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.',
-                    'Attribute is not allowed on element time at this point.'                 
+                    'Attribute is not allowed on element time at this point.',
+                    'This interface to HTML5 document checking is deprecated.'                 
                 ]
             },
             content: {
