@@ -1,7 +1,5 @@
 @bootstrap_path: "../bower_components/bootstrap/less/";
 
-
-
 // Core variables and mixins
 @import "@{bootstrap_path}variables.less";
 @import "@{bootstrap_path}mixins.less";
@@ -14,7 +12,7 @@
 // Core CSS
 @import "@{bootstrap_path}scaffolding.less";
 @import "@{bootstrap_path}type.less";
-// @import "@{bootstrap_path}code.less";
+// @import "@{bootstrap_path}code.less"; 
 
 // Core CSS (continued)
 @import "@{bootstrap_path}grid.less";
@@ -57,3 +55,6 @@
 
 // justimanley.io
 @import "code.less";
+
+// override the default font path for bootstrap
+@icon-font-path: "../bower_components/bootstrap/dist/fonts/"; 
