@@ -50,6 +50,19 @@ eigenvectors : (m : Matrix n n Float)
     -> { [RND] } Eff (List (Vect n Float, Float))
 ``` 
 
+TODO:
+	* Talk about having to use mapVE instead of replicate - why?
+	* Using Debug.Trace (or whatever it is in Idris)
+	* Talk about the quality of Idris documentation and tutorials (most by Edwin Brady)
+	* Generating a random float? - probably want to edit the code for how I do this - come up with a different algorithm...
+	* Check that my code actually works...
+	* Effect types - talk about how the effects system is different from Haskell.
+		- Perhaps give an example with more than one effect? i.e. what if I also wanted to read something from stdin? (Say, for example, that I wanted to read the matrix from stdin?)
+	* How much space should I devote to explaning how the power method works?
+	* Talk about implicit variables (values that are bound in the type signature, not as arguments to the function), and how to bring those into scope explicitly.
+	* How should I present the code? It's pretty short - should I just embed the whole thing?
+
+Want to focus about what's new and cool about working with dependent types...
 
 
 
