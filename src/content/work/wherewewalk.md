@@ -1,6 +1,6 @@
 ---
 title:    WhereWeWalk
-link:     https://github.com/manleyjster/wherewewalk
+link:     https://github.com/justinmanley/wherewewalk
 summary:  A spatial survey tool.
 duration: Academic year 2013 - 2014.
 ---
