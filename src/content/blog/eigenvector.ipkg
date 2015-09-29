@@ -1,0 +1,9 @@
+package eigenvector
+
+opts = "-p effects -p contrib"
+
+modules = Eigenvector
+        , Test        
+
+tests = Test.normalizeYieldsUnitVector
+      , Test.realEigenvectors
