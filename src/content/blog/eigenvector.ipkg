@@ -6,4 +6,5 @@ modules = Eigenvector
         , Test        
 
 tests = Test.normalizeYieldsUnitVector
-      , Test.realEigenvectors
+      , Test.singleRealEigenvector
+      , Test.orthogonalizeYieldsOrthogonalVectors
