@@ -102,22 +102,20 @@ There's a catch in what I've described so far - the power method needs an initia
 
 Handling effectful computations has typically been challenging for functional languages based on the lambda calculus which aspire to [purity](TODO: link). Haskell 
 
+> ||| Map using a function which depends on the previously-mapped values.
+> ||| Like a combination of map and fold in which the state is the values 
+> ||| which have already been mapped.
+> mapRemember : (a -> List b -> b) -> List a -> List b -> List b 
+> mapRemember f values state = case values of
+>   []        => reverse state
+>   (x :: xs) => mapRemember f xs (f x state :: state)
+
 > ||| Calculate the first k eigenvectors of a matrix using the power method.
 > eigenvectors : Matrix n n Double
 > 	-> Double
-> 	-> Nat
 > 	-> Eff (List (Vect n Double)) [RND]
-> eigenvectors {n} matrix precision k =
-> 	-- Internal procedure which calls itself recursively 
->   -- to generate the k eigenvectors.
->   -- Can't do a straightforward map (mapE) because the computation for each
->   -- eigenvector involves the previously computed eigenvectors.
->   -- seedVectors : List (Vect n Double)
->   do
->       seedVectors <- mapE (mapVE rndDouble) 
->           $ List.replicate k (Vect.replicate n (cast $ 1 / precision))
+> eigenvectors {n} matrix precision = do
+>    seedVectors <- mapE (mapVE rndDouble) 
+>      $ List.replicate n (Vect.replicate n (cast $ 1 / precision))
 >   
->       return $ foldr eigenvectors' [] seedVectors 
->   where
->       eigenvectors' seed prevEigs = 
->           eigenvector matrix precision seed prevEigs :: prevEigs
+>    return $ mapRemember (eigenvector matrix precision) seedVectors []
