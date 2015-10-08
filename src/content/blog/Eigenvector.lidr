@@ -98,22 +98,20 @@ Note that we want the `tmp` and `result` vectors to be the same size as the "see
 > 	rnd <- rndInt 0 max
 > 	return (fromInteger rnd / fromInteger max)
 
-There's a catch in what I've described so far - the power method needs an initial seed vector to jumpstart the iterative process of approximation. Typically, the algorithm is seeded with a random vector. This means that the power method is an [effectful](TODO: link) computation.
+There's a catch in what I've described so far - the power method needs an initial seed vector to jumpstart the iterative process of approximation for each eigenvector. If the seed vector is orthogonal to the eigenvector we're trying to compute, then the iterative process will not converge. In practice, this is addressed by seeding the power method with a random seed vector. Yet this poses a new challenge.
 
-Handling effectful computations has typically been challenging for functional languages based on the lambda calculus which aspire to [purity](TODO: link). Haskell 
+The power method is necessarily non-determinstic. But handling non-deterministic and effectful computations computations has typically been challenging for functional languages which aspire to [purity](TODO: link). Haskell deals with effectful computations by creating different types for computations which handle different kinds of side-effects: hence a Random, State a b, IO , etc. types.  
 
-> ||| Map using a function which depends on the previously-mapped values.
-> ||| Like a combination of map and fold in which the state is the values 
+> ||| map using a function which depends on the previously-mapped values.
+> ||| like a combination of map and fold in which the state is the values 
 > ||| which have already been mapped.
 > mapRemember : (a -> List b -> b) -> List a -> List b -> List b 
 > mapRemember f values state = case values of
 >   []        => reverse state
 >   (x :: xs) => mapRemember f xs (f x state :: state)
 
-> ||| Calculate the first k eigenvectors of a matrix using the power method.
-> eigenvectors : Matrix n n Double
-> 	-> Double
-> 	-> Eff (List (Vect n Double)) [RND]
+> ||| Calculate the eigenvectors of a matrix using the power method.
+> eigenvectors : Matrix n n Double -> Double -> Eff (List (Vect n Double)) [RND]
 > eigenvectors {n} matrix precision = do
 >    seedVectors <- mapE (mapVE rndDouble) 
 >      $ List.replicate n (Vect.replicate n (cast $ 1 / precision))
