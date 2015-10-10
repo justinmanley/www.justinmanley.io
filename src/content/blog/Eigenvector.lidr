@@ -1,5 +1,5 @@
 ---
-title: Playing with Idris
+title: Approximating Eigenvectors in Idris
 ---
 
 > --- Code hidden from blog post. ---
@@ -13,17 +13,30 @@ title: Playing with Idris
 > 
 > import Debug.Error
 
-### Motivation (Why is Idris cool?)
+[Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). A dependent type system is one in which types are allowed to *depend* on values. One advantage of this is that it makes the type system much more expressive and enables the compiler to formally verify more of the logic more of the logic of the program. While extremely powerful, dependent type theory is less well-understood than other formal systems. Idris is exciting because it is a testing ground for research in dependent types.
 
-[Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). This means that types in Idris can depend on values. The advantage of this is that it makes the type system much more expressive, so that the compiler can formally verify more of the logic of the program.
+This [literate program](TODO: link) explores Idris with an implementation of the [power method](https://en.wikipedia.org/wiki/Power_iteration) for approximating the eigenvectors of a matrix.
 
-This [literate program](TODO: link) explores Idris, a pure functional programming language with dependent types, through a program for approximating the eigenvectors of a matrix using the [power method](https://en.wikipedia.org/wiki/Power_iteration).
+### Vectors and Matrices
 
-We'll start with a couple of simple helper functions for [normalizing](https://en.wikipedia.org/wiki/Unit_vector) and [orthogonalizing](https://en.wikipedia.org/wiki/Orthogonalization) vectors:
+A vector space forms an ideal setting for this exploration of Idris since many many matrix and vector operations have constraints which can be more easily represented and checked in Idris than in other languages. Vectors may only be multiplied if they have the same length, and two matrices must have a common dimension in order to be multiplied together.
+
+Vectors in Idris have type `Vect n a`, where `n` is a natural number. That is, the type of a vector contains a *value*. This means that the vectors `[1,0]` and the vectors `[0,1,0]` actually have different types in Idris, and their multiplication via the dot product can be excluded at compile-time, rather than handled at runtime with an error or by silently discarding elements of the longer vector.
+
+With a representation of vectors, it's easy to define a type for matrices:
+
+```idris
+Matrix : Nat -> Nat -> Type -> Type
+Matrix m n a = Vect m (Vect n a)
+```
+Matrix operations can be checked in the same way as vector operations.
+
+All of these helper functions, which we'll use in the implementation of the power method, benefit from the compile-time checking of vector and matrix operations: 
 
 > norm : Vect n Double -> Double
 > norm v = sqrt (v <:> v)
 >
+> ||| Scale v to have unit length.
 > normalize : Vect n Double -> Vect n Double
 > normalize v = (1 / norm v) <#> v
 >
@@ -124,7 +137,7 @@ Our `eigenvectors` function uses two side-effects: `RND`, to generate random num
 >    srand !time
 >   
 >    -- The functions given as arguments to higher-order effectful functions
->    -- (mapE, mapVE) must be syntactically applied directly to their arguments.>    -- This is a bug (see TODO: link).
+>    -- (mapE, mapVE) must be syntactically applied directly to their arguments.
 >    seedVectors <- mapE (\vs => mapVE (\x => rndDouble x) vs)
 >      $ List.replicate n (Vect.replicate n (cast $ 1 / precision))
 >   
