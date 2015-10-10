@@ -1,6 +1,7 @@
 module Main where
 
-import Data.List (isPrefixOf, intersperse)
+import Data.Char (isSpace)
+import Data.List (isPrefixOf, intersperse, dropWhile)
 
 main :: IO ()
 main = do
@@ -13,11 +14,12 @@ main = do
 
 -- Make sure to modify the literate source code, not the generated markdown
 -- or idris code.
-initialProse :: String
-initialProse = "[comment]: # (" ++ doNotModify ++ ")"
-
 initialCode :: String
 initialCode = "||| " ++ doNotModify
+
+-- A markdown link is not rendered, and can be used as a hack for a comment.
+initialProse :: String
+initialProse = "[comment]: # (" ++ doNotModify ++ ")"
 
 doNotModify :: String
 doNotModify = 
@@ -35,14 +37,11 @@ generateProse (original, prose, code) = case original of
              then generateCode (original, "```idris" : prose, code)
              else generateProse (lines, line : prose, code)
 
--- If there's a full line of code, there's typically a > and a space before any 
--- code - but there are some lines where there's just a >. This handles both 
--- cases so that the resulting code always starts at the beginning of the line.
-cleanupCode :: String -> String
-cleanupCode line = case line of
+trimCode :: String -> String
+trimCode line = case line of
     (c1 : (c2 : cs)) -> cs
-    (c1 : cs)        -> cs
-    _                -> line
+    (c1 : cs) -> cs
+    _ -> line
 
 generateCode :: ([String], [String], [String])
     -> ([String], [String], [String])
@@ -50,7 +49,7 @@ generateCode (original, prose, code) = case original of
     [] -> (original, prose, code)
     (line : lines) ->
         if ">" `isPrefixOf` line
-        then generateCode (lines, tail line : prose, cleanupCode line : code)
+        then generateCode (lines, trimCode line : prose, trimCode line : code)
         else generateProse (original, "```" : prose, "\n" : code)
 
 -- Because this code is hidden from the blog post, there's no need to emit a 
@@ -61,6 +60,6 @@ generateHiddenCode (original, prose, code) = case original of
     [] -> (original, prose, code)
     (line : lines) ->
         if ">" `isPrefixOf` line
-        then generateHiddenCode (lines, prose, cleanupCode line : code)
+        then generateHiddenCode (lines, prose, trimCode line : code)
         else generateProse (original, prose, "\n" : code)
 
