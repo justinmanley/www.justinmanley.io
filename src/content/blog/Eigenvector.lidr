@@ -2,40 +2,38 @@
 title: Playing with Idris
 ---
 
+> --- Code hidden from blog post. ---
 > module Eigenvector
-
+> 
 > import Data.Matrix
 > import Data.Matrix.Algebraic
 > import Effects
 > import Effect.Random
-
+> import Effect.System
+> 
 > import Debug.Error
-
-> %hide Prelude.Stream.foldr
 
 ### Motivation (Why is Idris cool?)
 
 [Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). This means that types in Idris can depend on values. The advantage of this is that it makes the type system much more expressive, so that the compiler can formally verify more of the logic of the program.
 
-This literate program explores Idris, a pure functional programming language with dependent types, through a program for approximating the eigenvectors of a matrix using the [power method](https://en.wikipedia.org/wiki/Power_iteration).
+This [literate program](TODO: link) explores Idris, a pure functional programming language with dependent types, through a program for approximating the eigenvectors of a matrix using the [power method](https://en.wikipedia.org/wiki/Power_iteration).
 
 We'll start with a couple of simple helper functions for [normalizing](https://en.wikipedia.org/wiki/Unit_vector) and [orthogonalizing](https://en.wikipedia.org/wiki/Orthogonalization) vectors:
 
 > norm : Vect n Double -> Double
 > norm v = sqrt (v <:> v)
-
+>
 > normalize : Vect n Double -> Vect n Double
 > normalize v = (1 / norm v) <#> v
-
+>
 > ||| Orthogonalize v to w.
 > orthogonalize : Vect n Double -> Vect n Double -> Vect n Double
 > orthogonalize w v = v <-> ((v <:> w) <#> w)
 
-> Eigenvalue : Type
-> Eigenvalue = Double
-
+> --- Code hidden from blog post. ---
 > ||| Calculate the eigenvalue corresponding to a given eigenvector.
-> eigenvalue : Matrix n n Double -> Vect n Double -> Eigenvalue
+> eigenvalue : Matrix n n Double -> Vect n Double -> Double 
 > eigenvalue matrix eigenvector = eigenvector <:> matrix </> eigenvector
 
 [dotProduct]: https://github.com/idris-lang/Idris-dev/blob/ccf6c405fb99faeb2677101f0a8e766dc2bc8969/libs/contrib/Data/Matrix/Algebraic.idr#L58
@@ -90,6 +88,7 @@ Note that we want the `tmp` and `result` vectors to be the same size as the "see
 
 ### Effects and Randomness
 
+> --- Code hidden from blog post. ---
 > ||| Generate a random float between 0 and 1.
 > ||| See [TODO: File a bug report and add link]
 > rndDouble : Integer -> EffM m Double [RND] (\result => [RND])
@@ -98,10 +97,15 @@ Note that we want the `tmp` and `result` vectors to be the same size as the "see
 > 	rnd <- rndInt 0 max
 > 	return (fromInteger rnd / fromInteger max)
 
-There's a catch in what I've described so far - the power method needs an initial seed vector to jumpstart the iterative process of approximation for each eigenvector. If the seed vector is orthogonal to the eigenvector we're trying to compute, then the iterative process will not converge. In practice, this is addressed by seeding the power method with a random seed vector. Yet this poses a new challenge.
+There's a catch in what I've described so far - the power method needs an initial seed vector to jumpstart the iterative process of approximation. The choice of seed vector is important: if the seed vector is orthogonal to the eigenvector we're trying to compute, then the iterative process will not converge. In practice, this is addressed by initializing the power method with a random seed vector, so that the probability of non-convergence is infinitesimal. 
 
-The power method is necessarily non-determinstic. But handling non-deterministic and effectful computations computations has typically been challenging for functional languages which aspire to [purity](TODO: link). Haskell deals with effectful computations by creating different types for computations which handle different kinds of side-effects: hence a Random, State a b, IO , etc. types.  
+Constructing random vectors requires a source of random numbers from the operating system and introduces side-effects into our previously-[pure](TODO: link) program. Handling side-effects has traditionally been a challenge for functional languages which aspire to purity. The Idris [effects](TODO: link) package offers a unique approach to handling effectful computations which is made possible by Idris' dependent type system.
 
+Simple effects in Idris are parameterized by the return value of the effectful computation and the particular side-effects used in the computation. Specifically, a *list* of side-effects (i.e. a value) is included in the effect type. This guarantees a high degree of type-safety for effectful computations, since the compiler can ensure that only side-effects present in the type of the computation are used. At the same time, it's easy for users to combine side-effects, without worrying about the order in which those effects are applied  (goodbye and good riddance, [monad transformers](TODO: link)!). In practice, the compiler seems to have trouble correctly resolving effect types, but hey - [Edwin Brady](TODO: link) [told you](TODO: link) this is an experimental language!
+
+The full Effects machinary is much more complicated and flexible than the simplified picture I've given here; there's an excellent [tutorial on effects in Idris](TODO: link) that explains effects in greater detail.
+
+> --- Code hidden from blog post. ---
 > ||| map using a function which depends on the previously-mapped values.
 > ||| like a combination of map and fold in which the state is the values 
 > ||| which have already been mapped.
@@ -110,10 +114,21 @@ The power method is necessarily non-determinstic. But handling non-deterministic
 >   []        => reverse state
 >   (x :: xs) => mapRemember f xs (f x state :: state)
 
+Our `eigenvectors` function uses two side-effects: `RND`, to generate random numbers, and `SYSTEM`, to seed the random number generator with the system time. Both side-effects are reflected in the return type of the function. (The `!` in front of `time` unwraps the effectful value of `time` so that it can be used by `srand`). Notice again that the size of the matrix is captured via an implicit argument to `eigenvectors`.
+
 > ||| Calculate the eigenvectors of a matrix using the power method.
-> eigenvectors : Matrix n n Double -> Double -> Eff (List (Vect n Double)) [RND]
+> eigenvectors : Matrix n n Double 
+>   -> Double 
+>   -> Eff (List (Vect n Double)) [RND, SYSTEM]
 > eigenvectors {n} matrix precision = do
->    seedVectors <- mapE (mapVE rndDouble) 
+>    srand !time
+>   
+>    -- The functions given as arguments to higher-order effectful functions
+>    -- (mapE, mapVE) must be syntactically applied directly to their arguments.>    -- This is a bug (see TODO: link).
+>    seedVectors <- mapE (\vs => mapVE (\x => rndDouble x) vs)
 >      $ List.replicate n (Vect.replicate n (cast $ 1 / precision))
 >   
 >    return $ mapRemember (eigenvector matrix precision) seedVectors []
+
+And that's it! Pick your favorite matrix and give this program a try! The full code from this blog post is available [on GitHub](TODO: link). And if you think Idris is cool, there's an [active mailing list](TODO: link) and [a bunch of great tutorials](TODO: link) on the Idris website.
+

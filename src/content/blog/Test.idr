@@ -5,8 +5,7 @@ import Data.Matrix
 import Data.Matrix.Algebraic
 import Effects
 import Effect.Random
-
-import Data.Complex
+import Effect.System
 
 import Eigenvector
 
