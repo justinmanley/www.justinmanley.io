@@ -1,5 +1,7 @@
 ---
 title: Approximating Eigenvectors in Idris
+date: Sun Oct 11 08:31:17 PDT 2015  
+state: published
 ---
 
 > --- Code hidden from blog post. ---
