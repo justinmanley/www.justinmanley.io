@@ -2,7 +2,6 @@
 title: 	Thoughts on the Elm language
 date: 	Thu Sep 10 12:21:29 PDT 2015
 state: 	published
-header: <%= assets %>/images/waggle-demo.png
 ---
 
 [Elm](http://elm-lang.org/) is a [type-inferred](https://en.wikipedia.org/wiki/Type_inference) [functional](https://en.wikipedia.org/wiki/Functional_programming) reactive language for web programming ("reactive" means that the language has built-in primitives for expressing time-varying values - see [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming)).  I decided to try Elm out on a small project, a web app for displaying incoming data streams from an array of environmental sensors.
