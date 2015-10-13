@@ -15,9 +15,12 @@ state: published
 > 
 > import Debug.Error
 
+> --- Code hidden from blog post. ---
+> -- Note that Debug.Trace.trace is a good tool for quick & dirty debugging.
+
 [Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). A dependent type system is one in which types are allowed to *depend* on values. One advantage of this is that it makes the type system much more expressive and enables the compiler to formally verify more of the logic more of the logic of the program. While extremely powerful, dependent type theory is less well-understood than other formal systems. Idris is exciting because it is a testing ground for research in dependent types.
 
-This [literate program](TODO: link) explores Idris with an implementation of the [power method](https://en.wikipedia.org/wiki/Power_iteration) for approximating the eigenvectors of a matrix.
+This [literate program](https://en.wikipedia.org/wiki/Literate_programming) explores Idris with an implementation of the [power method](https://en.wikipedia.org/wiki/Power_iteration) for approximating the eigenvectors of a matrix.
 
 ### Vectors and Matrices
 
@@ -99,26 +102,24 @@ The result of this process will converge (under a few [conditions](TOOD: link)) 
 > 			EQ => error "Error margin is undefined when the eigenvalue is 0."
 > 			LT => norm (tmp <+> result)
 
-Note that we want the `tmp` and `result` vectors to be the same size as the "seed" vector, but the size of the seed vector is only carried in its type, which means that it's not automatically brought into the scope of the function body.  This is a problem unique to a dependent type system, and Idris solves it with a notion of [implicit arguments](TODO: link). The size of the seed vector is explicitly brought into scope using curly braces (`{n}`), which allows `n` to be used in the type signatures of `result` and `tmp`.
+Note that we want the `tmp` and `result` vectors to be the same size as the "seed" vector, but the size of the seed vector is only carried in its type, which means that it's not automatically brought into the scope of the function body.  This is a problem unique to a dependent type system, and Idris solves it with a notion of [implicit arguments](http://idris.readthedocs.org/en/latest/tutorial/typesfuns.html?highlight=implicit#implicit-arguments). The size of the seed vector is explicitly brought into scope using curly braces (`{n}`), which allows `n` to be used in the type signatures of `result` and `tmp`.
 
 ### Effects and Randomness
 
 > --- Code hidden from blog post. ---
-> ||| Generate a random float between 0 and 1.
-> ||| See [TODO: File a bug report and add link]
-> rndDouble : Integer -> EffM m Double [RND] (\result => [RND])
-> -- rndDouble : Integer -> Eff Double [RND]
+> ||| Naively generate a (pseudo)-random float between 0 and 1.
+> rndDouble : Integer -> Eff Double [RND]
 > rndDouble max = do
 > 	rnd <- rndInt 0 max
 > 	return (fromInteger rnd / fromInteger max)
 
 There's a catch in what I've described so far - the power method needs an initial seed vector to jumpstart the iterative process of approximation. The choice of seed vector is important: if the seed vector is orthogonal to the eigenvector we're trying to compute, then the iterative process will not converge. In practice, this is addressed by initializing the power method with a random seed vector, so that the probability of non-convergence is infinitesimal. 
 
-Constructing random vectors requires a source of random numbers from the operating system and introduces side-effects into our previously-[pure](TODO: link) program. Handling side-effects has traditionally been a challenge for functional languages which aspire to purity. The Idris [effects](TODO: link) package offers a unique approach to handling effectful computations which is made possible by Idris' dependent type system.
+Constructing random vectors requires a source of random numbers from the operating system and introduces side-effects into our previously-[pure](https://en.wikipedia.org/wiki/Pure_function) program. Handling side-effects has traditionally been a challenge for functional languages which aspire to purity. The Idris [effects](https://eb.host.cs.st-andrews.ac.uk/drafts/effects.pdf) package offers a unique approach to handling effectful computations which is made possible by Idris' dependent type system.
 
-Simple effects in Idris are parameterized by the return value of the effectful computation and the particular side-effects used in the computation. Specifically, a *list* of side-effects (i.e. a value) is included in the effect type. This guarantees a high degree of type-safety for effectful computations, since the compiler can ensure that only side-effects present in the type of the computation are used. At the same time, it's easy for users to combine side-effects, without worrying about the order in which those effects are applied  (goodbye and good riddance, [monad transformers](TODO: link)!). In practice, the compiler seems to have trouble correctly resolving effect types, but hey - [Edwin Brady](TODO: link) [told you](TODO: link) this is an experimental language!
+Simple effects in Idris are parameterized by the return value of the effectful computation and the particular side-effects used in the computation. Specifically, a *list* of side-effects (i.e. a value) is included in the effect type. This guarantees a high degree of type-safety for effectful computations, since the compiler can ensure that only side-effects present in the type of the computation are used. At the same time, it's easy for users to combine side-effects, without worrying about the order in which those effects are applied  (goodbye and good riddance, [monad transformers](http://book.realworldhaskell.org/read/monad-transformers.html)!). In practice, the compiler seems to have trouble correctly resolving effect types, but hey - [Edwin Brady](https://edwinb.wordpress.com/) [told you](https://github.com/idris-lang/Idris-dev/issues) this is an experimental language!
 
-The full Effects machinary is much more complicated and flexible than the simplified picture I've given here; there's an excellent [tutorial on effects in Idris](TODO: link) that explains effects in greater detail.
+The full Effects machinary is much more complicated and flexible than the simplified picture I've given here; there's an excellent [tutorial on effects in Idris](http://docs.idris-lang.org/en/latest/effects/index.html) that explains effects in greater detail.
 
 > --- Code hidden from blog post. ---
 > ||| map using a function which depends on the previously-mapped values.
@@ -145,5 +146,5 @@ Our `eigenvectors` function uses two side-effects: `RND`, to generate random num
 >   
 >    return $ mapRemember (eigenvector matrix precision) seedVectors []
 
-And that's it! Pick your favorite matrix and give this program a try! The full code from this blog post is available [on GitHub](TODO: link). And if you think Idris is cool, there's an [active mailing list](TODO: link) and [a bunch of great tutorials](TODO: link) on the Idris website.
+And that's it! Pick your favorite matrix and give this program a try! The full code from this blog post is available [on GitHub](https://gist.github.com/justinmanley/f2e169feb32e06e06c2f). And if you think Idris is cool, there's an [active mailing list](https://groups.google.com/forum/#!forum/idris-lang) and [a bunch of great tutorials](http://docs.idris-lang.org/en/latest/tutorial/index.html) on the Idris website.
 
