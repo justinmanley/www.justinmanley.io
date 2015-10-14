@@ -17,10 +17,6 @@ src:
             -10:
                 - www.justinmanley.io
     # ---------------------------------------------------------------------- 
-    outoftheyards:  
-        url:            http://www.outoftheyards.com/feed/atom/
-        importance:     5
-    # ---------------------------------------------------------------------- 
     publiclab:
         url:            http://publiclab.org/feed/justinmanley.rss
         importance:     4
