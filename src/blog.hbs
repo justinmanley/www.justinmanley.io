@@ -3,6 +3,8 @@ template: page.hbs
 title: Blog
 ---
 
+{{!-- Must be kept in sync with the post.hbs layout. --}}
+
 <div class="blogs-posts content">
 {{#compose src="<%= content.blog %>"}}
 	{{#is @state 'published'}}
@@ -12,7 +14,9 @@ title: Blog
 					<img class="blog-header-image" src="{{@header}}"></img>
 				{{/if}}
 				<h2 class="blog-title">{{@title}}</h2>
-				<time class="blog-published">{{moment @date format="dddd MMMM Do, YYYY"}}</time>
+				<time class="blog-published">
+					{{moment @date format="dddd MMMM Do, YYYY"}}
+				</time>
 			</div>
 			{{#markdown}}{{{@content}}}{{/markdown}}
 		</div>

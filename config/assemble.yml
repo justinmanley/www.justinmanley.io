@@ -1,9 +1,10 @@
 options:
     assets: site/assets
-    bower: assets/bower_components
     engine: handlebars
     data: config/*.yml
     layoutdir: src/templates/layouts
+    plugins: 
+        - 'grunt-assemble-contextual'
     helpers:
         - handlebars-helper-compose
         - helper-moment
@@ -11,12 +12,19 @@ site:
     options:
         ext: .html
         layout: page.hbs
-        flatten: true
+        flatten: true # prevent output from being generated under 'site/src'
         content:
             blog: src/content/blog/**.md
             work: src/content/work/**.md
     files: 
         "site/":
             - src/**.hbs
-            - src/**.md 
-
+            - src/**.md
+blog:
+    options:
+        ext: .html
+        flatten: true
+        layout: post.hbs
+    files: 
+        "site/blog/":
+            - 'src/content/blog/**/*.md'

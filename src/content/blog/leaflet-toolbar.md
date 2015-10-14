@@ -117,7 +117,7 @@ This trick uses Leaflet's built-in classical inheritance system to create pseudo
 
 I thought I was done developing Leaflet.toolbar after about a month of tinkering with it in my spare time. Looking back at Leaflet.draw to confirm I had implemented all of its features, I noticed that each action in the toolbar, once triggered, provided a menu of secondary options related to the action at hand; for example, users drawing a polygon or polyline are given the option to cancel drawing, or to delete just the last point. No problem, I thought. I'll just add that in - it'll take a couple of days.
 
-![Primary and secondary toolbar actions](assets/images/toolbar-actions.png)
+![Primary and secondary toolbar actions]({{assets}}/images/toolbar-actions.png)
 
 Wrong! My design at the time had no way of accomodating these secondary actions. It took me the next few months, still working in my spare time, to reorganize the code to accomodate these secondary actions.
 

@@ -1,13 +1,12 @@
 # Shortcuts for static assets
-bower: <%= assets %>/bower_components
 css:
-    octicons:           <%= bower %>/octicons/octicons/octicons.css
-    bootstrap:          <%= bower %>/bootstrap/dist/css/bootstrap.min.css
-    bootstrapTheme:     <%= bower %>/bootstrap/dist/css/bootstrap-theme.css
-    fontAwesome:        <%= bower %>/font-awesome/css/font-awesome.min.css
-    highlightTheme:     <%= bower %>/highlightjs/styles/paraiso.dark.css
+    octicons:           bower_components/octicons/octicons/octicons.css
+    bootstrap:          bower_components/bootstrap/dist/css/bootstrap.min.css
+    bootstrapTheme:     bower_components/bootstrap/dist/css/bootstrap-theme.css
+    fontAwesome:        bower_components/font-awesome/css/font-awesome.min.css
+    highlightTheme:     bower_components/highlightjs/styles/paraiso.dark.css
 js: 
-    jquery:             <%= bower %>/jquery/dist/jquery.min.js
-    bootstrap:          <%= bower %>/bootstrap/dist/js/bootstrap.min.js
-    socket:             <%= bower %>/socket-io-client/socket.io.js
-    highlight:          <%= bower %>/highlightjs/highlight.pack.js
+    jquery:             bower_components/jquery/dist/jquery.min.js
+    bootstrap:          bower_components/bootstrap/dist/js/bootstrap.min.js
+    socket:             bower_components/socket-io-client/socket.io.js
+    highlight:          bower_components/highlightjs/highlight.pack.js
