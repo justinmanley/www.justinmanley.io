@@ -18,13 +18,13 @@ state: published
 > --- Code hidden from blog post. ---
 > -- Note that Debug.Trace.trace is a good tool for quick & dirty debugging.
 
-[Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). In a dependently typed language, types may depend on values, as well as other types (see where dependent types fit into the [lambda cube](https://en.wikipedia.org/wiki/Lambda_cube)). One advantage of this is that it makes the type system much more expressive and enables the compiler to formally verify more of the logic more of the logic of the program. While extremely powerful, dependent type theory is less well-understood than other formal systems. Idris is exciting because it is a testing ground for research in dependent types.
+[Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). In a dependently typed language, types may depend on values, as well as other types. One advantage of this is that it makes the type system much more expressive and enables the compiler to formally verify more of the logic of the program. While extremely powerful, dependent type theory is less well-understood than other formal systems (see where dependent types fit into the [lambda cube](https://en.wikipedia.org/wiki/Lambda_cube)). Idris is exciting because it is a testing ground for research in dependent types.
 
 This [literate program](https://en.wikipedia.org/wiki/Literate_programming) explores Idris with an implementation of the [power method](https://en.wikipedia.org/wiki/Power_iteration) for approximating the eigenvectors of a matrix.
 
 ### Vectors and Matrices
 
-A vector space forms an ideal setting for this exploration of Idris since many many matrix and vector operations have constraints which can be more easily represented and checked in Idris than in other languages. Vectors may only be multiplied if they have the same length, and two matrices must have a common dimension in order to be multiplied together.
+A vector space forms an ideal setting for this exploration of Idris since many many matrix and vector operations have constraints which can be more easily represented and checked in Idris than in other languages. For example: vectors may only be multiplied if they have the same length, and two matrices must have a common dimension in order to be multiplied together.
 
 Vectors in Idris have type `Vect n a`, where `n` is a natural number. That is, the type of a vector contains a *value*. This means that the vectors `[1,0]` and the vectors `[0,1,0]` actually have different types in Idris, and their multiplication via the dot product can be excluded at compile-time, rather than handled at runtime with an error or by silently discarding elements of the longer vector.
 
@@ -92,7 +92,7 @@ The result of this process will converge (under a few [conditions](TOOD: link)) 
 > 		tmp : Vect n Double
 > 		tmp = foldr orthogonalize seed previousEigenvectors
 >
->       -- </> is matrix multiplication by a row vector.
+> 		-- </> is matrix multiplication by a row vector.
 > 		result : Vect n Double
 > 		result = normalize $ matrix </> tmp
 >
