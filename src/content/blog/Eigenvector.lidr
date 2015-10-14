@@ -18,7 +18,7 @@ state: published
 > --- Code hidden from blog post. ---
 > -- Note that Debug.Trace.trace is a good tool for quick & dirty debugging.
 
-[Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). A dependent type system is one in which types are allowed to *depend* on values. One advantage of this is that it makes the type system much more expressive and enables the compiler to formally verify more of the logic more of the logic of the program. While extremely powerful, dependent type theory is less well-understood than other formal systems. Idris is exciting because it is a testing ground for research in dependent types.
+[Idris](http://www.idris-lang.org/) is a functional programming language with [dependent types](http://en.wikipedia.org/wiki/Dependent_type). In a dependently typed language, types may depend on values, as well as other types (see where dependent types fit into the [lambda cube](https://en.wikipedia.org/wiki/Lambda_cube)). One advantage of this is that it makes the type system much more expressive and enables the compiler to formally verify more of the logic more of the logic of the program. While extremely powerful, dependent type theory is less well-understood than other formal systems. Idris is exciting because it is a testing ground for research in dependent types.
 
 This [literate program](https://en.wikipedia.org/wiki/Literate_programming) explores Idris with an implementation of the [power method](https://en.wikipedia.org/wiki/Power_iteration) for approximating the eigenvectors of a matrix.
 

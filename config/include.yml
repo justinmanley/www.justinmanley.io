@@ -4,7 +4,7 @@ css:
     bootstrap:          bower_components/bootstrap/dist/css/bootstrap.min.css
     bootstrapTheme:     bower_components/bootstrap/dist/css/bootstrap-theme.css
     fontAwesome:        bower_components/font-awesome/css/font-awesome.min.css
-    highlightTheme:     bower_components/highlightjs/styles/paraiso.dark.css
+    highlightTheme:     bower_components/highlightjs/styles/paraiso.light.css
 js: 
     jquery:             bower_components/jquery/dist/jquery.min.js
     bootstrap:          bower_components/bootstrap/dist/js/bootstrap.min.js
