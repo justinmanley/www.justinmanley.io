@@ -18,7 +18,7 @@ src:
                 - www.justinmanley.io
     # ---------------------------------------------------------------------- 
     publiclab:
-        url:            http://publiclab.org/feed/justinmanley.rss
+        url:            https://publiclab.org/feed/justinmanley.rss
         importance:     4
     # ---------------------------------------------------------------------- 
 
