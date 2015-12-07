@@ -21,6 +21,9 @@ src:
         url:            https://publiclab.org/feed/justinmanley.rss
         importance:     4
     # ---------------------------------------------------------------------- 
+    outoftheyards:
+        url:            http://www.outoftheyards.com/feed/atom/
+        importance:     5
 
 ### Output Types
 dest:
