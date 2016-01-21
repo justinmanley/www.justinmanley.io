@@ -1,8 +1,0 @@
-node_modules
-
-src/assets/bower_components
-src/content/feeds/*
-
-site/*
-
-config/secret.*

@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Work &middot; justinmanley.io</title>
+
+		<link rel="icon" type="image/png" href="assets/images/favicon.ico"/>
+
+		<!-- GitHub icons and styles -->
+		<link rel="stylesheet" href="assets/bower_components/octicons/octicons/octicons.css"/>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+		<script src="assets/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<!-- FontAwesome -->	
+		<link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css"/>
+		
+		<!-- LiveReload (development) -->
+		<script src="http://localhost:35729/livereload.js"></script>
+
+		<!-- Twitter javascript -->
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+		<!-- Site styles -->
+		<link rel="stylesheet" href="assets/css/style.css"/>
+
+		<!-- Syntax highlighting for code snippets -->
+		<link rel="stylesheet" href="assets/bower_components/highlightjs/styles/paraiso.light.css">
+		<script src="assets/bower_components/highlightjs/highlight.pack.js"></script>
+		<script>
+			hljs.initHighlightingOnLoad();
+			$(document).ready(function() {
+				var font_size = $('pre code').css('font-size');
+
+				$('p > code').each(function(i, block) {
+					hljs.highlightBlock(block);
+
+					// tweak styles to match code blocks
+					block.style.display = 'inline';
+					block.style.fontSize = font_size;
+					block.style.backgroundColor = 'rgba(0,0,0,0)';
+				});
+			});
+		</script>
+
+        <!-- Structured data representation for Google and other search engines. -->
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Person",
+                "name": "Justin Manley",
+                "url": "http://justinmanley.io",
+                "jobTitle": "Software Engineer",
+                "worksFor": "Google",
+                "gender": "Male",
+                "sameAs": [
+                    "https://www.linkedin.com/in/justinmanley/",
+                    "https://github.com/justinmanley",
+                    "https://twitter.com/outoftheyards"
+                ],
+                "description": "Software engineer and urbanist",
+                "email": "manleyjster@gmail.com"
+            }
+        </script>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="brand"><a href="/">Justin Manley</a></h2>
+			<p>Software engineer and urbanist.</p>	
+		</div>
+		<div class="navbar" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-links">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="glyphicon glyphicon-justify"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="nav-links">
+					<ul class="nav navbar-nav">
+					
+						<li><a href="https://github.com/justinmanley">
+							GitHub
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/blog.html">
+							Blog
+							
+						</a></li>
+					
+						<li><a href="http://www.outoftheyards.com">
+							Out of the Yards
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="http://justinmanley.portfoliobox.me/">
+							Portfolio
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/work">
+							Work
+							
+						</a></li>
+					
+						<li><a href="/archive">
+							Archive
+							
+						</a></li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+<div class="works content">
+
+
+<div class="work">
+	<div class="work-header">
+		<a href="http://mapknitter.org"><h3 class="work-title">MapKnitter</h3></a>
+		<span class="work-summary">A grassroots mapping tool.</span>
+		<br />
+		<span class="work-duration">Summer 2014.</span>
+	</div>
+	<p>MapKnitter is an online tool for making maps from aerial photos. I worked on MapKnitter as part of <a href="https://www.google-melange.com/gsoc/document/show/gsoc_program/google/gsoc2014/about_page">Google Summer of Code 2014</a>, improving map annotation functionality and modernizing the codebase to make the site more maintainable.</p>
+<p>MapKnitter 2.0, based on the work of Public Lab&#39;s 2014 GSOC students, was <a href="http://publiclab.org/notes/warren/02-13-2015/announcing-mapknitter-2-0">released in February 2015</a> and was the first radical overhaul of the site since its creation in 2009. </p>
+<p><a href="https://github.com/justinmanley/Leaflet.Illustrate">Leaflet.Illustrate</a> and <a href="https://github.com/Leaflet/Leaflet.toolbar">Leaflet.toolbar</a> came out of my work on MapKnitter in the summer of 2014. I also contributed extensively to <a href="https://github.com/publiclab/Leaflet.DistortableImage">Leaflet.DistortableImage</a>.</p>
+
+</div><!-- .work -->
+
+
+<div class="work">
+	<div class="work-header">
+		<a href="http://www.mcs.anl.gov/project/waggle-open-platform-intelligent-attentive-sensors"><h3 class="work-title">Waggle</h3></a>
+		<span class="work-summary">An open platform for intelligent sensors.</span>
+		<br />
+		<span class="work-duration">Spring 2015.</span>
+	</div>
+	<p>Waggle is an open platform for intelligent environmental sensors under development at <a href="http://www.anl.gov/">Argonne National Laboratory</a> (ANL). I worked under Rajesh Sankaran at ANL to implement the Waggle binary protocol for communication between sensor nodes and to develop a <a href="https://github.com/justinmanley/waggle-data-display">web application</a> for monitoring incoming data from nodes.</p>
+
+</div><!-- .work -->
+
+
+<div class="work">
+	<div class="work-header">
+		<a href="https://github.com/justinmanley/wherewewalk"><h3 class="work-title">WhereWeWalk</h3></a>
+		<span class="work-summary">A spatial survey tool.</span>
+		<br />
+		<span class="work-duration">Academic year 2013 - 2014.</span>
+	</div>
+	<p><img src="assets/images/wherewewalk.png" alt="WhereWeWalk">
+WhereWeWalk is a web survey tool designed for <em>spatial</em> questions. I developed WhereWeWalk in 2014 for the department of Planning &amp; Design in the University of Chicago&#39;s Facilities Services division.</p>
+
+</div><!-- .work -->
+
+</div>
+
+		<footer class="footer">
+			<div class="social-media">
+				<a href="www.linkedin.com/in/justinmanley/" target="_blank">
+					<span class="fa fa-linkedin"></span>
+				</a>
+				<a href="https://github.com/justinmanley" target="_blank">
+					<span class="fa fa-github"></span>
+				</a>
+				<a href="https://twitter.com/outoftheyards" target="_blank">
+					<span class="fa fa-twitter"></span>
+				</a>
+				<a href="mailto:manleyjster@gmail.com" target="_blank">
+					<span class="fa fa-envelope"></span>
+				</a>		
+			</div>
+			<div class="attributions">
+				<p>This site was generated on Jan 21st, 2016 with <a href="http://gruntjs.com/">Grunt</a> and <a href="http://assemble.io/">Assemble</a> using fonts and icons from <a href="http://glyphicons.com/">Glyphicons</a>, <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, and <a href="https://www.theleagueofmoveabletype.com/">The League of Moveable Type</a>.</p>
+ 
+
+				<p><a href="./assets/images/favicon.ico">Favicon image</a> by AKoht on <a href="http://www.deviantart.com/">DeviantArt</a>, originally licensed <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>. </p>
+
+			</div>		
+		</footer>	
+	</body>
+</html>

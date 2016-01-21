@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Designing Leaflet.toolbar &middot; justinmanley.io</title>
+
+		<link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+
+		<!-- GitHub icons and styles -->
+		<link rel="stylesheet" href="../assets/bower_components/octicons/octicons/octicons.css"/>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+		<script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<!-- FontAwesome -->	
+		<link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css"/>
+		
+		<!-- LiveReload (development) -->
+		<script src="http://localhost:35729/livereload.js"></script>
+
+		<!-- Twitter javascript -->
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+		<!-- Site styles -->
+		<link rel="stylesheet" href="../assets/css/style.css"/>
+
+		<!-- Syntax highlighting for code snippets -->
+		<link rel="stylesheet" href="../assets/bower_components/highlightjs/styles/paraiso.light.css">
+		<script src="../assets/bower_components/highlightjs/highlight.pack.js"></script>
+		<script>
+			hljs.initHighlightingOnLoad();
+			$(document).ready(function() {
+				var font_size = $('pre code').css('font-size');
+
+				$('p > code').each(function(i, block) {
+					hljs.highlightBlock(block);
+
+					// tweak styles to match code blocks
+					block.style.display = 'inline';
+					block.style.fontSize = font_size;
+					block.style.backgroundColor = 'rgba(0,0,0,0)';
+				});
+			});
+		</script>
+
+        <!-- Structured data representation for Google and other search engines. -->
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Person",
+                "name": "Justin Manley",
+                "url": "http://justinmanley.io",
+                "jobTitle": "Software Engineer",
+                "worksFor": "Google",
+                "gender": "Male",
+                "sameAs": [
+                    "https://www.linkedin.com/in/justinmanley/",
+                    "https://github.com/justinmanley",
+                    "https://twitter.com/outoftheyards"
+                ],
+                "description": "Software engineer and urbanist",
+                "email": "manleyjster@gmail.com"
+            }
+        </script>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="brand"><a href="/">Justin Manley</a></h2>
+			<p>Software engineer and urbanist.</p>	
+		</div>
+		<div class="navbar" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-links">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="glyphicon glyphicon-justify"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="nav-links">
+					<ul class="nav navbar-nav">
+					
+						<li><a href="https://github.com/justinmanley">
+							GitHub
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/blog.html">
+							Blog
+							
+						</a></li>
+					
+						<li><a href="http://www.outoftheyards.com">
+							Out of the Yards
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="http://justinmanley.portfoliobox.me/">
+							Portfolio
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/work">
+							Work
+							
+						</a></li>
+					
+						<li><a href="/archive">
+							Archive
+							
+						</a></li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+
+
+
+<div class="content">
+	
+		<div class="blog-post">
+			<div class="blog-header">
+				
+					<img class="blog-header-image" src="../assets/images/leaflet-toolbar-header.png"></img>
+				
+				<h2 class="blog-title">Designing Leaflet.toolbar</h2>
+				<time class="blog-published">
+					Tuesday January 6th, 2015
+				</time>
+			</div>
+			<p><a href="https://github.com/Leaflet/Leaflet.toolbar">Leaflet.toolbar</a>, a JavaScript library for building flexible and extensible toolbars for Leaflet maps, is just released and available on <a href="https://www.npmjs.com/package/leaflet-toolbar"><code>npm</code></a>. Leaflet.toolbar is an effort to extend the excellent Leaflet.draw plugin and to enable new kinds of map / user interactions.  In particular, Leaflet.toolbar aims to:</p>
+<ul>
+<li>Decouple the actions exposed by a toolbar from its overall behavior and appearance;</li>
+<li>Enable <em>both</em> control-style and popup-style toolbars out of the box;</li>
+<li>Make it easy for library developers to define new kinds of toolbars;</li>
+<li>Be easy for application developers to instantiate;</li>
+<li>Remain interoperable with Leaflet.draw.</li>
+</ul>
+<p>Here&#39;s where Leaflet.toolbar came from and why I built it.</p>
+<h3 id="why-build-a-toolbar-plugin-">Why build a toolbar plugin?</h3>
+<p>The idea for Leaflet.toolbar came from a discussion with <a href="http://publiclab.org/profile/mathew">Mathew Lippincott</a> and <a href="http://publiclab.org/profile/warren">Jeffrey Warren</a> at the end of the summer of 2014.</p>
+<p>Matt and Jeff were my mentors for a <a href="http://publiclab.org/notes/justinmanley/03-18-2014/mapknitter-annotations-using-fabric-js-gsoc-2014-proposal">Google Summer of Code project</a> focused on improving MapKnitter, a piece of software created by Public Lab for Open Technology and Science to enable grassroots mappers to do <a href="http://publiclab.org/wiki/mapping-curriculum-map-preparation#3.3+-+MapKnitter:+Map+stitching">georectification</a>.</p>
+<p>Matt and Jeff had found that Public Lab community members, unable to communicate the purpose of their maps using MapKnitter, would export their maps as images, then draw on them in Powerpoint or by hand, adding arrows, lines, circles, and text annotations directly on the map. Matt noted in a <a href="http://publiclab.org/notes/mathew/03-14-2014/mapknitter-annotations-gsoc">wonderful research note</a> that, historically, mapmakers have written and annotated their maps using different size fonts, multiple colors, and fonts of varying sizes to encode dense, overlapping geographic information. Until recently, web maps (and especially raster maps) lacked this degree of expressiveness.</p>
+<p><a href="http://i.publiclab.org/system/images/photos/000/003/256/original/bayou_manchac_sewer_outful.jpg"><img src="http://i.publiclab.org/system/images/photos/000/003/256/original/bayou_manchac_sewer_outful.jpg" alt="Mapmakers were exporting their maps as images and drawing on them in Powerpoint to communicate their purpose."></a></p>
+<p>It was important to us to bring the full expressiveness of analog mapping into the browser so that citizen scientists and mapmakers could easily communicate the purpose of their maps.</p>
+<p>Migrating from OpenLayers to Leaflet gave Public Lab the opportunity to envision how we might enable this kind of expressive digital mapmaking. Leaflet ships with a full complement of vector annotation layers - circles, rectangles, polygons, and polylines - that can be overlaid on maps. Leaflet.draw makes these layers interactive, enabling users to create annotations dynamically by drawing them on the map. This was a great first step. However, Leaflet.draw didn&#39;t provide any way for users to alter the style of these map annotations - their color, weight, or opacity, for example.</p>
+<p>Leaflet.draw exported a toolbar which was the entry point for its interaction functionality. In <a href="https://github.com/justinmanley/Leaflet.Illustrate">Leaflet.Illustrate</a>, I began developing new kinds of map annotations. Yet, when I tried to expose these new kinds of annotations to users alongside those provided by Leaflet.draw, I found that its toolbar wasn&#39;t easy to extend. The toolbar was not the core of the new features I was trying to develop, but because it was the entry point for users, it deeply affected the user experience.</p>
+<p>This plugin is an effort to generalize the elegant toolbar provided by Leaflet.draw and to overcome some of its limitations.</p>
+<h3 id="toolbar-actions">Toolbar actions</h3>
+<p>The toughest and most protracted challenge in designing Leaflet.toolbar was deciding how to represent toolbar actions. The difficult was that toolbar actions couldn&#39;t be instantiated when the toolbar was defined (for example, by a plugin developer) because these actions took as mandatory arguments to their constructors a <code>map</code> object, which is usually created by application developers.</p>
+<p>Leaflet.draw solved this by defining the actions in the toolbar in a method of the concrete <code>DrawToolbar</code> class.</p>
+<pre><code class="language-javascript">L.DrawToolbar = L.Toolbar.extend({
+    ...
+    getModeHandlers: <span class="function"><span class="keyword">function</span><span class="params">(map)</span> {</span>
+        <span class="keyword">return</span> [
+            ...
+            {
+                enabled: <span class="keyword">this</span>.options.polyline,
+                handler: <span class="keyword">new</span> L.Draw.Polyline(map, <span class="keyword">this</span>.options.polyline),
+                title: L.drawLocal.draw.toolbar.buttons.polyline
+            },
+            ...
+        ];
+    }
+    ...
+});</code></pre>
+<p>I struggled with this for a long time. I wanted to separate the specification of a toolbar&#39;s actions from its behavior as an generic interface, so I didn&#39;t feel that it was appropriate to define the actions in a method of a specific toolbar class. Yet I was facing the same difficulty as Leaflet.draw - the necessity to make the <code>map</code> variable available to the toolbar action constructors.</p>
+<p>I&#39;m very pleased with the solution I came up with (at long last, after months of re-re-refactoring). Leaflet.toolbar requires developers to define the actions in a toolbar as a simple array of constructors extending L.ToolbarAction:</p>
+<pre><code class="language-javascript">L.DrawToolbar = L.Toolbar.Control.extend({
+    options: {
+        actions: [
+            L.Draw.Polyline,
+            L.Draw.Polygon,
+            L.Draw.Rectangle,
+            L.Draw.Circle,
+            L.Draw.Marker
+        ]
+    }
+});</code></pre>
+<p>This is direct and concise. What&#39;s more, this new pattern makes it easy for application developers to customize the behavior of an action <em>at toolbar instantiation</em> by extending the action to create an anonymous class:</p>
+<pre><code class="language-javascript"><span class="keyword">var</span> polylineOptions = { color: <span class="string">'#db1d0f'</span>, weight: <span class="number">3</span> };
+
+<span class="keyword">new</span> L.DrawToolbar({
+    actions: [
+        L.Draw.Polyline.extend({ options: polylineOptions }),
+        ...
+    ]
+})</code></pre>
+<p>This succint specification for toolbar actions is made possible by a little bit of wizardry with Leaflet&#39;s built-in classical inheritance system and by overloading <code>L.Toolbar#addTo</code>.</p>
+<h3 id="overloaded-addto-method-and-_getactionconstructor">Overloaded #addTo method and _getActionConstructor</h3>
+<p>Conceptually, a toolbar is an interface that allows a user to manipulate the state of objects on the map or the map itself. Leaflet.toolbar allows the developer to specify which map objects the toolbar will control. In order to keep the API simple, <code>L.Toolbar#addTo</code> is overloaded to add the toolbar to the map, <em>and</em> to designate the map objects which the toolbar will control. The arguments of <code>L.Toolbar#addTo</code> are passed to each action in turn.  That is, </p>
+<pre><code class="language-javascript"><span class="keyword">new</span> L.Popup.Toolbar({
+    options: { actions: [EditShape, DeleteShape] }
+}).addTo(map, shape);</code></pre>
+<p>calls <code>new EditShape(map, shape)</code> and <code>new DeleteShape(map, shape)</code> in turn.</p>
+<p>The magic that makes this work (which didn&#39;t come to me until late December) is all contained in <code>L.Toolbar#_getActionConstructor</code>. </p>
+<p>Variadic functions are easy to construct in JavaScript using <code>Function.prototype.apply</code>, but this technique doesn&#39;t work with constructors.  To treat the toolbar action constructors generically, without regard for their arity, <code>Toolbar#_getActionConstructor</code> creates an anonymous class extending each toolbar action to initialize the toolbar action with the appropriate arguments: </p>
+<pre><code class="language-javascript">_getActionConstructor: <span class="function"><span class="keyword">function</span><span class="params">(Action)</span> {</span>
+    ...
+    <span class="keyword">return</span> Action.extend({  <span class="comment">// creates an new class</span>
+        initialize: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            Action.prototype.initialize.apply(<span class="keyword">this</span>, args);
+        },
+        ...
+    });    
+}</code></pre>
+<p>This trick uses Leaflet&#39;s built-in classical inheritance system to create pseudo variadic constructors in JavaScript.</p>
+<h3 id="secondary-toolbars">Secondary toolbars</h3>
+<p>I thought I was done developing Leaflet.toolbar after about a month of tinkering with it in my spare time. Looking back at Leaflet.draw to confirm I had implemented all of its features, I noticed that each action in the toolbar, once triggered, provided a menu of secondary options related to the action at hand; for example, users drawing a polygon or polyline are given the option to cancel drawing, or to delete just the last point. No problem, I thought. I&#39;ll just add that in - it&#39;ll take a couple of days.</p>
+<p><img src="../assets/images/toolbar-actions.png" alt="Primary and secondary toolbar actions"></p>
+<p>Wrong! My design at the time had no way of accomodating these secondary actions. It took me the next few months, still working in my spare time, to reorganize the code to accomodate these secondary actions.</p>
+<p>The menu of secondary actions, I realized, was kind of like a toolbar.  Why not just make it an instance of <code>L.Toolbar</code>? This was the solution I settled on: the <code>subToolbar</code> option of each toolbar action points to an instance of <code>L.Toolbar</code> containing the appropriate secondary actions.</p>
+<p>This system of nested toolbars made for efficient code reuse, but meant that the CSS styles had to be seriously modified. Toolbars in <code>Leaflet.toolbar</code> are automatically given a <code>leaflet-toolbar-n</code> class, where <code>n</code> is the 0-based level of the toolbar in the nested toolbar hierarchy. This allows for styles to be applied easily across all toolbars and menus at the same hierarchical level. One drawback of this method is that styles have to be tightly scoped to avoid inadvertently styling containing toolbars (for example: <code>leaflet-toolbar-0 &gt; li &gt; .leaflet-toolbar-icon {...}</code>) - but hey, you can&#39;t win them all!</p>
+<h3 id="looking-back">Looking back</h3>
+<p>The toughest part of this project, hands down, was dealing with the constraints of an existing API.  Developing Leaflet.toolbar was different from working on other libraries that I&#39;ve contributed to because, with Leaflet.toolbar, I was proposing to take over functionality from Leaflet.draw, rather than extending it. I wanted to inroduce a new dependency into the stack that would handle <em>existing</em> functionality. Working on a project with this degree of interdependence between the parts was new for me, and it was difficult. There were times when I felt that my ideas for Leaflet.toolbar couldn&#39;t possibly be accomodated by Leaflet.draw&#39;s API, and I dreamed about drastic rewrites of Leaflet.draw that might mesh more neatly with my toolbars. Thank god I didn&#39;t follow through on those dreams! Both Leaflet.draw and Leaflet.toolbar would have been worse off! I did make some small changes to Leaflet.draw, such as modifying each drawing handler to inherit from <code>L.ToolbarAction</code> rather than <code>L.Handler</code>, but for the most part, I left it as-is.</p>
+<p>While it was sometimes frustrating, Leaflet.draw was an enormous help to me in developing Leaflet.toolbar. I used <a href="https://github.com/jacobtoye">@jacobtoye</a>&#39;s excellent control-style toolbar as the inspiration and the spec for Leaflet.toolbar, and I was constantly tabbing back to Leaflet.draw to check the functionality of the Leaflet.draw toolbars. I worked on porting the Leaflet.draw toolbar interface over to <code>Leaflet.toolbar</code> as I was developing <code>Leaflet.toolbar</code>, which helped maintain a tight feedback loop and informed the features I was building in to Leaflet.toolbar. If anything made my job difficult, it was that <a href="https://github.com/jacobtoye">@jacobtoye</a> and the Leaflet.draw set the bar so high!</p>
+<p>Thanks are in order to <a href="https://github.com/jacobtoye">@jacobtoye</a>, for a wonderful drawing plugin, and, of course, to <a href="https://github.com/mourner">@mourner</a>, for the amazing open-source mapping library that started it all.</p>
+<h3 id="what-s-next">What&#39;s next</h3>
+<p>If you&#39;re a Leaflet developer, I&#39;d love to hear your thoughts! Let me know what you think in the comments on <a href="https://github.com/Leaflet/Leaflet.draw/issues/324">issue #324 in Leaflet.draw</a>, or <a href="https://github.com/Leaflet/Leaflet.toolbar/issues">open a new issue on Leaflet.toolbar</a>.</p>
+
+		</div>
+	
+</div><!-- .content -->
+
+		<footer class="footer">
+			<div class="social-media">
+				<a href="www.linkedin.com/in/justinmanley/" target="_blank">
+					<span class="fa fa-linkedin"></span>
+				</a>
+				<a href="https://github.com/justinmanley" target="_blank">
+					<span class="fa fa-github"></span>
+				</a>
+				<a href="https://twitter.com/outoftheyards" target="_blank">
+					<span class="fa fa-twitter"></span>
+				</a>
+				<a href="mailto:manleyjster@gmail.com" target="_blank">
+					<span class="fa fa-envelope"></span>
+				</a>		
+			</div>
+			<div class="attributions">
+				<p>This site was generated on Jan 21st, 2016 with <a href="http://gruntjs.com/">Grunt</a> and <a href="http://assemble.io/">Assemble</a> using fonts and icons from <a href="http://glyphicons.com/">Glyphicons</a>, <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, and <a href="https://www.theleagueofmoveabletype.com/">The League of Moveable Type</a>.</p>
+ 
+
+				<p><a href="./assets/images/favicon.ico">Favicon image</a> by AKoht on <a href="http://www.deviantart.com/">DeviantArt</a>, originally licensed <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>. </p>
+
+			</div>		
+		</footer>	
+	</body>
+</html>

@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Thoughts on the Elm language &middot; justinmanley.io</title>
+
+		<link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+
+		<!-- GitHub icons and styles -->
+		<link rel="stylesheet" href="../assets/bower_components/octicons/octicons/octicons.css"/>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+		<script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<!-- FontAwesome -->	
+		<link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css"/>
+		
+		<!-- LiveReload (development) -->
+		<script src="http://localhost:35729/livereload.js"></script>
+
+		<!-- Twitter javascript -->
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+		<!-- Site styles -->
+		<link rel="stylesheet" href="../assets/css/style.css"/>
+
+		<!-- Syntax highlighting for code snippets -->
+		<link rel="stylesheet" href="../assets/bower_components/highlightjs/styles/paraiso.light.css">
+		<script src="../assets/bower_components/highlightjs/highlight.pack.js"></script>
+		<script>
+			hljs.initHighlightingOnLoad();
+			$(document).ready(function() {
+				var font_size = $('pre code').css('font-size');
+
+				$('p > code').each(function(i, block) {
+					hljs.highlightBlock(block);
+
+					// tweak styles to match code blocks
+					block.style.display = 'inline';
+					block.style.fontSize = font_size;
+					block.style.backgroundColor = 'rgba(0,0,0,0)';
+				});
+			});
+		</script>
+
+        <!-- Structured data representation for Google and other search engines. -->
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Person",
+                "name": "Justin Manley",
+                "url": "http://justinmanley.io",
+                "jobTitle": "Software Engineer",
+                "worksFor": "Google",
+                "gender": "Male",
+                "sameAs": [
+                    "https://www.linkedin.com/in/justinmanley/",
+                    "https://github.com/justinmanley",
+                    "https://twitter.com/outoftheyards"
+                ],
+                "description": "Software engineer and urbanist",
+                "email": "manleyjster@gmail.com"
+            }
+        </script>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="brand"><a href="/">Justin Manley</a></h2>
+			<p>Software engineer and urbanist.</p>	
+		</div>
+		<div class="navbar" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-links">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="glyphicon glyphicon-justify"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="nav-links">
+					<ul class="nav navbar-nav">
+					
+						<li><a href="https://github.com/justinmanley">
+							GitHub
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/blog.html">
+							Blog
+							
+						</a></li>
+					
+						<li><a href="http://www.outoftheyards.com">
+							Out of the Yards
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="http://justinmanley.portfoliobox.me/">
+							Portfolio
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/work">
+							Work
+							
+						</a></li>
+					
+						<li><a href="/archive">
+							Archive
+							
+						</a></li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+
+
+
+<div class="content">
+	
+		<div class="blog-post">
+			<div class="blog-header">
+				
+				<h2 class="blog-title">Thoughts on the Elm language</h2>
+				<time class="blog-published">
+					Thursday September 10th, 2015
+				</time>
+			</div>
+			<p><a href="http://elm-lang.org/">Elm</a> is a <a href="https://en.wikipedia.org/wiki/Type_inference">type-inferred</a> <a href="https://en.wikipedia.org/wiki/Functional_programming">functional</a> reactive language for web programming (&quot;reactive&quot; means that the language has built-in primitives for expressing time-varying values - see <a href="https://en.wikipedia.org/wiki/Functional_reactive_programming">FRP</a>).  I decided to try Elm out on a small project, a web app for displaying incoming data streams from an array of environmental sensors.</p>
+<p>I built <a href="http://justinmanley.github.io/waggle-data-display/">a data display</a> (<a href="https://github.com/justinmanley/waggle-data-display">code here</a>) which reads measurements from a simple text file accessible via HTTP and produces a simple visualization. In order to show the incoming data in real time, the app must periodically check the HTTP endpoint to gather data and update the displays. These modest requirements turn out to make a great project for testing the maturity and capabilities of Elm, since they introduce a time-varying parameter at the heart of the project, and provide an opportunity to explore Elm&#39;s approach to handling <a href="https://en.wikipedia.org/wiki/Pure_function#Impure_functions">impure functions</a> like HTTP requests.</p>
+<h3 id="writing-a-simple-web-app-in-elm">Writing a simple web app in Elm</h3>
+<p>There can be a steep initial learning curve to getting started with Elm. Even a job as simple as sending a periodic HTTP request in Elm introduces a lot of heavy machinery: <a href="http://elm-lang.org/guide/reactivity">signals, tasks, mailboxes</a>, and <a href="http://elm-lang.org/guide/interop">ports</a>. Here&#39;s a snippet of code that&#39;s responsible for periodically retrieving data for the data display:</p>
+<p>First, we declare a mailbox, a destination for unparsed data retrieved via HTTP request.</p>
+<pre><code class="language-elm">rawData : Mailbox String
+rawData = Signal.mailbox &quot;sensor-data&quot;</code></pre>
+<p>The data we&#39;re going to retrieve will end up as a <a href="http://elm-lang.org/guide/reactivity#signals">signal</a> (time-varying value) associated with the mailbox we just created: <code>rawData.signal : Signal String</code>. To turn the raw HTTP response into something we can work with, we parse the response string, timestamp it, and then update the state (<code>SensorBoard</code>) with the latest batch of data.</p>
+<pre><code class="language-elm">sensorData : Signal (Time, SensorBoard)
+sensorData = Signal.map parse rawData.signal
+    |&gt; Time.timestamp 
+    |&gt; update</code></pre>
+<p>So far, so good. The tricky part is getting the data to end up in <code>rawData.signal</code>. The function <code>getSensorData : Task Http.Error ()</code> is responsible for a single HTTP request. The type signature tells us that <code>getSensorData</code> either returns <code>()</code> (the <a href="https://en.wikipedia.org/wiki/Unit_type">unit value</a>, indicating success), or an error of type <code>Http.Error</code>. If <code>getSensorData</code> is successful, then it also updates <code>rawData.signal</code> with a new value as a <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science">side effect</a>). In order to send multiple HTTP requests to periodically retrieve data, we map <code>getSensorData</code> over a signal which updates itself every <code>Config.updateInterval</code> seconds, but always has the same value (<code>Config.sensorDataUrl</code>). </p>
+<p>Finally, running this impure function requires that we declare it as a <code>port</code> at the top level.</p>
+<pre><code class="language-elm">port getData : Signal (Task Http.Error ())
+port getData = 
+    let ticks : Signal Time
+        ticks = Time.every Config.updateInterval
+
+        getSensorData : String -&gt; Task Http.Error ()
+        getSensorData url = 
+            Http.getString url `andThen` Signal.send rawData.address
+
+    -- Lifting the URL string to a constant signal which updates periodically
+    -- allows us to perform the HTTP request task periodically as well. 
+    in Signal.map getSensorData
+        &lt;| Signal.sampleOn ticks 
+        &lt;| Signal.constant Config.sensorDataUrl</code></pre>
+<p>It&#39;s easy to write a solution to this problem which typechecks and looks plausible, but which only launches a single HTTP request. Getting the solution to work as intended requires thinking about the <a href="https://en.wikipedia.org/wiki/Signal-flow_graph">signal graph</a> and understanding how tasks work. It&#39;s not intuitive (at least for me). It takes a bit of thought to realize that the URL needs to masquerade as a time-varying value in order to launch periodic HTTP requests.</p>
+<h3 id="successes-and-challenges">Successes and challenges</h3>
+<p>As I became comfortable with Elm&#39;s FRP model, the biggest challenges I faced were the result of the relative youth of the language community.</p>
+<p>There&#39;s a dearth of community libraries, and those which have been released are often in flux as their authors figure out how to express in Elm solutions originally developed in JavaScript or Haskell. The lack of stock solutions to common problems means that simple projects can take much longer than expected because so much must be built from scratch. Even the core libraries sometimes change dramatically (tasks and mailboxes were just introduced with v0.15) - and this means more time updating and refactoring code.</p>
+<p>Layout and styling in particular were frustrating at times. There are two main display systems in Elm. The <a href="http://package.elm-lang.org/packages/elm-lang/core/2.1.0/Graphics-Element"><code>Graphics.*</code> core libraries</a> provide a simple layout system built of rectangular components of known width and height. This means that it&#39;s not possible to style <code>Graphics.*</code> elements with CSS. It <em>is</em> possible to use CSS with <a href="http://package.elm-lang.org/packages/evancz/elm-html/4.0.1"><code>elm-html</code></a>, but you give up the ability to get the dimensions of elements from Elm code. Fortunately, there&#39;s some good work being done on these issues right now, with <a href="http://package.elm-lang.org/packages/adam-r-kowalski/Elm-Css/2.0.0">Elm-Css</a> recently released and discussions about <a href="https://groups.google.com/forum/#!searchin/elm-discuss/gss/elm-discuss/PtHVHY9Iu1g/sqe4LSBHBwAJ">alternative layout / styling systems</a>.</p>
+<p>It helps that the Elm community is friendly and supportive. When I&#39;ve been truly stumped, I&#39;ve gotten quick (and thoughtful) responses from Elm veterans on the <a href="https://groups.google.com/forum/#!forum/elm-discuss">elm-discuss</a> mailing list. The elm-discuss list is an exciting place to be; there are questions every day from beginners trying out Elm for the first time and discussions (sometimes heated) about language features and infrastructure. Even better, many of the folks involved in those conversations go on to contribute to Elm&#39;s community libraries. Since I started working on this project, in March of 2015, the number of <a href="http://package.elm-lang.org/packages">community libraries</a> has grown tenfold.</p>
+<p>It also helps that Elm ships with a suite of amazing tools - the <a href="https://github.com/elm-lang/elm-platform">&quot;Elm Platform&quot;</a>, including the compiler, <a href="https://github.com/elm-lang/elm-repl">REPL</a>, <a href="https://github.com/elm-lang/elm-package">package manager</a>, and the <a href="https://github.com/elm-lang/elm-reactor">reactor</a>, an interactive development tool. These tools make it a pleasure to work in Elm.</p>
+<p>But my favorite part about writing Elm, by far, is how maintainable it is. It&#39;s amazing to me how easy it was to come back to this project after 2 months away and begin to refactor messy code and add features once again. I love that I can be productive almost immediately when I sit down to revive a long-dormant Elm project. I may forget how the different pieces of my project fit together, but the Elm compiler doesn&#39;t forget. This is significant because it adds up to a big boost in productivity for web developers using Elm.</p>
+<h3 id="final-thoughts">Final thoughts</h3>
+<p>Elm is a work in progress. It&#39;s frustrating sometimes, because APIs change frequently and there are missing pieces, but also tremendously exciting because the performance, power, and expressiveness of the language are constantly improving.</p>
+<p>The Elm community follows a top-down BDFL model, with creator Evan Czaplicki putting in the most hours and reserving the final say on questions of language syntax, features, and implementation. Czaplicki is autocratic and sometimes brusque, but he is also responsive and supportive of active contributors to the language. The scope of Czaplicki&#39;s vision has attracted an active community of language maintainers, library developers, and compiler enthusiasts to contribute to the language.</p>
+<p>This community is swiftly increasing the number of available Elm libraries. Even more exciting, there are a ton of exciting improvements and features coming (hopefully) with the next compiler release, including tail call optimization, exhaustiveness checking for pattern matches, and dead-code elimination. For me, at least, Elm is not yet an efficient and effective replacement for JavaScript - but of all the frameworks and compile-to-JavaScript languages I&#39;ve worked with, Elm has the greatest potential.</p>
+
+		</div>
+	
+</div><!-- .content -->
+
+		<footer class="footer">
+			<div class="social-media">
+				<a href="www.linkedin.com/in/justinmanley/" target="_blank">
+					<span class="fa fa-linkedin"></span>
+				</a>
+				<a href="https://github.com/justinmanley" target="_blank">
+					<span class="fa fa-github"></span>
+				</a>
+				<a href="https://twitter.com/outoftheyards" target="_blank">
+					<span class="fa fa-twitter"></span>
+				</a>
+				<a href="mailto:manleyjster@gmail.com" target="_blank">
+					<span class="fa fa-envelope"></span>
+				</a>		
+			</div>
+			<div class="attributions">
+				<p>This site was generated on Jan 21st, 2016 with <a href="http://gruntjs.com/">Grunt</a> and <a href="http://assemble.io/">Assemble</a> using fonts and icons from <a href="http://glyphicons.com/">Glyphicons</a>, <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, and <a href="https://www.theleagueofmoveabletype.com/">The League of Moveable Type</a>.</p>
+ 
+
+				<p><a href="./assets/images/favicon.ico">Favicon image</a> by AKoht on <a href="http://www.deviantart.com/">DeviantArt</a>, originally licensed <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>. </p>
+
+			</div>		
+		</footer>	
+	</body>
+</html>

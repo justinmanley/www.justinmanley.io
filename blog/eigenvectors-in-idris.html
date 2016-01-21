@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Approximating Eigenvectors in Idris &middot; justinmanley.io</title>
+
+		<link rel="icon" type="image/png" href="../assets/images/favicon.ico"/>
+
+		<!-- GitHub icons and styles -->
+		<link rel="stylesheet" href="../assets/bower_components/octicons/octicons/octicons.css"/>
+
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../assets/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+		<script src="../assets/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="../assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<!-- FontAwesome -->	
+		<link rel="stylesheet" href="../assets/bower_components/font-awesome/css/font-awesome.min.css"/>
+		
+		<!-- LiveReload (development) -->
+		<script src="http://localhost:35729/livereload.js"></script>
+
+		<!-- Twitter javascript -->
+		<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+		<!-- Site styles -->
+		<link rel="stylesheet" href="../assets/css/style.css"/>
+
+		<!-- Syntax highlighting for code snippets -->
+		<link rel="stylesheet" href="../assets/bower_components/highlightjs/styles/paraiso.light.css">
+		<script src="../assets/bower_components/highlightjs/highlight.pack.js"></script>
+		<script>
+			hljs.initHighlightingOnLoad();
+			$(document).ready(function() {
+				var font_size = $('pre code').css('font-size');
+
+				$('p > code').each(function(i, block) {
+					hljs.highlightBlock(block);
+
+					// tweak styles to match code blocks
+					block.style.display = 'inline';
+					block.style.fontSize = font_size;
+					block.style.backgroundColor = 'rgba(0,0,0,0)';
+				});
+			});
+		</script>
+
+        <!-- Structured data representation for Google and other search engines. -->
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Person",
+                "name": "Justin Manley",
+                "url": "http://justinmanley.io",
+                "jobTitle": "Software Engineer",
+                "worksFor": "Google",
+                "gender": "Male",
+                "sameAs": [
+                    "https://www.linkedin.com/in/justinmanley/",
+                    "https://github.com/justinmanley",
+                    "https://twitter.com/outoftheyards"
+                ],
+                "description": "Software engineer and urbanist",
+                "email": "manleyjster@gmail.com"
+            }
+        </script>
+	</head>
+	<body>
+		<div class="header">
+			<h2 class="brand"><a href="/">Justin Manley</a></h2>
+			<p>Software engineer and urbanist.</p>	
+		</div>
+		<div class="navbar" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-links">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="glyphicon glyphicon-justify"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="nav-links">
+					<ul class="nav navbar-nav">
+					
+						<li><a href="https://github.com/justinmanley">
+							GitHub
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/blog.html">
+							Blog
+							
+						</a></li>
+					
+						<li><a href="http://www.outoftheyards.com">
+							Out of the Yards
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="http://justinmanley.portfoliobox.me/">
+							Portfolio
+							
+								<span class="nav-external-link glyphicon glyphicon-new-window"></span>
+							
+						</a></li>
+					
+						<li><a href="/work">
+							Work
+							
+						</a></li>
+					
+						<li><a href="/archive">
+							Archive
+							
+						</a></li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+
+
+
+
+<div class="content">
+	
+		<div class="blog-post">
+			<div class="blog-header">
+				
+				<h2 class="blog-title">Approximating Eigenvectors in Idris</h2>
+				<time class="blog-published">
+					Sunday October 11th, 2015
+				</time>
+			</div>
+			<p><a href="http://www.idris-lang.org/">Idris</a> is a functional programming language with <a href="http://en.wikipedia.org/wiki/Dependent_type">dependent types</a>. In a dependently typed language, types may depend on values, as well as other types. One advantage of this is that it makes the type system much more expressive and enables the compiler to formally verify more of the logic of the program. While extremely powerful, dependent type theory is less well-understood than other formal systems (see where dependent types fit into the <a href="https://en.wikipedia.org/wiki/Lambda_cube">lambda cube</a>). Idris is exciting because it is a testing ground for research in dependent types.</p>
+<p>This <a href="https://en.wikipedia.org/wiki/Literate_programming">literate program</a> explores Idris with an implementation of the <a href="https://en.wikipedia.org/wiki/Power_iteration">power method</a> for approximating the eigenvectors of a matrix.</p>
+<h3 id="vectors-and-matrices">Vectors and Matrices</h3>
+<p>A vector space forms an ideal setting for this exploration of Idris since many many matrix and vector operations have constraints which can be more easily represented and checked in Idris than in other languages. For example: vectors may only be multiplied if they have the same length, and two matrices must have a common dimension in order to be multiplied together.</p>
+<p>Vectors in Idris have type <code>Vect n a</code>, where <code>n</code> is a natural number. That is, the type of a vector contains a <em>value</em>. This means that the vectors <code>[1,0]</code> and the vectors <code>[0,1,0]</code> actually have different types in Idris, and their multiplication via the dot product can be excluded at compile-time, rather than handled at runtime with an error or by silently discarding elements of the longer vector.</p>
+<p>With a representation of vectors, it&#39;s easy to define a type for matrices:</p>
+<pre><code class="language-idris">Matrix : Nat -&gt; Nat -&gt; Type -&gt; Type
+Matrix m n a = Vect m (Vect n a)</code></pre>
+<p>Matrix operations can be checked in the same way as vector operations.</p>
+<p>All of these helper functions, which we&#39;ll use in the implementation of the power method, benefit from the compile-time checking of vector and matrix operations: </p>
+<pre><code class="language-idris">norm : Vect n Double -&gt; Double
+norm v = sqrt (v &lt;:&gt; v)
+
+||| Scale v to have unit length.
+normalize : Vect n Double -&gt; Vect n Double
+normalize v = (1 / norm v) &lt;#&gt; v
+
+||| Orthogonalize v to w.
+orthogonalize : Vect n Double -&gt; Vect n Double -&gt; Vect n Double
+orthogonalize w v = v &lt;-&gt; ((v &lt;:&gt; w) &lt;#&gt; w)</code></pre>
+<p>So far, so good. The looks (pretty much) like the analogous Haskell code. The infix operators <a href="dotProduct"><code>&lt;:&gt;</code></a>, <a href="scalarProduct"><code>&lt;#&gt;</code></a>, <a href="vectorAddition"><code>&lt;+&gt;</code></a>, <a href="vectorSubtraction"><code>&lt;-&gt;</code></a>, and <a href="matrixRowVectorProduct"><code>&lt;/&gt;</code></a> (below) come from the definitions of various algebraic structures - group, ring, vector space. </p>
+<h3 id="the-power-method">The Power Method</h3>
+<p>With these utility functions out of the way, we&#39;re ready to implement the power method. The heavy lifting is done by a function which takes a matrix, a &quot;seed&quot; eigenvector, and a list of previously computed eigenvectors and approximates the next eigenvector to the desired precision:</p>
+<pre><code class="language-idris">||| Estimate a single eigenvector to the expected precision, given
+||| a list of previously calculated eigenvectors.
+eigenvector : Matrix n n Double
+    -&gt; Double
+    -&gt; Vect n Double
+    -&gt; List (Vect n Double)
+    -&gt; Vect n Double</code></pre>
+<p>The power method is iterative. Each iteration, we start with a &quot;seed&quot; eigenvector, our best approximation of the eigenvector we&#39;re interested in. Then, we generate a new approximation by multiplying our matrix by the &quot;seed&quot; vector and normalizing the product, which is a vector of the same length.</p>
+<p>We define the error of each iteration to be the distance between our original approximation (the &quot;seed&quot;) and the new approximation. If the error is less than our desired precision, we stop; otherwise, we repeat the process with our new &quot;seed&quot;.</p>
+<p>The result of this process will converge (under a few <a href="TOOD: link">conditions</a>) to the &quot;first&quot; eigenvector - an eigenvector corresponding to the eigenvalue of greatest magnitude. In order to approximate successive eigenvectors, we first orthogonalize the &quot;seed&quot; to each of the previously computed eigenvectors in turn.</p>
+<pre><code class="language-idris">eigenvector {n} matrix precision seed previousEigenvectors = 
+    if err &lt; precision
+    then result
+    else eigenvector matrix precision result previousEigenvectors where
+        -- Orthogonalize the vector to each previously computed eigenvector.
+        tmp : Vect n Double
+        tmp = foldr orthogonalize seed previousEigenvectors
+
+        -- &lt;/&gt; is matrix multiplication by a row vector.
+        result : Vect n Double
+        result = normalize $ matrix &lt;/&gt; tmp
+
+        err : Double
+        err = case compare (eigenvalue matrix result) 0 of
+            GT =&gt; norm (tmp &lt;-&gt; result)
+            EQ =&gt; error &quot;Error margin is undefined when the eigenvalue is 0.&quot;
+            LT =&gt; norm (tmp &lt;+&gt; result)</code></pre>
+<p>Note that we want the <code>tmp</code> and <code>result</code> vectors to be the same size as the &quot;seed&quot; vector, but the size of the seed vector is only carried in its type, which means that it&#39;s not automatically brought into the scope of the function body.  This is a problem unique to a dependent type system, and Idris solves it with a notion of <a href="http://idris.readthedocs.org/en/latest/tutorial/typesfuns.html?highlight=implicit#implicit-arguments">implicit arguments</a>. The size of the seed vector is explicitly brought into scope using curly braces (<code>{n}</code>), which allows <code>n</code> to be used in the type signatures of <code>result</code> and <code>tmp</code>.</p>
+<h3 id="effects-and-randomness">Effects and Randomness</h3>
+<p>There&#39;s a catch in what I&#39;ve described so far - the power method needs an initial seed vector to jumpstart the iterative process of approximation. The choice of seed vector is important: if the seed vector is orthogonal to the eigenvector we&#39;re trying to compute, then the iterative process will not converge. In practice, this is addressed by initializing the power method with a random seed vector, so that the probability of non-convergence is infinitesimal. </p>
+<p>Constructing random vectors requires a source of random numbers from the operating system and introduces side-effects into our previously-<a href="https://en.wikipedia.org/wiki/Pure_function">pure</a> program. Handling side-effects has traditionally been a challenge for functional languages which aspire to purity. The Idris <a href="https://eb.host.cs.st-andrews.ac.uk/drafts/effects.pdf">effects</a> package offers a unique approach to handling effectful computations which is made possible by Idris&#39; dependent type system.</p>
+<p>Simple effects in Idris are parameterized by the return value of the effectful computation and the particular side-effects used in the computation. Specifically, a <em>list</em> of side-effects (i.e. a value) is included in the effect type. This guarantees a high degree of type-safety for effectful computations, since the compiler can ensure that only side-effects present in the type of the computation are used. At the same time, it&#39;s easy for users to combine side-effects, without worrying about the order in which those effects are applied  (goodbye and good riddance, <a href="http://book.realworldhaskell.org/read/monad-transformers.html">monad transformers</a>!). In practice, the compiler seems to have trouble correctly resolving effect types, but hey - <a href="https://edwinb.wordpress.com/">Edwin Brady</a> <a href="https://github.com/idris-lang/Idris-dev/issues">told you</a> this is an experimental language!</p>
+<p>The full Effects machinary is much more complicated and flexible than the simplified picture I&#39;ve given here; there&#39;s an excellent <a href="http://docs.idris-lang.org/en/latest/effects/index.html">tutorial on effects in Idris</a> that explains effects in greater detail.</p>
+<p>Our <code>eigenvectors</code> function uses two side-effects: <code>RND</code>, to generate random numbers, and <code>SYSTEM</code>, to seed the random number generator with the system time. Both side-effects are reflected in the return type of the function. (The <code>!</code> in front of <code>time</code> unwraps the effectful value of <code>time</code> so that it can be used by <code>srand</code>). Notice again that the size of the matrix is captured via an implicit argument to <code>eigenvectors</code>.</p>
+<pre><code class="language-idris">||| Calculate the eigenvectors of a matrix using the power method.
+eigenvectors : Matrix n n Double 
+  -&gt; Double 
+  -&gt; Eff (List (Vect n Double)) [RND, SYSTEM]
+eigenvectors {n} matrix precision = do
+   srand !time
+
+   -- The functions given as arguments to higher-order effectful functions
+   -- (mapE, mapVE) must be syntactically applied directly to their arguments.
+   seedVectors &lt;- mapE (\vs =&gt; mapVE (\x =&gt; rndDouble x) vs)
+     $ List.replicate n (Vect.replicate n (cast $ 1 / precision))
+
+   return $ mapRemember (eigenvector matrix precision) seedVectors []</code></pre>
+<p>And that&#39;s it! Pick your favorite matrix and give this program a try! The full code from this blog post is available <a href="https://gist.github.com/justinmanley/f2e169feb32e06e06c2f">on GitHub</a>. And if you think Idris is cool, there&#39;s an <a href="https://groups.google.com/forum/#!forum/idris-lang">active mailing list</a> and <a href="http://docs.idris-lang.org/en/latest/tutorial/index.html">a bunch of great tutorials</a> on the Idris website.</p>
+
+		</div>
+	
+</div><!-- .content -->
+
+		<footer class="footer">
+			<div class="social-media">
+				<a href="www.linkedin.com/in/justinmanley/" target="_blank">
+					<span class="fa fa-linkedin"></span>
+				</a>
+				<a href="https://github.com/justinmanley" target="_blank">
+					<span class="fa fa-github"></span>
+				</a>
+				<a href="https://twitter.com/outoftheyards" target="_blank">
+					<span class="fa fa-twitter"></span>
+				</a>
+				<a href="mailto:manleyjster@gmail.com" target="_blank">
+					<span class="fa fa-envelope"></span>
+				</a>		
+			</div>
+			<div class="attributions">
+				<p>This site was generated on Jan 21st, 2016 with <a href="http://gruntjs.com/">Grunt</a> and <a href="http://assemble.io/">Assemble</a> using fonts and icons from <a href="http://glyphicons.com/">Glyphicons</a>, <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>, and <a href="https://www.theleagueofmoveabletype.com/">The League of Moveable Type</a>.</p>
+ 
+
+				<p><a href="./assets/images/favicon.ico">Favicon image</a> by AKoht on <a href="http://www.deviantart.com/">DeviantArt</a>, originally licensed <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>. </p>
+
+			</div>		
+		</footer>	
+	</body>
+</html>
