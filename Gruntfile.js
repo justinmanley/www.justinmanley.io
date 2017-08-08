@@ -76,6 +76,17 @@ module.exports = function(grunt) {
             output: {
                 files: { src: [ 'site/*.html' ] }
             }
+        },
+        // NOTE: This plugin will not resolve links without .html extensions
+        // properly, so you will have to navigate to them manually (e.g. by
+        // typing localhost:8000/work.html in the nav bar). See 
+        // https://github.com/gruntjs/grunt-contrib-connect/issues/46. 
+        connect: {
+            site: {
+                options: {
+                    base: 'site'
+                }
+            }
         }
     });
 
