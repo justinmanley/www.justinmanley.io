@@ -268,6 +268,32 @@ a:hover { text-decoration: none; }
 }
 
 /*
+ * ------------ Talks --------------------------
+ */
+.talks {
+    .talk {
+        margin-bottom: 20px;
+    }
+	.content-item(2.5);
+	.talk-header { 
+		margin-bottom: 10px;
+		@media (min-width: 768px) {
+			.talk-title { display: inline; }
+		}
+	}
+	.talk-date { 
+	 	color: @subtle-text-color;
+	 	font-size: 1.2em;
+	}
+	@media (min-width: 768px) {
+		.talk-date {
+			float: right;
+			margin-left: 4rem;
+		}
+	}
+}
+
+/*
  * ------------ Blog -----------------------------
  */
 

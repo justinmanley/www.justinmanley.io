@@ -1,0 +1,21 @@
+---
+template: page.hbs
+title: Talks
+---
+
+<div class="talks content">
+    <div class="talk content-header">
+        {{#markdown}}I occasionally give talks. Below are the topics of some of my recent talks:{{/markdown}}	
+    </div>
+
+    {{#compose src="<%= content.talks %>"}}
+    <div class="talk">
+        <div class="talk-header">
+            <span class="talk-date">{{@date}}</span>
+            <h3 class="talk-title">{{@title}}</h3>
+        </div>
+        {{#markdown}}{{{@content}}}{{/markdown}}
+    </div><!-- .talk -->
+    {{/compose}}
+</div><!-- .talks -->
+
